@@ -12,6 +12,25 @@ public class Futbolista {
 	private Integer edad;
 	private ArrayList<String> demarcacion;
 	private Boolean internacional;
+	private String id;
+
+	public Futbolista(String nombre, String apellidos, Integer edad, ArrayList<String> demarcacion,
+			Boolean internacional, String id) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.edad = edad;
+		this.demarcacion = demarcacion;
+		this.internacional = internacional;
+		this.setId(id);
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public Futbolista() {
 	}
@@ -22,6 +41,7 @@ public class Futbolista {
 		this.edad = edad;
 		this.demarcacion = demarcacion;
 		this.internacional = internacional;
+
 	}
 
 	// Transformo un objecto que me da MongoDB a un Objecto Java
@@ -29,7 +49,7 @@ public class Futbolista {
 		this.nombre = dBObjectFutbolista.getString("nombre");
 		this.apellidos = dBObjectFutbolista.getString("apellidos");
 		this.edad = dBObjectFutbolista.getInt("edad");
-
+		this.id= dBObjectFutbolista.getString("_id");
 		// Cuidado cuando trabajamos con Arrays o Listas
 		BasicDBList listDemarcaciones = (BasicDBList) dBObjectFutbolista.get("demarcacion");
 		this.demarcacion = new ArrayList<String>();
