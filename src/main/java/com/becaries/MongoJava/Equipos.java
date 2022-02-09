@@ -1,4 +1,4 @@
-package com.jarroba.MongoJava;
+package com.becaries.MongoJava;
 
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;

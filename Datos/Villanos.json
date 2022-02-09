@@ -52,9 +52,385 @@
         "zodiacsign": "Taurus;",
         "category": "Villain",
         "image": "Cruella"
-    },
+    }
+    ,
     {
         "name": "Maleficent",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Dr. BadBunny",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "BubbleBum",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Feniser del Martillo",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Finniset",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "LockGarde",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "HugFirmet",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "CocoPoner",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Finetrise",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "GuniBers",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Pojinga",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Hunderbenger",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "BaluBalu",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Gitano",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Payo",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "YuDUgami",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Kokoriche",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "BocaSucia",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "ChiniseTown",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Popovic",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Equarime",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Smartphonr",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Jinge",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Dr.Bombiiu",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "RectAllor",
+        "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
+        "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
+        "nationality": "American",
+        "occupation": "Witch",
+        "likes": "Ultimate power;\r\n Revenge; \r\nCausing chaos; \r\nRuin; \r\nSorrow and despair; \r\nThe death of her enemies; \r\nHer pet; \r\n",
+        "dislikes": "Being uninvited; \r\nHappiness and purity; \r\nDisrespect; \r\nThe stupidity of her minions; \r\nFailure; \r\nPrince Phillip's heroism; \r\nDefeat;\r\n",
+        "powers": "Shapeshifter;\nConjurer;\nUses black magic;\nCan wield a staff with magic powers;\nDragonform;\nPossesses spines across her back;\nCan conjure up spells like lightning projection;\n",
+        "famousquotes": "\"Well, quite the glittering assemblage! Royalty, nobility, the gentry and how quaint, even the rabble!\"\n\"Before the sun sets on her sixteenth birthday, she shall prick her finger on the spindle of a spinning wheel...and die!\"\n“So you see, the story is not quite as you were told.”",
+        "zodiacsign": "Libra;",
+        "category": "Villain",
+        "image": "Malificent"
+    }
+    ,
+    {
+        "name": "Frimenter",
         "personality": "Misunderstood,\nintuitive,\ndeadly,\nevil,\nvengefull,\npowerfull,\nelegant,\ndangerous,\nruthless.",
         "appearance": "Tall,\nslender,\nbeautiful,\npale green-skinned,\nyellow eyes,\nBlack hornes,\nBlack hair.\n",
         "nationality": "American",

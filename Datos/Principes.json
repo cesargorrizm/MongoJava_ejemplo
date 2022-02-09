@@ -67,7 +67,7 @@
         "category": "Prince"
     },
     {
-        "name": "Genie Aladdin",
+        "name": "Genie",
         "personality": "Flamboyant, fun-loving, powerful, comical, benevolent, compassionate, kind-hearted, cheerful, positive, adventurous, jovial, wacky, funny, animated, sassy, hyper, goofy, energetic, boisterous, larger-than-life, loyal, wise, thoughtful, loving, devoted, happy-go-lucky, helpful, eccentric, enthusiastic, selfless, forgiving, talkative, caring, friendly",
         "appearance": "Slender, muscular blue genie varying in size, pointy ears, hooked nose, curly black beard, thick black eyebrows, black ponytail with a gold bead that holds it, gold cuffs on both wrists and one earring, dark blue pants, red waistband, red Arab-style shoes, legs are usually a misty tail",
         "nationality": "Agrabah (Arabian)",
@@ -105,9 +105,248 @@
         "zodiacsign": "Taurus",
         "category": "Princess",
         "image": "SnowWhite"
-    },
+    }
+    ,
     {
         "name": "Phillip",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Antonio",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Jose Manuel",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Chema",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Pepe",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Fulano",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Pol",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Santiago",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Cesar",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Marcos",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Diego",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "David",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Daniel",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Juan",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Carlos",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Adrian",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Albrto",
+        "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
+        "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
+        "nationality": "English",
+        "occupation": "Prince",
+        "likes": "Singing;\r\nWaltzing;\r\nAdventure;\r\nDancing;\r\nRiding with Samson;\r\n",
+        "dislikes": "The Forbidden Mountain; \r\nThorns; \r\nDragons;\r\n",
+        "powers": "Horse Riding;\nClose combat;\nSwiftness;\nSword wielder;\nDragon Slayer;",
+        "famousquotes": "\"It wasn't a dream father, I really did meet her!\"",
+        "zodiacsign": "Gemini",
+        "category": "Prince"
+    }
+    ,
+    {
+        "name": "Andres",
         "personality": "Stubborn,\nindependent,\nelegant,\nswift,\nromantic,\nagile,\nloyal,\nstrong,\nheroic,\nbrave.",
         "appearance": "Slim, built physique,\nFair skin,\nBrown hair,\nBrown eyes.\n",
         "nationality": "English",

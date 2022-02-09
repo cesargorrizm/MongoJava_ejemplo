@@ -1,10 +1,10 @@
-package com.jarroba.MongoJava.MongoJava_ejemplo;
+package com.becaries.MongoJava.MongoJava_ejemplo;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.jarroba.MongoJava.Equipos;
+import com.becaries.MongoJava.Equipos;
 import com.mongodb.BasicDBObject;
 import com.mongodb.ConnectionString;
 import com.mongodb.DB;

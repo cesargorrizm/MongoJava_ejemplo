@@ -1,4 +1,4 @@
-package com.jarroba.MongoJava.MongoJava_ejemplo;
+package com.becaries.MongoJava.MongoJava_ejemplo;
 
 import java.util.ArrayList;
 

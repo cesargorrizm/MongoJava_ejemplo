@@ -1,0 +1,282 @@
+[
+    {
+        "name": "Blacanieves",
+        "Theme": "Fantasia",
+        "YearOpening": "1937",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "15",
+        "dislikes": "21",
+        "duration": "75"
+    },
+    {
+        "name": "cenicienta",
+        "Theme": "Fantasia",
+        "YearOpening": "1958",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5.6",
+        "YearsMin": "16",
+        "dislikes": "115",
+        "duration": "75"
+    },
+    {
+        "name": "Petter Pan",
+        "Theme": "Fantasia",
+        "YearOpening": "1957",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "1.3",
+        "YearsMin": "16",
+        "dislikes": "115",
+        "duration": "75"
+    },
+    {
+        "name": "Tarzan",
+        "Theme": "Fantasia",
+        "YearOpening": "1957",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "1.3",
+        "YearsMin": "16",
+        "dislikes": "115",
+        "duration": "95"
+    },
+    {
+        "name": "Bambi",
+        "Theme": "Fantasia",
+        "YearOpening": "1914",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "5",
+        "dislikes": "62",
+        "duration": "75"
+    },
+    {
+        "name": "La Sirenita",
+        "Theme": "Fantasia",
+        "YearOpening": "1989",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "15",
+        "dislikes": "21",
+        "duration": "75"
+    },
+    {
+        "name": "La Sirenita 2",
+        "Theme": "Fantasia",
+        "YearOpening": "2000",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "15",
+        "dislikes": "21",
+        "duration": "75"
+    },
+    {
+        "name": "Pocahontas",
+        "Theme": "Fantasia",
+        "YearOpening": "1995",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "4.7",
+        "YearsMin": "12",
+        "dislikes": "21",
+        "duration": "75"
+    },
+    {
+        "name": "Moana",
+        "Theme": "Fantasia",
+        "YearOpening": "2016",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "4.1",
+        "YearsMin": "14",
+        "dislikes": "26",
+        "duration": "75"
+    },
+    {
+        "name": "Enredados",
+        "Theme": "Fantasia",
+        "YearOpening": "2010",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "15",
+        "dislikes": "21",
+        "duration": "100"
+    },
+    {
+        "name": "Tiana y el Sapo",
+        "Theme": "Fantasia",
+        "YearOpening": "2009",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "14",
+        "dislikes": "21",
+        "duration": "90"
+    },
+    {
+        "name": "Barve",
+        "Theme": "Fantasia",
+        "YearOpening": "2012",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "4.9",
+        "YearsMin": "11",
+        "dislikes": "215",
+        "duration": "90"
+    },
+    {
+        "name": "Mulan",
+        "Theme": "Fantasia",
+        "YearOpening": "1998",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "4.1",
+        "YearsMin": "14",
+        "dislikes": "211",
+        "duration": "95"
+    },
+    {
+        "name": "Frozen",
+        "Theme": "Fantasia",
+        "YearOpening": "2013",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "2.3",
+        "YearsMin": "11",
+        "dislikes": "211",
+        "duration": "102"
+    },
+    {
+        "name": "La bella durmiente",
+        "Theme": "Fantasia",
+        "YearOpening": "1959",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "15",
+        "dislikes": "31",
+        "duration": "102"
+    },
+    {
+        "name": "La princesa Sofia",
+        "Theme": "Fantasia",
+        "YearOpening": "2001",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "15",
+        "dislikes": "212",
+        "duration": "60"
+    },
+    {
+        "name": "La Bella y la Bestia",
+        "Theme": "Fantasia",
+        "YearOpening": "1991",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "6",
+        "dislikes": "21",
+        "duration": "94"
+    },
+    {
+        "name": "Alddin",
+        "Theme": "Fantasia",
+        "YearOpening": "1992",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "5",
+        "dislikes": "45",
+        "duration": "90"
+    },
+    {
+        "name": "Mulan 2",
+        "Theme": "Fantasia",
+        "YearOpening": "2004",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "4.8",
+        "YearsMin": "15",
+        "dislikes": "52",
+        "duration": "75"
+    },
+    {
+        "name": "Princesa por sorpresa",
+        "Theme": "Fantasia",
+        "YearOpening": "2001",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "15",
+        "dislikes": "2196885",
+        "duration": "110"
+    },
+    {
+        "name": "Raya y ultimo el dragon",
+        "Theme": "Fantasia",
+        "YearOpening": "2021",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "9",
+        "dislikes": "21",
+        "duration": "90"
+    },
+    {
+        "name": "Anastasia",
+        "Theme": "Fantasia",
+        "YearOpening": "1997",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "6",
+        "dislikes": "91",
+        "duration": "110"
+    },
+    {
+        "name": "Shrek",
+        "Theme": "Fantasia",
+        "YearOpening": "2001",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "14",
+        "dislikes": "0",
+        "duration": "83"
+    },
+    {
+        "name": "La princesa disney",
+        "Theme": "Fantasia",
+        "YearOpening": "1994",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "2.1",
+        "YearsMin": "5",
+        "dislikes": "61",
+        "duration": "90"
+    },
+    {
+        "name": "Encanto",
+        "Theme": "Fantasia",
+        "YearOpening": "2001",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "4.1",
+        "YearsMin": "5",
+        "dislikes": "41",
+        "duration": "90"
+    },
+    {
+        "name": "Frozen 2",
+        "Theme": "Fantasia",
+        "YearOpening": "2020",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "2.1",
+        "YearsMin": "15",
+        "dislikes": "5413",
+        "duration": "90"
+    },
+    {
+        "name": "Atlantis",
+        "Theme": "Fantasia",
+        "YearOpening": "2009",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "15",
+        "dislikes": "45",
+        "duration": "95"
+    },
+    {
+        "name": "El rey leon",
+        "Theme": "Fantasia",
+        "YearOpening": "1985",
+        "Description": "A film, also known as a movie or a motion picture, is a series of moving images shown on a screen, usually with sound, that make up a story. Some people like to see new films at the theater as soon as they're released.",
+        "Puntuation": "5",
+        "YearsMin": "15",
+        "dislikes": "45",
+        "duration": "120"
+    }
+]

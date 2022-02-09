@@ -14,7 +14,7 @@
         "image": "ariel1"
     },
     {
-        "name": "Cindirella",
+        "name": "Cenicienta",
         "personality": "Kind,\nhard-working,\nintelligent,\ndiligent,\nbrave,\nthoughtful,\nelegant,\noptimistic,\nsensible,\nempathetic,\ncompassionate,\ndevoted,\nselfless,\npassive,\nemotional.\n",
         "appearance": "Slender,\nfair skin,\npink lips,\nmedium-length strawberry-blonde hair with soft bangs,\nblue eyes.",
         "nationality": "French",
@@ -110,7 +110,7 @@
         "image": "Tiana1"
     },
     {
-        "name": "Tinkerbell",
+        "name": "Campanilla",
         "personality": "Spunky,\nloyal,\npersistent,\nselfless,\ntinker,\nimpatient,\nlovable,\nfeisty,\nhot-tempered,\nlovely,\nbeautiful.",
         "appearance": "Small,\nslender,\nhand-sized,\nfair skin,\npudgy face,\npointy ears,\nrosy cheeks,\npink lips,\nshoulder-length blonde hair in a bun,\nbaby-blue eyes,\nclear wings on her back,\nlight green strapless dress with a miniskirt,\ngreen flats with white puffballs on the toes.",
         "nationality": "English",
@@ -136,6 +136,34 @@
         "zodiacsign": "Aries",
         "category": "Princess",
         "image": "Jasmine1"
+    },
+    {
+        "name": "Raya",
+        "personality": "Feisty,\nfree-spirited,\ncompassionate,\nindependent,\nintuitive,\nkind-hearted,\nadventurous,\nheadstrong,\naffectionate,\nrebellious,\nstubborn,\nhumorous,\nsarcastic,\nloving, intelligent,\nathletic,\nstrict,\nempathetic.",
+        "appearance": "Slender,\nbeautiful,\nmedium skin,\nrosy cheeks,\npink lips,\nlong lustrous black hair,\nbrown eyes.",
+        "nationality": "Agrabah (Arabian)",
+        "occupation": "Princess of Agrabah",
+        "likes": "Making a difference;\nfreedom;\nadventure;\nmagic carpet rides;\nnature;\npolitics;\ndoves;\nart;\nromance;\nchildren.",
+        "dislikes": "Threats to the kingdom;\nselfishness;\nlies;\nbetrayals;\nrestriction;\nforced marriages;\nstereotypical princess lifestyle;\ndisrespect;\ndiscrimination;\nsexism;\nnarcissism.",
+        "powers": "Martial arts skills",
+        "famousquotes": "\"If I do marry, I want it to be for love.\"\n\"I'm a fast learner.\"\n\"It's all so magical!\"\n\"I choose you, Aladdin.\"",
+        "zodiacsign": "Aries",
+        "category": "Princess",
+        "image": "Raya"
+    },
+    {
+        "name": "Fiona",
+        "personality": "Feisty,\nfree-spirited,\ncompassionate,\nindependent,\nintuitive,\nkind-hearted,\nadventurous,\nheadstrong,\naffectionate,\nrebellious,\nstubborn,\nhumorous,\nsarcastic,\nloving, intelligent,\nathletic,\nstrict,\nempathetic.",
+        "appearance": "Slender,\nbeautiful,\nmedium skin,\nrosy cheeks,\npink lips,\nlong lustrous black hair,\nbrown eyes.",
+        "nationality": "Agrabah (Arabian)",
+        "occupation": "Princess of Agrabah",
+        "likes": "Making a difference;\nfreedom;\nadventure;\nmagic carpet rides;\nnature;\npolitics;\ndoves;\nart;\nromance;\nchildren.",
+        "dislikes": "Threats to the kingdom;\nselfishness;\nlies;\nbetrayals;\nrestriction;\nforced marriages;\nstereotypical princess lifestyle;\ndisrespect;\ndiscrimination;\nsexism;\nnarcissism.",
+        "powers": "Martial arts skills",
+        "famousquotes": "\"If I do marry, I want it to be for love.\"\n\"I'm a fast learner.\"\n\"It's all so magical!\"\n\"I choose you, Aladdin.\"",
+        "zodiacsign": "Aries",
+        "category": "Princess",
+        "image": "Fiona"
     },
     {
         "name": "Megara",
@@ -203,7 +231,7 @@
         "image": "alice"
     },
     {
-        "name": "Moana",
+        "name": "Sandra",
         "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
         "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
         "nationality": "South-West Pacific",
@@ -213,6 +241,136 @@
         "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
         "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
         "category": "Princess",
-        "image": "Moana"
+        "image": "Sandra"
+    },
+    {
+        "name": "Anastasia",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Anastasia"
+    },
+    {
+        "name": "Sofia",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Sofia"
+    },
+    {
+        "name": "Kida Nedakh",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Sofia"
+    },
+    {
+        "name": "Vaiana",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Vaiana"
+    },
+    {
+        "name": "Blanca Nieves",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Blanca Nieves"
+    },
+    {
+        "name": "Rapunzel",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Rapunzel"
+    },
+    {
+        "name": "Mirabel",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Mirabel"
+    },
+    {
+        "name": "Disney",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Disney"
+    },
+    {
+        "name": "Aliccar Vayo",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Aliccar Vayo"
+    },
+    {
+        "name": "Thiana",
+        "personality": "She is sea-loving, headstrong, strong-willed, practically fearless, and physically capable. Though she has moments of self-doubt, she has great pride in who she is, and is generally too stubborn to back away from new challenges.",
+        "appearance": "She wares skirts and cropped t-shirts in tropical island traditional style. At 16 years old, Moana of Motunui has a slender yet muscular build that sets her apart from previous Disney princesses and heroines. She has brown eyes with thick eyebrows, full brownish-pink lips, and long, wavy, black hair. Moana usually wears her hair down, only tying it in a top bun sporadically when sailing.",
+        "nationality": "South-West Pacific",
+        "occupation": "The fictional movie takes place 3,000 years ago in the islands of Polynesia",
+        "likes": "Ocean, adventure, respects family and traditions, she loves the nature and goes onto a dangerus adventure to save her island. ",
+        "dislikes": "none",
+        "powers": "She does not have any powers, but she can sort of communicate with the ocean. ",
+        "famousquotes": "I am Moana of Motunui. You will board my boat, sail across the sea, and restore the heart of Te Fiti.”",
+        "category": "Princess",
+        "image": "Thiana"
     }
 ]

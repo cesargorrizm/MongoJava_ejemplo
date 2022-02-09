@@ -1,4 +1,4 @@
-package modelos;
+package com.becaries.MongoJava.modelos;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
