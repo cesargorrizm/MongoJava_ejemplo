@@ -53,6 +53,8 @@ public class Main {
 			Document a = resultDocument.next();
 			System.out.println(a.getString("name") + " "+ a.getObjectId("_id"));
 		}
+		
+		mongoClient.close();
 
 	}
 
