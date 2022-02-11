@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Princesa {
 
+
+private String idPrincesa;
 @SerializedName("name")
 @Expose
 private String name;
@@ -42,6 +44,59 @@ private String category;
 @SerializedName("image")
 @Expose
 private String image;
+
+private String idPelicula;
+
+
+
+
+public Princesa(String idPrincesa, String name, String personality, String appearance, String nationality,
+        String occupation, String likes, String dislikes, String powers, String famousquotes, String zodiacsign,
+        String category, String image, String idPelicula) {
+    this.idPrincesa = idPrincesa;
+    this.name = name;
+    this.personality = personality;
+    this.appearance = appearance;
+    this.nationality = nationality;
+    this.occupation = occupation;
+    this.likes = likes;
+    this.dislikes = dislikes;
+    this.powers = powers;
+    this.famousquotes = famousquotes;
+    this.zodiacsign = zodiacsign;
+    this.category = category;
+    this.image = image;
+    this.idPelicula = idPelicula;
+}
+
+
+@Override
+public String toString() {
+    return "Princesa [appearance=" + appearance + ", category=" + category + ", dislikes=" + dislikes
+            + ", famousquotes=" + famousquotes + ", idPelicula=" + idPelicula + ", idPrincesa=" + idPrincesa
+            + ", image=" + image + ", likes=" + likes + ", name=" + name + ", nationality=" + nationality
+            + ", occupation=" + occupation + ", personality=" + personality + ", powers=" + powers + ", zodiacsign="
+            + zodiacsign + "]";
+}
+
+
+public String getIdPrincesa() {
+    return idPrincesa;
+}
+
+
+public void setIdPrincesa(String idPrincesa) {
+    this.idPrincesa = idPrincesa;
+}
+
+
+public String getIdPelicula() {
+    return idPelicula;
+}
+
+public void setIdPelicula(String idPelicula) {
+    this.idPelicula = idPelicula;
+}
 
 public String getName() {
 return name;

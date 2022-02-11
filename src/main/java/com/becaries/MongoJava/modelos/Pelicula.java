@@ -31,6 +31,20 @@ private String dislikes;
 @Expose
 private String duration;
 
+
+
+public Pelicula(String name, String theme, String yearOpening, String description, String puntuation, String yearsMin,
+        String dislikes, String duration) {
+    this.name = name;
+    this.theme = theme;
+    this.yearOpening = yearOpening;
+    this.description = description;
+    this.puntuation = puntuation;
+    this.yearsMin = yearsMin;
+    this.dislikes = dislikes;
+    this.duration = duration;
+}
+
 public String getName() {
 return name;
 }
