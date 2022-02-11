@@ -55,7 +55,7 @@ public class Main {
 		// mongoClient.close();
 
 		// editarPelicula("6204183901e6db753d0bd2f7", "Blancanieves");
-		// 1
+		// RELACIONES PRINCESAS
 		// relacionPelicula("6204183901e6db753d0bd2f7", "6206999001e6db753d584343");//1
 		// relacionPelicula("6204183901e6db753d0bd2f8", "6206999001e6db753d58432e");//2
 		// relacionPelicula("6204183901e6db753d0bd2f9", "6206999001e6db753d584335");//3
@@ -86,7 +86,38 @@ public class Main {
 		// relacionPelicula("6204183901e6db753d0bd310", "6206999001e6db753d584331");//26
 		// relacionPelicula("6204183901e6db753d0bd311", "6206999001e6db753d584341");//27
 		// relacionPelicula("6204183901e6db753d0bd312", "6206999001e6db753d58433b");//28
-
+		
+		// RELACIONES VILLANOS
+		relacionVillano("6204183901e6db753d0bd2f7", "6206b3c9ec50498c1ff2fd33");//1
+		relacionVillano("6204183901e6db753d0bd2f8", "6206b3c9ec50498c1ff2fd20");//2
+		relacionVillano("6204183901e6db753d0bd2f9", "6206b3c9ec50498c1ff2fd35");//3
+		relacionVillano("6204183901e6db753d0bd2fa", "6206b3c9ec50498c1ff2fd32");//4
+		relacionVillano("6204183901e6db753d0bd2fb", "6206b3c9ec50498c1ff2fd1e");//5
+		relacionVillano("6204183901e6db753d0bd2fc", "6206b3c9ec50498c1ff2fd1a");//6
+		relacionVillano("6204183901e6db753d0bd2fd", "6206b3c9ec50498c1ff2fd1a");//7
+		relacionVillano("6204183901e6db753d0bd2fe", "6206b3c9ec50498c1ff2fd21");//8
+		relacionVillano("6204183901e6db753d0bd2ff", "6206b3c9ec50498c1ff2fd1f");//9
+		relacionVillano("6204183901e6db753d0bd300", "6206b3c9ec50498c1ff2fd27");//10
+		relacionVillano("6204183901e6db753d0bd301", "6206b3c9ec50498c1ff2fd29");//11
+		relacionVillano("6204183901e6db753d0bd302", "6206b3c9ec50498c1ff2fd28");//12
+		relacionVillano("6204183901e6db753d0bd303", "6206999001e6db753d584330");//13
+		relacionVillano("6204183901e6db753d0bd304", "6206b3c9ec50498c1ff2fd30");//14
+		relacionVillano("6204183901e6db753d0bd304", "6206b3c9ec50498c1ff2fd20");//14
+		relacionVillano("6204183901e6db753d0bd305", "6206b3c9ec50498c1ff2fd2c");//15
+		relacionVillano("6204183901e6db753d0bd306", "6206b3c9ec50498c1ff2fd23");//16
+		relacionVillano("6204183901e6db753d0bd307", "6206b3c9ec50498c1ff2fd19");//17
+		relacionVillano("6204183901e6db753d0bd308", "6206b3c9ec50498c1ff2fd32");//18
+		relacionVillano("6204183901e6db753d0bd309", "6206b3c9ec50498c1ff2fd30");//19
+		relacionVillano("6204183901e6db753d0bd30a", "6206b3c9ec50498c1ff2fd34");//20
+		relacionVillano("6204183901e6db753d0bd30b", "6206b3c9ec50498c1ff2fd2d");//21
+		relacionVillano("6204183901e6db753d0bd30c", "6206b3c9ec50498c1ff2fd31");//22
+		relacionVillano("6204183901e6db753d0bd30d", "6206b3c9ec50498c1ff2fd36");//23
+		relacionVillano("6204183901e6db753d0bd30e", "6206b3c9ec50498c1ff2fd2e");//24
+		relacionVillano("6204183901e6db753d0bd30f", "6206b3c9ec50498c1ff2fd1c");//25
+		relacionVillano("6204183901e6db753d0bd310", "6206b3c9ec50498c1ff2fd22");//26
+		relacionVillano("6204183901e6db753d0bd310", "6206b3c9ec50498c1ff2fd2b");//26
+		relacionVillano("6204183901e6db753d0bd311", "6206b3c9ec50498c1ff2fd2a");//27
+		relacionVillano("6204183901e6db753d0bd312", "6206b3c9ec50498c1ff2fd1b");//28
 		// ArrayList<Princesa> f = leerPrincesa();
 		// for (Princesa princesa : f) {
 		// System.out.println(princesa);
@@ -98,6 +129,13 @@ public class Main {
 		Document updateDocument2 = new Document("$set",
 				new Document("idPelicula", new ObjectId(idPelicula)));
 		princesa.updateMany(findDocument2, updateDocument2);
+		System.out.println("Update ejecutado");
+	}
+	private static void relacionVillano(String idPelicula, String idVillano) {
+		Document findDocument2 = new Document("_id", new ObjectId(idVillano));
+		Document updateDocument2 = new Document("$set",
+				new Document("idPelicula", new ObjectId(idPelicula)));
+		villano.updateMany(findDocument2, updateDocument2);
 		System.out.println("Update ejecutado");
 	}
 
