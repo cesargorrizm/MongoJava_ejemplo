@@ -1,25 +1,16 @@
 package com.becaries.MongoJava.MongoJava_ejemplo;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import com.becaries.MongoJava.Equipos;
 import com.becaries.MongoJava.modelos.Pelicula;
 import com.becaries.MongoJava.modelos.Princesa;
-import com.mongodb.BasicDBObject;
 import com.mongodb.ConnectionString;
-import com.mongodb.DB;
-
-import com.mongodb.DBObject;
 import com.mongodb.MongoClientSettings;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -63,8 +54,38 @@ public class Main {
 		// eliminarPelicula("PruebaInsert");
 		// mongoClient.close();
 
-		//editarPelicula("6204183901e6db753d0bd2f7", "Blancanieves");
-		relacionPelicula("6204183901e6db753d0bd2f7", "6206999001e6db753d584343");
+		// editarPelicula("6204183901e6db753d0bd2f7", "Blancanieves");
+		// 1
+		// relacionPelicula("6204183901e6db753d0bd2f7", "6206999001e6db753d584343");//1
+		// relacionPelicula("6204183901e6db753d0bd2f8", "6206999001e6db753d58432e");//2
+		// relacionPelicula("6204183901e6db753d0bd2f9", "6206999001e6db753d584335");//3
+		// relacionPelicula("6204183901e6db753d0bd2fa", "6206999001e6db753d58433a");//4
+		// relacionPelicula("6204183901e6db753d0bd2fb", "6206b251ec50498c1ff2fd15");//5
+		// relacionPelicula("6204183901e6db753d0bd2fc", "6206999001e6db753d58432d");//6
+		// relacionPelicula("6204183901e6db753d0bd2fd", "6206999001e6db753d58432d");//7
+		// relacionPelicula("6204183901e6db753d0bd2fe", "6206999001e6db753d58432f");//8
+		// relacionPelicula("6204183901e6db753d0bd2ff", "6206999001e6db753d584342");//9
+		// relacionPelicula("6204183901e6db753d0bd300", "6206999001e6db753d584344");//10
+		// relacionPelicula("6204183901e6db753d0bd301", "6206999001e6db753d584348");//11
+		// relacionPelicula("6204183901e6db753d0bd302", "6206b251ec50498c1ff2fd13");//12
+		// relacionPelicula("6204183901e6db753d0bd303", "6206999001e6db753d584330");//13
+		// relacionPelicula("6204183901e6db753d0bd304", "6206999001e6db753d584331");//14
+		// relacionPelicula("6204183901e6db753d0bd304", "6206999001e6db753d584332");//14
+		// relacionPelicula("6204183901e6db753d0bd305", "6206999001e6db753d58433c");//15
+		// relacionPelicula("6204183901e6db753d0bd306", "6206999001e6db753d584340");//16
+		// relacionPelicula("6204183901e6db753d0bd307", "6206999001e6db753d584333");//17
+		// relacionPelicula("6204183901e6db753d0bd308", "6206999001e6db753d584336");//18
+		// relacionPelicula("6204183901e6db753d0bd309", "6206999001e6db753d584330");//19
+		// relacionPelicula("6204183901e6db753d0bd30a", "6206b251ec50498c1ff2fd14");//20
+		// relacionPelicula("6204183901e6db753d0bd30b", "6206999001e6db753d584337");//21
+		// relacionPelicula("6204183901e6db753d0bd30c", "6206999001e6db753d58433f");//22
+		// relacionPelicula("6204183901e6db753d0bd30d", "6206999001e6db753d584338");//23
+		// relacionPelicula("6204183901e6db753d0bd30e", "6206999001e6db753d584346");//24
+		// relacionPelicula("6204183901e6db753d0bd30f", "6206999001e6db753d584345");//25
+		// relacionPelicula("6204183901e6db753d0bd310", "6206999001e6db753d584345");//26
+		// relacionPelicula("6204183901e6db753d0bd310", "6206999001e6db753d584331");//26
+		// relacionPelicula("6204183901e6db753d0bd311", "6206999001e6db753d584341");//27
+		// relacionPelicula("6204183901e6db753d0bd312", "6206999001e6db753d58433b");//28
 
 		// ArrayList<Princesa> f = leerPrincesa();
 		// for (Princesa princesa : f) {
