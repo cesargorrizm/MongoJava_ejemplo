@@ -2,23 +2,21 @@ package com.becaries.MongoJava.modelos;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-public class Princesa {
+public class Director {
 
     @SerializedName("_id")
     @Expose
     private String id;
-    @SerializedName("Nombre")
+    @SerializedName("Director")
     @Expose
-    private String nombre;
+    private String director;
     @SerializedName("Edad")
     @Expose
-    private String edad;
-    @SerializedName("Ciudad")
+    private int edad;
+    @SerializedName("Ciudad_nacimiento")
     @Expose
-    private String ciudad;
+    private String ciudadNacimiento;
     @SerializedName("Vehiculo")
     @Expose
     private String vehiculo;
@@ -28,130 +26,105 @@ public class Princesa {
     @SerializedName("Genero")
     @Expose
     private String genero;
-    @SerializedName("Creacion")
+    @SerializedName("Ip_movil")
     @Expose
-    private String creacion;
+    private String ipMovil;
     @SerializedName("ip_address")
     @Expose
     private String ipAddress;
-    @SerializedName("Universidad")
+    @SerializedName("Empresa")
     @Expose
-    private String universidad;
+    private String empresa;
     @SerializedName("Titulacion")
     @Expose
     private String titulacion;
-
-    
-
-    public Princesa(String id, String nombre, String edad, String ciudad, String vehiculo, String email, String genero,
-            String creacion, String ipAddress, String universidad, String titulacion) {
+    public Director(String id, String director, int edad, String ciudadNacimiento, String vehiculo, String email,
+            String genero, String ipMovil, String ipAddress, String empresa, String titulacion) {
         this.id = id;
-        this.nombre = nombre;
+        this.director = director;
         this.edad = edad;
-        this.ciudad = ciudad;
+        this.ciudadNacimiento = ciudadNacimiento;
         this.vehiculo = vehiculo;
         this.email = email;
         this.genero = genero;
-        this.creacion = creacion;
+        this.ipMovil = ipMovil;
         this.ipAddress = ipAddress;
-        this.universidad = universidad;
+        this.empresa = empresa;
         this.titulacion = titulacion;
     }
-
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
-    public String getNombre() {
-        return nombre;
+    public String getDirector() {
+        return director;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDirector(String director) {
+        this.director = director;
     }
-
-    public String getEdad() {
+    public int getEdad() {
         return edad;
     }
-
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
-
-    public String getCiudad() {
-        return ciudad;
+    public String getCiudadNacimiento() {
+        return ciudadNacimiento;
     }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setCiudadNacimiento(String ciudadNacimiento) {
+        this.ciudadNacimiento = ciudadNacimiento;
     }
-
     public String getVehiculo() {
         return vehiculo;
     }
-
     public void setVehiculo(String vehiculo) {
         this.vehiculo = vehiculo;
     }
-
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public String getGenero() {
         return genero;
     }
-
     public void setGenero(String genero) {
         this.genero = genero;
     }
-
-    public String getCreacion() {
-        return creacion;
+    public String getIpMovil() {
+        return ipMovil;
     }
-
-    public void setCreacion(String creacion) {
-        this.creacion = creacion;
+    public void setIpMovil(String ipMovil) {
+        this.ipMovil = ipMovil;
     }
-
     public String getIpAddress() {
         return ipAddress;
     }
-
     public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
-
-    public String getUniversidad() {
-        return universidad;
+    public String getEmpresa() {
+        return empresa;
     }
-
-    public void setUniversidad(String universidad) {
-        this.universidad = universidad;
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
-
     public String getTitulacion() {
         return titulacion;
     }
-
     public void setTitulacion(String titulacion) {
         this.titulacion = titulacion;
     }
-
     @Override
     public String toString() {
-        return "Princesa [ciudad=" + ciudad + ", creacion=" + creacion + ", edad=" + edad + ", email=" + email
-                + ", genero=" + genero + ", id=" + id + ", ipAddress=" + ipAddress + ", nombre=" + nombre
-                + ", titulacion=" + titulacion + ", universidad=" + universidad + ", vehiculo=" + vehiculo + "]";
+        return "Director [ciudadNacimiento=" + ciudadNacimiento + ", director=" + director + ", edad=" + edad
+                + ", email=" + email + ", empresa=" + empresa + ", genero=" + genero + ", id=" + id + ", ipAddress="
+                + ipAddress + ", ipMovil=" + ipMovil + ", titulacion=" + titulacion + ", vehiculo=" + vehiculo + "]";
     }
-
-
+   
+    
+   
 }

@@ -2,10 +2,8 @@ package com.becaries.MongoJava.modelos;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-public class Princesa {
+public class Principe {
 
     @SerializedName("_id")
     @Expose
@@ -43,7 +41,8 @@ public class Princesa {
 
     
 
-    public Princesa(String id, String nombre, String edad, String ciudad, String vehiculo, String email, String genero,
+
+    public Principe(String id, String nombre, String edad, String ciudad, String vehiculo, String email, String genero,
             String creacion, String ipAddress, String universidad, String titulacion) {
         this.id = id;
         this.nombre = nombre;
@@ -148,10 +147,10 @@ public class Princesa {
 
     @Override
     public String toString() {
-        return "Princesa [ciudad=" + ciudad + ", creacion=" + creacion + ", edad=" + edad + ", email=" + email
+        return "Principe [ciudad=" + ciudad + ", creacion=" + creacion + ", edad=" + edad + ", email=" + email
                 + ", genero=" + genero + ", id=" + id + ", ipAddress=" + ipAddress + ", nombre=" + nombre
                 + ", titulacion=" + titulacion + ", universidad=" + universidad + ", vehiculo=" + vehiculo + "]";
     }
-
+    
 
 }
