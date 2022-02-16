@@ -116,10 +116,20 @@ public class Main {
 		// eliminarPelicula("620d55f1d32ca8575431eff9");
 		
 	//System.out.println("*******************************************************INSERTAR*******************************************************************");
-	Pelicula pelicula =new Pelicula("null", "titulo", "titulo", "ano",
-		"duron", "p", "guon", "mua", "foafia", "reo", "s",
-		"trer");
-	editarPelicula("620d5799a4e64776d3058b13", pelicula);
+	// Pelicula pelicula =new Pelicula("null", "titulo", "titulo", "ano",
+	// 	"duron", "p", "guon", "mua", "foafia", "reo", "s",
+	// 	"trer");
+	// editarPelicula("620d5799a4e64776d3058b13", pelicula);
+	
+// 	database.getCollection("Pelicula").aggregate([
+// { "$lookup": {
+//      "from": "Villano",
+//      "foreignField": "idB",
+//      "localField": "idA",
+//      "as": "alias_tablaB"
+//    }}
+//  ]);
+ 
 	// insertarPrincesa(princesa);
 	// Pelicula pelicula =new Pelicula("null", "titulo", "tituloOriginal", "ano",
 	// 	"duracion", "pais", "guion", "musica", "fotografia", "reparto", "sinopsis",
@@ -149,8 +159,6 @@ public class Main {
 		// System.out.println(princesa);
 		// }
 	}
-
-	
 
 	private static void relacionPrincesa(String idPelicula, String idPrincesa) {
 		Document findDocument2 = new Document("_id", new ObjectId(idPrincesa));
@@ -279,6 +287,7 @@ public class Main {
 				.append("Universidad", p.getUniversidad())
 				.append("Titulacion", p.getTitulacion()));
 	}
+
 	public static void insertarDirector(Director p) {
 		director.insertOne(new Document()
 				.append("_id", new ObjectId())
@@ -293,6 +302,7 @@ public class Main {
 				.append("Empresa", p.getEmpresa())
 				.append("Titulacion", p.getTitulacion()));
 	}
+
 	public static void insertarVillano(Villano p) {
 		villano.insertOne(new Document()
 				.append("_id", new ObjectId())
@@ -307,6 +317,7 @@ public class Main {
 				.append("Universidad", p.getUniversidad())
 				.append("Titulacion", p.getTitulacion()));
 	}
+
 	public static void insertarPrincipe(Principe p) {
 		principe.insertOne(new Document()
 				.append("_id", new ObjectId())
@@ -342,20 +353,22 @@ public class Main {
 		Document findDocument = new Document("_id", new ObjectId(id));
 		pelicula.deleteMany(findDocument);
 	}
+
 	public static void eliminarDirector(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
 		director.deleteMany(findDocument);
 	}
+
 	public static void elimnarPrincipe(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
 		principe.deleteMany(findDocument);
 	}
-	
+
 	public static void eliminarPrincesa(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
 		princesa.deleteMany(findDocument);
 	}
-	
+
 	public static void eliminarVillano(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
 		villano.deleteMany(findDocument);
@@ -366,17 +379,17 @@ public class Main {
 
 		Document updateDocument2 = new Document("$set",
 				new Document()
-				.append("Titulo", p.getTitulo())
-				.append("Titulo original", p.getTituloOriginal())
-				.append("Año", p.getAno())
-				.append("Duración", p.getDuracion())
-				.append("País", p.getPais())
-				.append("Guion", p.getGuion())
-				.append("Música", p.getMusica())
-				.append("Fotografía", p.getFotografia())
-				.append("Reparto", p.getReparto())
-				.append("Sinopsis", p.getSinopsis())
-				.append("Trailer", p.getTrailer()));
+						.append("Titulo", p.getTitulo())
+						.append("Titulo original", p.getTituloOriginal())
+						.append("Año", p.getAno())
+						.append("Duración", p.getDuracion())
+						.append("País", p.getPais())
+						.append("Guion", p.getGuion())
+						.append("Música", p.getMusica())
+						.append("Fotografía", p.getFotografia())
+						.append("Reparto", p.getReparto())
+						.append("Sinopsis", p.getSinopsis())
+						.append("Trailer", p.getTrailer()));
 		pelicula.updateMany(findDocument2, updateDocument2);
 		System.out.println("Update ejecutado");
 	}
@@ -386,16 +399,16 @@ public class Main {
 
 		Document updateDocument2 = new Document("$set",
 				new Document()
-				.append("Director", p.getDirector())
-				.append("Edad", p.getEdad())
-				.append("Ciudad_nacimiento", p.getCiudadNacimiento())
-				.append("Vehiculo", p.getVehiculo())
-				.append("Email", p.getEmail())
-				.append("Genero", p.getGenero())
-				.append("Ip_movil", p.getIpMovil())
-				.append("ip_address", p.getIpAddress())
-				.append("Empresa", p.getEmpresa())
-				.append("Titulacion", p.getTitulacion()));
+						.append("Director", p.getDirector())
+						.append("Edad", p.getEdad())
+						.append("Ciudad_nacimiento", p.getCiudadNacimiento())
+						.append("Vehiculo", p.getVehiculo())
+						.append("Email", p.getEmail())
+						.append("Genero", p.getGenero())
+						.append("Ip_movil", p.getIpMovil())
+						.append("ip_address", p.getIpAddress())
+						.append("Empresa", p.getEmpresa())
+						.append("Titulacion", p.getTitulacion()));
 		director.updateMany(findDocument2, updateDocument2);
 		System.out.println("Update ejecutado");
 	}
@@ -404,56 +417,59 @@ public class Main {
 		Document findDocument2 = new Document("_id", new ObjectId(id));
 
 		Document updateDocument2 = new Document("$set",
-		new Document()
-		.append("Nombre", p.getNombre())
-		.append("Edad", p.getEdad())
-		.append("Ciudad", p.getCiudad())
-		.append("Vehiculo", p.getVehiculo())
-		.append("Email", p.getEmail())
-		.append("Genero", p.getGenero())
-		.append("Creacion", p.getCreacion())
-		.append("ip_address", p.getIpAddress())
-		.append("Universidad", p.getUniversidad())
-		.append("Titulacion", p.getTitulacion()));
+				new Document()
+						.append("Nombre", p.getNombre())
+						.append("Edad", p.getEdad())
+						.append("Ciudad", p.getCiudad())
+						.append("Vehiculo", p.getVehiculo())
+						.append("Email", p.getEmail())
+						.append("Genero", p.getGenero())
+						.append("Creacion", p.getCreacion())
+						.append("ip_address", p.getIpAddress())
+						.append("Universidad", p.getUniversidad())
+						.append("Titulacion", p.getTitulacion()));
 		princesa.updateMany(findDocument2, updateDocument2);
 		System.out.println("Update ejecutado");
 	}
+
 	public static void editarVillano(String id, Villano p) {
 		Document findDocument2 = new Document("_id", new ObjectId(id));
 
 		Document updateDocument2 = new Document("$set",
-		new Document()
-		.append("Nombre", p.getNombre())
-		.append("Edad", p.getEdad())
-		.append("Ciudad", p.getCiudad())
-		.append("Vehiculo", p.getVehiculo())
-		.append("Email", p.getEmail())
-		.append("Genero", p.getGenero())
-		.append("Creacion", p.getCreacion())
-		.append("ip_address", p.getIpAddress())
-		.append("Universidad", p.getUniversidad())
-		.append("Titulacion", p.getTitulacion()));
+				new Document()
+						.append("Nombre", p.getNombre())
+						.append("Edad", p.getEdad())
+						.append("Ciudad", p.getCiudad())
+						.append("Vehiculo", p.getVehiculo())
+						.append("Email", p.getEmail())
+						.append("Genero", p.getGenero())
+						.append("Creacion", p.getCreacion())
+						.append("ip_address", p.getIpAddress())
+						.append("Universidad", p.getUniversidad())
+						.append("Titulacion", p.getTitulacion()));
 		villano.updateMany(findDocument2, updateDocument2);
 		System.out.println("Update ejecutado");
 	}
+
 	public static void editarPrincipe(String id, Principe p) {
 		Document findDocument2 = new Document("_id", new ObjectId(id));
 
 		Document updateDocument2 = new Document("$set",
-		new Document()
-		.append("Nombre", p.getNombre())
-		.append("Edad", p.getEdad())
-		.append("Ciudad", p.getCiudad())
-		.append("Vehiculo", p.getVehiculo())
-		.append("Email", p.getEmail())
-		.append("Genero", p.getGenero())
-		.append("Creacion", p.getCreacion())
-		.append("ip_address", p.getIpAddress())
-		.append("Universidad", p.getUniversidad())
-		.append("Titulacion", p.getTitulacion()));
+				new Document()
+						.append("Nombre", p.getNombre())
+						.append("Edad", p.getEdad())
+						.append("Ciudad", p.getCiudad())
+						.append("Vehiculo", p.getVehiculo())
+						.append("Email", p.getEmail())
+						.append("Genero", p.getGenero())
+						.append("Creacion", p.getCreacion())
+						.append("ip_address", p.getIpAddress())
+						.append("Universidad", p.getUniversidad())
+						.append("Titulacion", p.getTitulacion()));
 		principe.updateMany(findDocument2, updateDocument2);
 		System.out.println("Update ejecutado");
 	}
+
 	private static void establecerRelaciones() {
 		// RELACIONES PRINCESAS
 		relacionPrincesa("620d3e6e41d00a35312038e3", "620d3e1241d00a353120388b");// 1
