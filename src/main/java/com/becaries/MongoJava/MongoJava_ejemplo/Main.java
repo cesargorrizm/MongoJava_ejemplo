@@ -1,6 +1,10 @@
 package com.becaries.MongoJava.MongoJava_ejemplo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 import com.becaries.MongoJava.modelos.Director;
 import com.becaries.MongoJava.modelos.Pelicula;
@@ -9,23 +13,17 @@ import com.becaries.MongoJava.modelos.Principe;
 import com.becaries.MongoJava.modelos.Villano;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
+import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 public class Main {
 
@@ -40,211 +38,43 @@ public class Main {
 	public static MongoCollection<Document> princesa;
 	public static MongoCollection<Document> principe;
 	public static MongoCollection<Document> director;
+	private static MongoTemplate mongoTemplate;
+	private static MongoDatabase database;
 
 	public static void main(String args[]) {
 
-		// PASO 1: Conexi�n al Server de MongoDB Pasandole el host y el puerto
+		// PASO 1: Conexion al Server de MongoDB Pasandole el host y el puerto
 		// MongoClient mongoClient1 = new MongoClient("localhost", 27017);
+		MongoDatabase database = conexionMongoDB();
 
-		Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
-		mongoLogger.setLevel(Level.SEVERE);
+		// PASO 2: Crear colecciones necesarias para el desarrollo de la aplicacion
+		// crearColecciones(database);
 
-		ConnectionString connectionString = new ConnectionString(
-				"mongodb+srv://Becarios:Admin1234@cluster0.aq3pk.mongodb.net/test?retryWrites=true&w=majority");
-		MongoClientSettings settings = MongoClientSettings.builder()
-				.applyConnectionString(connectionString)
-				.build();
-		MongoClient mongoClient = MongoClients.create(settings);
-		MongoDatabase database = mongoClient.getDatabase("Disney");
-		// database.createCollection("Princesa");
-		// database.createCollection("Principe");
-		// database.createCollection("Villano");
+		// PASO 3: Meter datos de los csv a la base de datos para aligerar tiempo
 
-		pelicula = database.getCollection("Pelicula");
-		princesa = database.getCollection("Princesa");
-		villano = database.getCollection("Villano");
-		principe = database.getCollection("Principe");
-		director = database.getCollection("Director");
+		// PASO 4: obtener las colecciones para poder trabajar con ellas
+		obtenerColecciones(database);
 
+		// PASO 5: DESARROLO DE LA APLICACIÓN
 		// Mostrar un menu diferente por cada opcion
 		// Pedir nombre antes de inciar caulquier cosa
 		// Poder hacerlo personalizable (Que el usuario eliga el color del texto o el
 		// color de los detalles(dos opciones para facilitar))
 
-		// ****************************************************HACERLO
-		// BUCLEABLE****************************************************** */
-		try {
-			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-		} catch (Exception e) {
-			/* No hacer nada */
-		}
+		limpiarConsola();
 		System.out.print("Hola personnita digame su nombre: ");
 		Scanner sc = new Scanner(System.in);
 		String opcion0 = sc.nextLine();
 		System.out.println();
 		System.out.println("Bienvenido " + opcion0 + ", disfruta mucho el tour! ");
-		System.out.println(" _____________________");
-		System.out.println("|                     |");
-		System.out.println("| 1. MOSTRAR DATOS    |");
-		System.out.println("| 2. GESTIONAR DATOS  |");
-		System.out.println("| 0. SALIR            |");
-		System.out.println(" _____________________");
 
-		System.out.println("¿Qué quieres hacer?");
-		String opcion = sc.nextLine();
 		// MOSTRAR TABLA ANTES DE CUALQUIER OPERACION PARA QUE EL USUARIO PUEDA CAMBIAR
 		// LOS DATOS QUE NECESITA SIN SUBIR MUY ARRIBA.
-		switch (opcion) {
-			case "1":
-				try {
-					new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-				} catch (Exception e) {
-					/* No hacer nada */
-				}
-				System.out.println(" ___________________________________");
-				System.out.println("|                                   |");
-				System.out.println("| 1. Mostrar peliculas              |");
-				System.out.println("| 2. Mostrar princesas              |");
-				System.out.println("| 3. Mostrar directores             |");
-				System.out.println("| 4. Mostrar villanos               |");
-				System.out.println("| 5. Mostrar principes              |");
-				System.out.println(
-						"| 6. Mostrar los protagonistas,     |\n|	antagonistas y directores   |\n|	de las peliculas            |");
-				System.out.println("| 7. Ver trailer de una pelicula    |");
-				System.out.println("| 0.Atras                           |");
-				System.out.println(" ___________________________________");
-				System.out.println("¿Qué quieres hacer?");
-				String opcion1 = sc.nextLine();
-				switch (opcion1) {
-					case "1":
-						ArrayList<Pelicula> pelis = leerPelicula();
-						List<String> headersList = new ArrayList<>();
-						headersList.add("Id");
-						headersList.add("Titulo");
-						headersList.add("Titulo Original");
-						List<List<String>> rowsList = new ArrayList<>();
-						for (Pelicula peli : pelis) {
-							List<String> row = new ArrayList<>();
-							row.add(peli.getId());
-							row.add(peli.getTitulo());
-							row.add(peli.getTituloOriginal());
-							rowsList.add(row);
-						}
-						System.out.println(generateTable(headersList, rowsList));
-						break;
-					case "2":
 
-						break;
-					case "3":
-
-						break;
-					case "4":
-
-						break;
-					case "5":
-
-						break;
-					case "6":
-
-						break;
-					case "7":
-
-						break;
-					case "0":
-
-						break;
-
-					default:
-						break;
-				}
-
-				break;
-			case "2":
-				System.out.println(" 1. EDITAR DATOS");
-				System.out.println(" 2. BORRAR DATOS");
-				System.out.println(" 3. ACTUALIZAR DATOS");
-				System.out.println(" 4. INSERTAR DATOS");
-				System.out.println(" 0. Atras");
-
-				String opcion2 = sc.nextLine();
-				switch (opcion2) {
-					case "1":
-						System.out.println(" 1. Editar peliculas");
-						System.out.println(" 2. Editar princesas");
-						System.out.println(" 3. Editar directores");
-						System.out.println(" 4. Editar villanos");
-						System.out.println(" 5. Editar principes");
-						System.out.println(" 0. Atras");
-						break;
-					case "2":
-						System.out.println(" 1. Borrar peliculas");
-						System.out.println(" 2. Borrar princesas");
-						System.out.println(" 3. Borrar directores");
-						System.out.println(" 4. Borrar villanos");
-						System.out.println(" 5. Borrar principes");
-						System.out.println(" 0. Atras");
-						break;
-					case "3":
-						System.out.println(" 1. Actualizar peliculas");
-						System.out.println(" 2. Actualizar princesas");
-						System.out.println(" 3. Actualizar directores");
-						System.out.println(" 4. Actualizar villanos");
-						System.out.println(" 5. Actualizar principes");
-						System.out.println(" 0. Atras");
-						break;
-					case "4":
-						System.out.println(" 1. Insertar peliculas");
-						System.out.println(" 2. Insertar princesas");
-						System.out.println(" 3. Insertar directores");
-						System.out.println(" 4. Insertar villanos");
-						System.out.println(" 5. Insertar principes");
-						System.out.println(" 0. Atras");
-						break;
-					case "0":
-
-						break;
-
-					default:
-						break;
-				}
-
-				break;
-			case "0":
-
-				break;
-
-			default:
-				break;
+		boolean b = true;
+		while (b) {
+			menuPrincipal(sc, b);
 		}
-
-		// Mostrar Princesas
-		// ArrayList<Princesa> princesas = leerPrincesa();
-		// for (Princesa princesa : princesas) {
-		// System.out.println(princesa);
-		// }
-
-		// MostrarPelicula
-		// ArrayList<Pelicula> peliculas = leerPelicula();
-		// for (Pelicula pelicula : peliculas) {
-		// System.out.println(pelicula);
-		// }
-
-		// MostrarVillano
-		// ArrayList<Villano> villanos = leerVillanos();
-		// for (Villano villano : villanos) {
-		// System.out.println(villano);
-		// }
-
-		// MostrarDirector
-		// ArrayList<Director> directores = leerDirector();
-		// for (Director d : directores) {
-		// System.out.println(d);
-		// }
-		// MostrarPrincipe
-		// ArrayList<Principe> principes = leerPrincipes();
-		// for (Principe p : principes) {
-		// System.out.println(p);
-		// }
 
 		// eliminar pelicula
 		// eliminarPelicula("620d55f1d32ca8575431eff9");
@@ -312,6 +142,527 @@ public class Main {
 		// }
 		// System.out.println(generateTable(headersList, rowsList));
 
+	}
+
+	private static void menuPrincipal(Scanner sc, Boolean b) {
+		System.out.println(" _____________________");
+		System.out.println("|                     |");
+		System.out.println("| 1. MOSTRAR DATOS    |");
+		System.out.println("| 2. GESTIONAR DATOS  |");
+		System.out.println("| 0. SALIR            |");
+		System.out.println(" _____________________");
+
+		System.out.println("¿Qué quieres hacer?");
+		String opcion = sc.nextLine();
+		switch (opcion) {
+			case "1":
+			limpiarConsola();
+			boolean a = true;
+			while (a) {
+					System.out.println(" ___________________________________");
+					System.out.println("|                                   |");
+					System.out.println("| 1. Mostrar peliculas              |");
+					System.out.println("| 2. Mostrar princesas              |");
+					System.out.println("| 3. Mostrar directores             |");
+					System.out.println("| 4. Mostrar villanos               |");
+					System.out.println("| 5. Mostrar principes              |");
+					System.out.println(
+							"| 6. Mostrar los protagonistas,     |\n|	antagonistas y directores   |\n|	de las peliculas            |");
+					System.out.println("| 7. Ver trailer de una pelicula    |");
+					System.out.println("| 0.Atras                           |");
+					System.out.println(" ___________________________________");
+					System.out.println("¿Qué quieres hacer?");
+					String opcion1 = sc.nextLine();
+					switch (opcion1) {
+						case "1":
+							limpiarConsola();
+							imprimirTablaPeliculas();
+							btnAtras();
+							break;
+						case "2":
+							limpiarConsola();
+							imprimirTablaPrincesa();
+							btnAtras();
+							break;
+						case "3":
+							limpiarConsola();
+							imprimirTablaDirector();
+							btnAtras();
+							break;
+						case "4":
+							limpiarConsola();
+							imprimirTablavillanos();
+							btnAtras();
+							break;
+						case "5":
+							limpiarConsola();
+							imprimirTablaPrincipes();
+							btnAtras();
+
+							break;
+						case "6":
+							// VER PROQUE NO VAAAAAAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+							MongoDatabase database = conexionMongoDB();
+							listarTodo2(database);
+
+							break;
+						case "7":
+							limpiarConsola();
+							Map<Integer, Pelicula> c = leerListaPelisTrailer();
+							int peli = pregunta(sc);
+							procesoVerTrailer(c.get(peli).getTrailer());
+							btnAtras();
+							break;
+						case "0":
+							limpiarConsola();
+							a = false;
+							break;
+
+						default:
+							break;
+					}
+				}
+				break;
+			case "2":
+				System.out.println(" _____________________________");
+				System.out.println("|                             |");
+				System.out.println(" 1. EDITAR DATOS");
+				System.out.println(" 2. BORRAR DATOS");
+				System.out.println(" 3. ACTUALIZAR DATOS");
+				System.out.println(" 4. INSERTAR DATOS");
+				System.out.println(" 0. Atras");
+
+				String opcion2 = sc.nextLine();
+				switch (opcion2) {
+					case "1":
+						System.out.println(" 1. Editar peliculas");
+						System.out.println(" 2. Editar princesas");
+						System.out.println(" 3. Editar directores");
+						System.out.println(" 4. Editar villanos");
+						System.out.println(" 5. Editar principes");
+						System.out.println(" 0. Atras");
+						break;
+					case "2":
+						System.out.println(" 1. Borrar peliculas");
+						System.out.println(" 2. Borrar princesas");
+						System.out.println(" 3. Borrar directores");
+						System.out.println(" 4. Borrar villanos");
+						System.out.println(" 5. Borrar principes");
+						System.out.println(" 0. Atras");
+						break;
+					case "3":
+						System.out.println(" 1. Actualizar peliculas");
+						System.out.println(" 2. Actualizar princesas");
+						System.out.println(" 3. Actualizar directores");
+						System.out.println(" 4. Actualizar villanos");
+						System.out.println(" 5. Actualizar principes");
+						System.out.println(" 0. Atras");
+						break;
+					case "4":
+						System.out.println(" 1. Insertar peliculas");
+						System.out.println(" 2. Insertar princesas");
+						System.out.println(" 3. Insertar directores");
+						System.out.println(" 4. Insertar villanos");
+						System.out.println(" 5. Insertar principes");
+						System.out.println(" 0. Atras");
+						break;
+					case "0":
+
+						break;
+
+					default:
+						break;
+				}
+
+				break;
+			case "0":
+				b = false;
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	private static int pregunta(Scanner sc) {
+		System.out.println("¿Que trailer quieres ver?");
+		String algo = sc.nextLine();
+		int peli = Integer.parseInt(algo);
+		return peli;
+	}
+
+	private static Map<Integer, Pelicula> leerListaPelisTrailer() {
+		Map<Integer, Pelicula> c = leerPeliculaNombre2();
+		c.forEach((k, v) -> System.out.println(k + ". " + v.getTitulo()));
+		return c;
+	}
+
+	public static void listarTodo2(MongoDatabase database) {
+		// LookupOperation lookupOperation = LookupOperation.newLookup().
+		// from("documento").
+		// localField("documento.doc_codigo").
+		// foreignField("doc_codigo").
+		// as("documento");
+
+		// mongoTemplate.find(new
+		// Query(Criteria.where("idPelicula").is("620d3e6e41d00a35312038e3")),
+		// Prota.class);
+
+		// AggregationOperation match =
+		// Aggregation.match(Criteria.where("idPelicula").size(1));
+		// Aggregation aggregation = Aggregation.newAggregation(lookupOperation, match);
+
+		// List<Prota> results = mongoTemplate.aggregate(aggregation, "Pelicula",
+		// Prota.class).getMappedResults();
+		// return results;
+
+		// ApplicationContext ctx = new
+		// AnnotationConfigApplicationContext(SpringMongoConfig.class);
+		// MongoOperations mongoOperation = (MongoOperations)
+		// ctx.getBean("mongoTemplate");
+		// MongoOperations mongoOperations;
+		// LookupOperation lookupOperation =
+		// LookupOperation.newLookup().from("inventory").localField("item")
+		// .foreignField("sku").as("inventory_docs");
+		// Aggregation aggregation = Aggregation.newAggregation(lookupOperation);
+		// List<BasicDBObject> results = mongoOperations.aggregate(aggregation,
+		// "orders", BasicDBObject.class)
+		// .getMappedResults();
+
+		// create the pipeline operations, first with the $match
+		// DBObject match = new BasicDBObject("$match",
+		// new BasicDBObject("_id", "620d3e6e41d00a35312038e3"));
+
+		// // build the $lookup operations
+		// DBObject lookupFields = new BasicDBObject("from", "pelicula");
+		// lookupFields.put("localField", "idPelicula");
+		// lookupFields.put("foreignField", "_id");
+		// lookupFields.put("as", "Pelicula");
+		// DBObject lookup = new BasicDBObject("$lookup", lookupFields);
+
+		// // build the $project operations
+		// DBObject projectFields = new BasicDBObject("Nombre", 1);
+		// projectFields.put("Ciudad", 1);
+		// projectFields.put("idPelicula", 1);
+		// projectFields.put("Titulo", "$Pelicula.Titulo");
+		// DBObject project = new BasicDBObject("$project", projectFields);
+
+		// List<DBObject> pipeline = Arrays.asList(match, lookup, project);
+
+		// this build of options is taken from the original method
+		// aggregate(pipe) to have same behaviour
+		// AggregationOptions options = AggregationOptions.builder()
+		// .outputMode(AggregationOptions.OutputMode.INLINE)
+		// .build();
+
+		// try (Cursor cursor = princesa.aggregate(pipeline, options)) {
+		// while (cursor.hasNext()) {
+		// DBObject obj = cursor.next();
+		// // ...
+		// }
+		// }
+		// for (DBObject dbObject : pipeline) {
+		// System.out.println(dbObject.get("_id"));
+		// System.out.println(dbObject.get("Ciudad"));
+		// }
+
+		// LookupOperation lookupOperation = LookupOperation.newLookup()
+		// .from("places")
+		// .localField("address.location.place._id")
+		// .foreignField("_id")
+		// .as("address.location.place");
+
+		// princesa.aggregate(Arrays.asList(
+		// Aggregates.lookup("fromCollection", "localField", "foreignField",
+		// "asOutputArrayField")))
+		// .forEach(printBlock, callbackWhenFinished);
+
+		List<Bson> filters = new ArrayList<>();
+		Bson match = new Document("$match",
+				new Document("Princesa.idPelicula", true));
+
+		Bson lookup = new Document("$lookup",
+				new Document("from", "Pelicula")
+						.append("localField", "idPelicula")
+						.append("foreignField", "_id")
+						.append("as", "look_coll"));
+
+		filters.add(lookup);
+		filters.add(match);
+
+		AggregateIterable<Document> it = database.getCollection("Princesa").aggregate(filters);
+
+		for (Document row : it) {
+			System.out.println(row.toString());
+		}
+
+		// Aggregation agg = newAggregation(
+		// unwind("address"),
+		// unwind("address.location"),
+		// lookupOperation);
+
+		// AggregationResults<OutputDocument> aggResults = mongoTemplate.aggregate(
+		// agg, PersonAddressDocument.class, OutputDocument.class);
+
+	}
+
+	private static void obtenerColecciones(MongoDatabase database) {
+		pelicula = database.getCollection("Pelicula");
+		princesa = database.getCollection("Princesa");
+		villano = database.getCollection("Villano");
+		principe = database.getCollection("Principe");
+		director = database.getCollection("Director");
+	}
+
+	private static void crearColecciones(MongoDatabase database) {
+		database.createCollection("Princesa");
+		database.createCollection("Principe");
+		database.createCollection("Villano");
+		database.createCollection("Pelicula");
+		database.createCollection("Director");
+	}
+
+	private static MongoDatabase conexionMongoDB() {
+		// Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
+		// mongoLogger.setLevel(Level.SEVERE);
+
+		ConnectionString connectionString = new ConnectionString(
+				"mongodb+srv://Becarios:Admin1234@cluster0.aq3pk.mongodb.net/test?retryWrites=true&w=majority");
+		MongoClientSettings settings = MongoClientSettings.builder()
+				.applyConnectionString(connectionString)
+				.build();
+		MongoClient mongoClient = MongoClients.create(settings);
+		MongoDatabase database = mongoClient.getDatabase("Disney");
+		return database;
+	}
+
+	private static void imprimirTablaPrincipes() {
+		ArrayList<Principe> principes = leerPrincipes();
+		List<String> headersListprincipe = new ArrayList<>();
+		headersListprincipe.add("Nombre");
+		headersListprincipe.add("Edad");
+		headersListprincipe.add("Ciudad");
+		headersListprincipe.add("Vehiculo");
+		headersListprincipe.add("Email");
+		headersListprincipe.add("Genero");
+		headersListprincipe.add("Creacion");
+		List<List<String>> rowsListprincipe = new ArrayList<>();
+		for (Principe principe : principes) {
+			List<String> row = new ArrayList<>();
+			row.add(principe.getId());
+			row.add(principe.getEdad());
+			row.add(principe.getCiudad());
+			row.add(principe.getVehiculo());
+			row.add(principe.getEmail());
+			row.add(principe.getGenero());
+			row.add(principe.getCreacion());
+			rowsListprincipe.add(row);
+		}
+		System.out.println(generateTable(headersListprincipe, rowsListprincipe));
+
+		List<String> headersListprincipe1 = new ArrayList<>();
+		headersListprincipe1.add("Ip_address");
+		headersListprincipe1.add("Universidad");
+		headersListprincipe1.add("Titulacion");
+		List<List<String>> rowsListprincipe1 = new ArrayList<>();
+		for (Principe princesa : principes) {
+			List<String> row = new ArrayList<>();
+			row.add(princesa.getIpAddress());
+			row.add(princesa.getUniversidad());
+			row.add(princesa.getTitulacion());
+			rowsListprincipe1.add(row);
+		}
+		System.out.println(generateTable(headersListprincipe1, rowsListprincipe1));
+	}
+
+	private static void imprimirTablaPrincesa() {
+		ArrayList<Princesa> princesas = leerPrincesa();
+		List<String> headersListprincesa = new ArrayList<>();
+		headersListprincesa.add("Nombre");
+		headersListprincesa.add("Edad");
+		headersListprincesa.add("Ciudad");
+		headersListprincesa.add("Vehiculo");
+		headersListprincesa.add("Email");
+		headersListprincesa.add("Genero");
+		headersListprincesa.add("Creacion");
+		List<List<String>> rowsListprincesa = new ArrayList<>();
+		for (Princesa princesa : princesas) {
+			List<String> row = new ArrayList<>();
+			row.add(princesa.getId());
+			row.add(princesa.getEdad());
+			row.add(princesa.getCiudad());
+			row.add(princesa.getVehiculo());
+			row.add(princesa.getEmail());
+			row.add(princesa.getGenero());
+			row.add(princesa.getCreacion());
+			rowsListprincesa.add(row);
+		}
+		System.out.println(generateTable(headersListprincesa, rowsListprincesa));
+
+		List<String> headersListprincesa1 = new ArrayList<>();
+		headersListprincesa1.add("Ip_address");
+		headersListprincesa1.add("Universidad");
+		headersListprincesa1.add("Titulacion");
+		List<List<String>> rowsListprincesa1 = new ArrayList<>();
+		for (Princesa princesa : princesas) {
+			List<String> row = new ArrayList<>();
+			row.add(princesa.getIpAddress());
+			row.add(princesa.getUniversidad());
+			row.add(princesa.getTitulacion());
+			rowsListprincesa1.add(row);
+		}
+		System.out.println(generateTable(headersListprincesa1, rowsListprincesa1));
+	}
+
+	private static void imprimirTablaDirector() {
+		ArrayList<Director> directores = leerDirector();
+		List<String> headersListDirectores = new ArrayList<>();
+		headersListDirectores.add("Nombre");
+		headersListDirectores.add("Edad");
+		headersListDirectores.add("Ciudad de nacimiento");
+		headersListDirectores.add("Vehiculo");
+		headersListDirectores.add("Email");
+		headersListDirectores.add("Genero");
+		headersListDirectores.add("Ip_movil");
+		List<List<String>> rowsListDirector = new ArrayList<>();
+		for (Director director : directores) {
+			List<String> row = new ArrayList<>();
+			row.add(director.getDirector());
+			row.add(String.valueOf(director.getEdad()));
+			row.add(director.getCiudadNacimiento());
+			row.add(director.getVehiculo());
+			row.add(director.getEmail());
+			row.add(director.getGenero());
+			row.add(director.getIpMovil());
+			rowsListDirector.add(row);
+		}
+		System.out.println(generateTable(headersListDirectores, rowsListDirector));
+
+		List<String> headersListDirectores1 = new ArrayList<>();
+		headersListDirectores1.add("Ip_address");
+		headersListDirectores1.add("Empresa");
+		headersListDirectores1.add("Titulacion");
+		List<List<String>> rowsListDirector1 = new ArrayList<>();
+		for (Director director : directores) {
+			List<String> row = new ArrayList<>();
+			row.add(director.getIpAddress());
+			row.add(director.getEmpresa());
+			row.add(director.getTitulacion());
+			rowsListDirector1.add(row);
+		}
+		System.out.println(generateTable(headersListDirectores1, rowsListDirector1));
+
+	}
+
+	private static void imprimirTablavillanos() {
+		ArrayList<Villano> villanos = leerVillanos();
+		List<String> headersList = new ArrayList<>();
+		headersList.add("Nombre");
+		headersList.add("Edad");
+		headersList.add("Ciudad");
+		headersList.add("Vehiculo");
+		headersList.add("Email");
+		headersList.add("Genero");
+		headersList.add("Creacion");
+		List<List<String>> rowsList = new ArrayList<>();
+		for (Villano villano : villanos) {
+			List<String> row = new ArrayList<>();
+			row.add(villano.getId());
+			row.add(villano.getEdad());
+			row.add(villano.getCiudad());
+			row.add(villano.getVehiculo());
+			row.add(villano.getEmail());
+			row.add(villano.getGenero());
+			row.add(villano.getCreacion());
+			rowsList.add(row);
+		}
+		System.out.println(generateTable(headersList, rowsList));
+
+		List<String> headersList1 = new ArrayList<>();
+		headersList1.add("Ip_address");
+		headersList1.add("Universidad");
+		headersList1.add("Titulacion");
+		List<List<String>> rowsListvillano1 = new ArrayList<>();
+		for (Villano villano : villanos) {
+			List<String> row = new ArrayList<>();
+			row.add(villano.getIpAddress());
+			row.add(villano.getUniversidad());
+			row.add(villano.getTitulacion());
+			rowsListvillano1.add(row);
+		}
+		System.out.println(generateTable(headersList1, rowsListvillano1));
+	}
+
+	private static void btnAtras() {
+		System.out.println(" ____________");
+		System.out.println("|            |");
+		System.out.println("| 0. Atras   |");
+		System.out.println(" ____________");
+	}
+
+	private static void imprimirTablaPeliculas() {
+		ArrayList<Pelicula> pelis = leerPelicula();
+		List<String> headersList = new ArrayList<>();
+		headersList.add("Id");
+		headersList.add("Titulo");
+		headersList.add("Titulo Original");
+		List<List<String>> rowsList = new ArrayList<>();
+		for (Pelicula peli : pelis) {
+			List<String> row = new ArrayList<>();
+			row.add(peli.getId());
+			row.add(peli.getTitulo());
+			row.add(peli.getTituloOriginal());
+			rowsList.add(row);
+		}
+		System.out.println(generateTable(headersList, rowsList));
+
+		List<String> headersList1 = new ArrayList<>();
+		headersList1.add("Año");
+		headersList1.add("Duración");
+		headersList1.add("País de rodaje");
+		headersList1.add("Guion");
+		List<List<String>> rowsList1 = new ArrayList<>();
+		for (Pelicula peli : pelis) {
+			List<String> row = new ArrayList<>();
+			row.add(peli.getAno());
+			row.add(peli.getDuracion());
+			row.add(peli.getPais());
+			row.add(peli.getGuion());
+			rowsList1.add(row);
+		}
+		System.out.println(generateTable(headersList1, rowsList1));
+
+		List<String> headersList2 = new ArrayList<>();
+		headersList2.add("Música");
+		headersList2.add("Fotografía");
+		headersList2.add("Reparto");
+		headersList2.add("Sinopsis");
+		List<List<String>> rowsList2 = new ArrayList<>();
+		for (Pelicula peli : pelis) {
+			List<String> row = new ArrayList<>();
+			row.add(peli.getMusica());
+			row.add(peli.getFotografia());
+			row.add(peli.getReparto());
+			row.add((peli.getSinopsis()).substring(0, 30) + "...");
+			rowsList2.add(row);
+		}
+		System.out.println(generateTable(headersList2, rowsList2));
+	}
+
+	private static void limpiarConsola() {
+		try {
+			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+		} catch (Exception e) {
+			/* No hacer nada */
+		}
+	}
+
+	private static void procesoVerTrailer(String url) {
+		try {
+			new ProcessBuilder("cmd.exe", "/c", "start chrome " + url).inheritIO().start().waitFor();
+		} catch (Exception e) {
+			/* No hacer nada */
+		}
 	}
 
 	public static String generateTable(List<String> headersList, List<List<String>> rowsList,
@@ -461,6 +812,21 @@ public class Main {
 		return listaprincesas;
 	}
 
+	private static Map<Integer, Map<String, String>> leerPeliculaNombre() {
+		Map<Integer, Map<String, String>> mapa = new HashMap<Integer, Map<String, String>>();
+		Map<String, String> a = new HashMap<String, String>();
+		MongoCursor<Document> resultDocument = pelicula.find().iterator();
+		int i = 1;
+		while (resultDocument.hasNext()) {
+			a.clear();
+			Document p = resultDocument.next();
+			a.put(p.getString("Titulo"), p.getString("Trailer"));
+			mapa.put(i, a);
+			i++;
+		}
+		return mapa;
+	}
+
 	private static ArrayList<Pelicula> leerPelicula() {
 		ArrayList<Pelicula> listapPeliculas = new ArrayList<Pelicula>();
 		MongoCursor<Document> resultDocument = pelicula.find().iterator();
@@ -468,13 +834,32 @@ public class Main {
 		while (resultDocument.hasNext()) {
 			Document p = resultDocument.next();
 			Pelicula pelicula = new Pelicula(p.getObjectId("_id").toString(), p.getString("Titulo"),
-					p.getString("Titulo original"), p.getString("A�o"), p.getString("Duraci�n"), p.getString("Pa�s"),
-					p.getString("Guion"), p.getString("M�sica"), p.getString("Fotograf�a"), p.getString("Reparto"),
+					p.getString("Titulo original"), p.getString("Año"), p.getString("Duración"), p.getString("País"),
+					p.getString("Guion"), p.getString("Música"), p.getString("Fotografía"), p.getString("Reparto"),
 					p.getString("Sinopsis"), p.getString("Trailer"));
 			listapPeliculas.add(pelicula);
 		}
 		return listapPeliculas;
 
+	}
+
+	private static Map<Integer, Pelicula> leerPeliculaNombre2() {
+
+		Map<Integer, Pelicula> a = new HashMap<Integer, Pelicula>();
+		MongoCursor<Document> resultDocument = pelicula.find().iterator();
+		int i = 1;
+		while (resultDocument.hasNext()) {
+
+			Document p = resultDocument.next();
+			Pelicula pelicula = new Pelicula(p.getObjectId("_id").toString(), p.getString("Titulo"),
+					p.getString("Titulo original"), p.getString("Año"), p.getString("Duración"), p.getString("País"),
+					p.getString("Guion"), p.getString("Música"), p.getString("Fotografía"), p.getString("Reparto"),
+					p.getString("Sinopsis"), p.getString("Trailer"));
+			a.put(i, pelicula);
+
+			i++;
+		}
+		return a;
 	}
 
 	private static ArrayList<Principe> leerPrincipes() {
