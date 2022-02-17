@@ -15,10 +15,25 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class Main {
+
+	private static int PADDING_SIZE = 2;
+	private static String NEW_LINE = "\n";
+	private static String TABLE_JOINT_SYMBOL = "+";
+	private static String TABLE_V_SPLIT_SYMBOL = "|";
+	private static String TABLE_H_SPLIT_SYMBOL = "-";
 
 	public static MongoCollection<Document> pelicula = null;
 	public static MongoCollection<Document> villano;
@@ -28,8 +43,11 @@ public class Main {
 
 	public static void main(String args[]) {
 
-		// PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
+		// PASO 1: Conexi�n al Server de MongoDB Pasandole el host y el puerto
 		// MongoClient mongoClient1 = new MongoClient("localhost", 27017);
+
+		Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
+		mongoLogger.setLevel(Level.SEVERE);
 
 		ConnectionString connectionString = new ConnectionString(
 				"mongodb+srv://Becarios:Admin1234@cluster0.aq3pk.mongodb.net/test?retryWrites=true&w=majority");
@@ -48,41 +66,157 @@ public class Main {
 		principe = database.getCollection("Principe");
 		director = database.getCollection("Director");
 
-		System.out.println("MOSTRAR DATOS");
-		System.out.println("	1. Mostrar peliculas");
-		System.out.println("	2. Mostrar princesas");
-		System.out.println("	3. Mostrar directores");
-		System.out.println("	4. Mostrar villanos");
-		System.out.println("	5. Mostrar director");
-		System.out.println("EDITAR DATOS");
-		System.out.println("	6. Editar peliculas");
-		System.out.println("	7. Editar princesas");
-		System.out.println("	8. Editar directores");
-		System.out.println("	9. Editar villanos");
-		System.out.println("	10. Editar director");
-		System.out.println("BORRAR DATOS");
-		System.out.println("	11. Borrar peliculas");
-		System.out.println("	12. Borrar princesas");
-		System.out.println("	13. Borrar directores");
-		System.out.println("	14. Borrar villanos");
-		System.out.println("	15. Borrar director");
-		System.out.println("ACTUALIZAR DATOS");
-		System.out.println("	16. Actualilzar peliculas");
-		System.out.println("	17. Actualilzar princesas");
-		System.out.println("	18. Actualilzar directores");
-		System.out.println("	19. Actualilzar villanos");
-		System.out.println("	20. Actualilzar director");
-		System.out.println("VER TRAILER");
-		System.out.println("	21. Ver trailer");
+		// Mostrar un menu diferente por cada opcion
+		// Pedir nombre antes de inciar caulquier cosa
+		// Poder hacerlo personalizable (Que el usuario eliga el color del texto o el
+		// color de los detalles(dos opciones para facilitar))
 
-		// switch (key) {
-		// case value:
+		// ****************************************************HACERLO
+		// BUCLEABLE****************************************************** */
+		try {
+			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+		} catch (Exception e) {
+			/* No hacer nada */
+		}
+		System.out.print("Hola personnita digame su nombre: ");
+		Scanner sc = new Scanner(System.in);
+		String opcion0 = sc.nextLine();
+		System.out.println();
+		System.out.println("Bienvenido " + opcion0 + ", disfruta mucho el tour! ");
+		System.out.println(" _____________________");
+		System.out.println("|                     |");
+		System.out.println("| 1. MOSTRAR DATOS    |");
+		System.out.println("| 2. GESTIONAR DATOS  |");
+		System.out.println("| 0. SALIR            |");
+		System.out.println(" _____________________");
 
-		// break;
+		System.out.println("¿Qué quieres hacer?");
+		String opcion = sc.nextLine();
+		// MOSTRAR TABLA ANTES DE CUALQUIER OPERACION PARA QUE EL USUARIO PUEDA CAMBIAR
+		// LOS DATOS QUE NECESITA SIN SUBIR MUY ARRIBA.
+		switch (opcion) {
+			case "1":
+				try {
+					new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+				} catch (Exception e) {
+					/* No hacer nada */
+				}
+				System.out.println(" ___________________________________");
+				System.out.println("|                                   |");
+				System.out.println("| 1. Mostrar peliculas              |");
+				System.out.println("| 2. Mostrar princesas              |");
+				System.out.println("| 3. Mostrar directores             |");
+				System.out.println("| 4. Mostrar villanos               |");
+				System.out.println("| 5. Mostrar principes              |");
+				System.out.println(
+						"| 6. Mostrar los protagonistas,     |\n|	antagonistas y directores   |\n|	de las peliculas            |");
+				System.out.println("| 7. Ver trailer de una pelicula    |");
+				System.out.println("| 0.Atras                           |");
+				System.out.println(" ___________________________________");
+				System.out.println("¿Qué quieres hacer?");
+				String opcion1 = sc.nextLine();
+				switch (opcion1) {
+					case "1":
+						ArrayList<Pelicula> pelis = leerPelicula();
+						List<String> headersList = new ArrayList<>();
+						headersList.add("Id");
+						headersList.add("Titulo");
+						headersList.add("Titulo Original");
+						List<List<String>> rowsList = new ArrayList<>();
+						for (Pelicula peli : pelis) {
+							List<String> row = new ArrayList<>();
+							row.add(peli.getId());
+							row.add(peli.getTitulo());
+							row.add(peli.getTituloOriginal());
+							rowsList.add(row);
+						}
+						System.out.println(generateTable(headersList, rowsList));
+						break;
+					case "2":
 
-		// default:
-		// break;
-		// }
+						break;
+					case "3":
+
+						break;
+					case "4":
+
+						break;
+					case "5":
+
+						break;
+					case "6":
+
+						break;
+					case "7":
+
+						break;
+					case "0":
+
+						break;
+
+					default:
+						break;
+				}
+
+				break;
+			case "2":
+				System.out.println(" 1. EDITAR DATOS");
+				System.out.println(" 2. BORRAR DATOS");
+				System.out.println(" 3. ACTUALIZAR DATOS");
+				System.out.println(" 4. INSERTAR DATOS");
+				System.out.println(" 0. Atras");
+
+				String opcion2 = sc.nextLine();
+				switch (opcion2) {
+					case "1":
+						System.out.println(" 1. Editar peliculas");
+						System.out.println(" 2. Editar princesas");
+						System.out.println(" 3. Editar directores");
+						System.out.println(" 4. Editar villanos");
+						System.out.println(" 5. Editar principes");
+						System.out.println(" 0. Atras");
+						break;
+					case "2":
+						System.out.println(" 1. Borrar peliculas");
+						System.out.println(" 2. Borrar princesas");
+						System.out.println(" 3. Borrar directores");
+						System.out.println(" 4. Borrar villanos");
+						System.out.println(" 5. Borrar principes");
+						System.out.println(" 0. Atras");
+						break;
+					case "3":
+						System.out.println(" 1. Actualizar peliculas");
+						System.out.println(" 2. Actualizar princesas");
+						System.out.println(" 3. Actualizar directores");
+						System.out.println(" 4. Actualizar villanos");
+						System.out.println(" 5. Actualizar principes");
+						System.out.println(" 0. Atras");
+						break;
+					case "4":
+						System.out.println(" 1. Insertar peliculas");
+						System.out.println(" 2. Insertar princesas");
+						System.out.println(" 3. Insertar directores");
+						System.out.println(" 4. Insertar villanos");
+						System.out.println(" 5. Insertar principes");
+						System.out.println(" 0. Atras");
+						break;
+					case "0":
+
+						break;
+
+					default:
+						break;
+				}
+
+				break;
+			case "0":
+
+				break;
+
+			default:
+				break;
+		}
+
 		// Mostrar Princesas
 		// ArrayList<Princesa> princesas = leerPrincesa();
 		// for (Princesa princesa : princesas) {
@@ -92,62 +226,66 @@ public class Main {
 		// MostrarPelicula
 		// ArrayList<Pelicula> peliculas = leerPelicula();
 		// for (Pelicula pelicula : peliculas) {
-		// 	System.out.println(pelicula);
+		// System.out.println(pelicula);
 		// }
 
-		//MostrarVillano
+		// MostrarVillano
 		// ArrayList<Villano> villanos = leerVillanos();
 		// for (Villano villano : villanos) {
-		// 	System.out.println(villano);
+		// System.out.println(villano);
 		// }
 
 		// MostrarDirector
 		// ArrayList<Director> directores = leerDirector();
 		// for (Director d : directores) {
-		// 	System.out.println(d);
+		// System.out.println(d);
 		// }
-		//MostrarPrincipe
+		// MostrarPrincipe
 		// ArrayList<Principe> principes = leerPrincipes();
 		// for (Principe p : principes) {
-		// 	System.out.println(p);
+		// System.out.println(p);
 		// }
 
 		// eliminar pelicula
 		// eliminarPelicula("620d55f1d32ca8575431eff9");
-		
-	//System.out.println("*******************************************************INSERTAR*******************************************************************");
-	// Pelicula pelicula =new Pelicula("null", "titulo", "titulo", "ano",
-	// 	"duron", "p", "guon", "mua", "foafia", "reo", "s",
-	// 	"trer");
-	// editarPelicula("620d5799a4e64776d3058b13", pelicula);
-	
-// 	database.getCollection("Pelicula").aggregate([
-// { "$lookup": {
-//      "from": "Villano",
-//      "foreignField": "idB",
-//      "localField": "idA",
-//      "as": "alias_tablaB"
-//    }}
-//  ]);
- 
-	// insertarPrincesa(princesa);
-	// Pelicula pelicula =new Pelicula("null", "titulo", "tituloOriginal", "ano",
-	// 	"duracion", "pais", "guion", "musica", "fotografia", "reparto", "sinopsis",
-	// 	"trailer");
 
-	// 	insertarPelicula(pelicula);
-	// Principe principe = new Principe("id", "nombre", "edad", "ciudad", "vehiculo", "email", "genero", "creacion", "ipAddress", "universidad", "titulacion");
-	// 	insertarPrincipe(principe);
-	// 	Villano villano = new Villano("id", "nombre", "edad", "ciudad", "vehiculo", "email", "genero", "creacion", "ipAddress", "universidad", "titulacion");
-	// 	insertarVillano(villano);
-	// 	Director director = new Director("id", "nombre", 2, "ciudad", "vehiculo", "email", "genero", "creacion", "ipAddress", "universidad", "titulacion");
-	// 	insertarDirector(director);
+		// System.out.println("*******************************************************INSERTAR*******************************************************************");
+		// Pelicula pelicula =new Pelicula("null", "titulo", "titulo", "ano",
+		// "duron", "p", "guon", "mua", "foafia", "reo", "s",
+		// "trer");
+		// editarPelicula("620d5799a4e64776d3058b13", pelicula);
+
+		// database.getCollection("Pelicula").aggregate([
+		// { "$lookup": {
+		// "from": "Villano",
+		// "foreignField": "idB",
+		// "localField": "idA",
+		// "as": "alias_tablaB"
+		// }}
+		// ]);
+
+		// insertarPrincesa(princesa);
+		// Pelicula pelicula =new Pelicula("null", "titulo", "tituloOriginal", "ano",
+		// "duracion", "pais", "guion", "musica", "fotografia", "reparto", "sinopsis",
+		// "trailer");
+
+		// insertarPelicula(pelicula);
+		// Principe principe = new Principe("id", "nombre", "edad", "ciudad",
+		// "vehiculo", "email", "genero", "creacion", "ipAddress", "universidad",
+		// "titulacion");
+		// insertarPrincipe(principe);
+		// Villano villano = new Villano("id", "nombre", "edad", "ciudad", "vehiculo",
+		// "email", "genero", "creacion", "ipAddress", "universidad", "titulacion");
+		// insertarVillano(villano);
+		// Director director = new Director("id", "nombre", 2, "ciudad", "vehiculo",
+		// "email", "genero", "creacion", "ipAddress", "universidad", "titulacion");
+		// insertarDirector(director);
 
 		// leerPelicula();
 		// Pelicula pelicula = new Pelicula("PruebaInsert", "Muerte y destruccion",
 		// "2001",
 		// "Es una prueba que estamos haciendo de vs", "1", "100", "1", "12554232");
-				// insertarPelicula(pelicula);
+		// insertarPelicula(pelicula);
 
 		// eliminarPelicula("PruebaInsert");
 		// mongoClient.close();
@@ -158,6 +296,121 @@ public class Main {
 		// for (Princesa princesa : f) {
 		// System.out.println(princesa);
 		// }
+
+		// ArrayList<Pelicula> pelis = leerPelicula();
+		// List<String> headersList = new ArrayList<>();
+		// headersList.add("Id");
+		// headersList.add("Titulo");
+		// headersList.add("Titulo Original");
+		// List<List<String>> rowsList = new ArrayList<>();
+		// for (Pelicula peli : pelis) {
+		// List<String> row = new ArrayList<>();
+		// row.add(peli.getId());
+		// row.add(peli.getTitulo());
+		// row.add(peli.getTituloOriginal());
+		// rowsList.add(row);
+		// }
+		// System.out.println(generateTable(headersList, rowsList));
+
+	}
+
+	public static String generateTable(List<String> headersList, List<List<String>> rowsList,
+			int... overRiddenHeaderHeight) {
+		StringBuilder stringBuilder = new StringBuilder();
+		int rowHeight = overRiddenHeaderHeight.length > 0 ? overRiddenHeaderHeight[0] : 1;
+		Map<Integer, Integer> columnMaxWidthMapping = getMaximumWidhtofTable(headersList, rowsList);
+		stringBuilder.append(NEW_LINE);
+		stringBuilder.append(NEW_LINE);
+		createRowLine(stringBuilder, headersList.size(), columnMaxWidthMapping);
+		stringBuilder.append(NEW_LINE);
+		for (int headerIndex = 0; headerIndex < headersList.size(); headerIndex++) {
+			fillCell(stringBuilder, headersList.get(headerIndex), headerIndex, columnMaxWidthMapping);
+		}
+		stringBuilder.append(NEW_LINE);
+		createRowLine(stringBuilder, headersList.size(), columnMaxWidthMapping);
+		for (List<String> row : rowsList) {
+			for (int i = 0; i < rowHeight; i++) {
+				stringBuilder.append(NEW_LINE);
+			}
+			for (int cellIndex = 0; cellIndex < row.size(); cellIndex++) {
+				fillCell(stringBuilder, row.get(cellIndex), cellIndex, columnMaxWidthMapping);
+			}
+		}
+		stringBuilder.append(NEW_LINE);
+		createRowLine(stringBuilder, headersList.size(), columnMaxWidthMapping);
+		stringBuilder.append(NEW_LINE);
+		stringBuilder.append(NEW_LINE);
+		return stringBuilder.toString();
+	}
+
+	private static void fillSpace(StringBuilder stringBuilder, int length) {
+		for (int i = 0; i < length; i++) {
+			stringBuilder.append(" ");
+		}
+	}
+
+	private static void createRowLine(StringBuilder stringBuilder, int headersListSize,
+			Map<Integer, Integer> columnMaxWidthMapping) {
+		for (int i = 0; i < headersListSize; i++) {
+			if (i == 0) {
+				stringBuilder.append(TABLE_JOINT_SYMBOL);
+			}
+			for (int j = 0; j < columnMaxWidthMapping.get(i) + PADDING_SIZE * 2; j++) {
+				stringBuilder.append(TABLE_H_SPLIT_SYMBOL);
+			}
+			stringBuilder.append(TABLE_JOINT_SYMBOL);
+		}
+	}
+
+	private static Map<Integer, Integer> getMaximumWidhtofTable(List<String> headersList, List<List<String>> rowsList) {
+		Map<Integer, Integer> columnMaxWidthMapping = new HashMap<>();
+		for (int columnIndex = 0; columnIndex < headersList.size(); columnIndex++) {
+			columnMaxWidthMapping.put(columnIndex, 0);
+		}
+		for (int columnIndex = 0; columnIndex < headersList.size(); columnIndex++) {
+			if (headersList.get(columnIndex).length() > columnMaxWidthMapping.get(columnIndex)) {
+				columnMaxWidthMapping.put(columnIndex, headersList.get(columnIndex).length());
+			}
+		}
+		for (List<String> row : rowsList) {
+			for (int columnIndex = 0; columnIndex < row.size(); columnIndex++) {
+				if (row.get(columnIndex).length() > columnMaxWidthMapping.get(columnIndex)) {
+					columnMaxWidthMapping.put(columnIndex, row.get(columnIndex).length());
+				}
+			}
+		}
+		for (int columnIndex = 0; columnIndex < headersList.size(); columnIndex++) {
+			if (columnMaxWidthMapping.get(columnIndex) % 2 != 0) {
+				columnMaxWidthMapping.put(columnIndex, columnMaxWidthMapping.get(columnIndex) + 1);
+			}
+		}
+		return columnMaxWidthMapping;
+	}
+
+	private static int getOptimumCellPadding(int cellIndex, int datalength, Map<Integer, Integer> columnMaxWidthMapping,
+			int cellPaddingSize) {
+		if (datalength % 2 != 0) {
+			datalength++;
+		}
+		if (datalength < columnMaxWidthMapping.get(cellIndex)) {
+			cellPaddingSize = cellPaddingSize + (columnMaxWidthMapping.get(cellIndex) - datalength) / 2;
+		}
+		return cellPaddingSize;
+	}
+
+	private static void fillCell(StringBuilder stringBuilder, String cell, int cellIndex,
+			Map<Integer, Integer> columnMaxWidthMapping) {
+		int cellPaddingSize = getOptimumCellPadding(cellIndex, cell.length(), columnMaxWidthMapping, PADDING_SIZE);
+		if (cellIndex == 0) {
+			stringBuilder.append(TABLE_V_SPLIT_SYMBOL);
+		}
+		fillSpace(stringBuilder, cellPaddingSize);
+		stringBuilder.append(cell);
+		if (cell.length() % 2 != 0) {
+			stringBuilder.append(" ");
+		}
+		fillSpace(stringBuilder, cellPaddingSize);
+		stringBuilder.append(TABLE_V_SPLIT_SYMBOL);
 	}
 
 	private static void relacionPrincesa(String idPelicula, String idPrincesa) {
@@ -215,8 +468,8 @@ public class Main {
 		while (resultDocument.hasNext()) {
 			Document p = resultDocument.next();
 			Pelicula pelicula = new Pelicula(p.getObjectId("_id").toString(), p.getString("Titulo"),
-					p.getString("Titulo original"), p.getString("Año"), p.getString("Duración"), p.getString("País"),
-					p.getString("Guion"), p.getString("Música"), p.getString("Fotografía"), p.getString("Reparto"),
+					p.getString("Titulo original"), p.getString("A�o"), p.getString("Duraci�n"), p.getString("Pa�s"),
+					p.getString("Guion"), p.getString("M�sica"), p.getString("Fotograf�a"), p.getString("Reparto"),
 					p.getString("Sinopsis"), p.getString("Trailer"));
 			listapPeliculas.add(pelicula);
 		}
@@ -338,12 +591,12 @@ public class Main {
 				.append("_id", new ObjectId())
 				.append("Titulo", p.getTitulo())
 				.append("Titulo original", p.getTituloOriginal())
-				.append("Año", p.getAno())
-				.append("Duración", p.getDuracion())
-				.append("País", p.getPais())
+				.append("A�o", p.getAno())
+				.append("Duraci�n", p.getDuracion())
+				.append("Pa�s", p.getPais())
 				.append("Guion", p.getGuion())
-				.append("Música", p.getMusica())
-				.append("Fotografía", p.getFotografia())
+				.append("M�sica", p.getMusica())
+				.append("Fotograf�a", p.getFotografia())
 				.append("Reparto", p.getReparto())
 				.append("Sinopsis", p.getSinopsis())
 				.append("Trailer", p.getTrailer()));
@@ -381,12 +634,12 @@ public class Main {
 				new Document()
 						.append("Titulo", p.getTitulo())
 						.append("Titulo original", p.getTituloOriginal())
-						.append("Año", p.getAno())
-						.append("Duración", p.getDuracion())
-						.append("País", p.getPais())
+						.append("A�o", p.getAno())
+						.append("Duraci�n", p.getDuracion())
+						.append("Pa�s", p.getPais())
 						.append("Guion", p.getGuion())
-						.append("Música", p.getMusica())
-						.append("Fotografía", p.getFotografia())
+						.append("M�sica", p.getMusica())
+						.append("Fotograf�a", p.getFotografia())
 						.append("Reparto", p.getReparto())
 						.append("Sinopsis", p.getSinopsis())
 						.append("Trailer", p.getTrailer()));
