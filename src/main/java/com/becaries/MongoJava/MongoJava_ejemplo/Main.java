@@ -1,6 +1,7 @@
 package com.becaries.MongoJava.MongoJava_ejemplo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import com.becaries.MongoJava.modelos.Princesa;
 import com.becaries.MongoJava.modelos.Principe;
 import com.becaries.MongoJava.modelos.Villano;
 import com.mongodb.ConnectionString;
+import com.mongodb.ExplainVerbosity;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoClient;
@@ -19,10 +21,18 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Accumulators;
+import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 public class Main {
@@ -156,9 +166,9 @@ public class Main {
 		String opcion = sc.nextLine();
 		switch (opcion) {
 			case "1":
-			limpiarConsola();
-			boolean a = true;
-			while (a) {
+				limpiarConsola();
+				boolean a = true;
+				while (a) {
 					System.out.println(" ___________________________________");
 					System.out.println("|                                   |");
 					System.out.println("| 1. Mostrar peliculas              |");
@@ -166,8 +176,8 @@ public class Main {
 					System.out.println("| 3. Mostrar directores             |");
 					System.out.println("| 4. Mostrar villanos               |");
 					System.out.println("| 5. Mostrar principes              |");
-					System.out.println(
-							"| 6. Mostrar los protagonistas,     |\n|	antagonistas y directores   |\n|	de las peliculas            |");
+					System.out.println("| 6. Grafico del genero de los      |");
+					System.out.println("|    directores                     |");
 					System.out.println("| 7. Ver trailer de una pelicula    |");
 					System.out.println("| 0.Atras                           |");
 					System.out.println(" ___________________________________");
@@ -177,34 +187,32 @@ public class Main {
 						case "1":
 							limpiarConsola();
 							imprimirTablaPeliculas();
-							btnAtras();
+							volverAtras();
 							break;
 						case "2":
 							limpiarConsola();
 							imprimirTablaPrincesa();
-							btnAtras();
+							volverAtras();
 							break;
 						case "3":
 							limpiarConsola();
 							imprimirTablaDirector();
-							btnAtras();
+							volverAtras();
 							break;
 						case "4":
 							limpiarConsola();
 							imprimirTablavillanos();
-							btnAtras();
+							volverAtras();
 							break;
 						case "5":
 							limpiarConsola();
 							imprimirTablaPrincipes();
-							btnAtras();
-
+							volverAtras();
 							break;
 						case "6":
-							// VER PROQUE NO VAAAAAAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-							MongoDatabase database = conexionMongoDB();
-							listarTodo2(database);
-
+							limpiarConsola();
+							totalOfActorsByGenre();
+							volverAtras();
 							break;
 						case "7":
 							limpiarConsola();
@@ -226,45 +234,58 @@ public class Main {
 			case "2":
 				System.out.println(" _____________________________");
 				System.out.println("|                             |");
-				System.out.println(" 1. EDITAR DATOS");
-				System.out.println(" 2. BORRAR DATOS");
-				System.out.println(" 3. ACTUALIZAR DATOS");
-				System.out.println(" 4. INSERTAR DATOS");
-				System.out.println(" 0. Atras");
+				System.out.println("| 1. EDITAR DATOS             |");
+				System.out.println("| 2. BORRAR DATOS             |");
+				System.out.println("| 3. ACTUALIZAR DATOS         |");
+				System.out.println("| 4. INSERTAR DATOS           |");
+				System.out.println("| 0. Atras                    |");
+				System.out.println(" _____________________________");
 
 				String opcion2 = sc.nextLine();
 				switch (opcion2) {
 					case "1":
-						System.out.println(" 1. Editar peliculas");
-						System.out.println(" 2. Editar princesas");
-						System.out.println(" 3. Editar directores");
-						System.out.println(" 4. Editar villanos");
-						System.out.println(" 5. Editar principes");
-						System.out.println(" 0. Atras");
+						System.out.println(" __________________________");
+						System.out.println("|                          |");
+						System.out.println("| 1. Editar peliculas      |");
+						System.out.println("| 2. Editar princesas      |");
+						System.out.println("| 3. Editar directores     |");
+						System.out.println("| 4. Editar villanos       |");
+						System.out.println("| 5. Editar principes      |");
+						System.out.println("| 0. Atras                 |");
+						System.out.println(" __________________________");
 						break;
 					case "2":
-						System.out.println(" 1. Borrar peliculas");
-						System.out.println(" 2. Borrar princesas");
-						System.out.println(" 3. Borrar directores");
-						System.out.println(" 4. Borrar villanos");
-						System.out.println(" 5. Borrar principes");
-						System.out.println(" 0. Atras");
+						System.out.println(" __________________________");
+						System.out.println("|                          |");
+						System.out.println("| 1. Borrar peliculas      |");
+						System.out.println("| 2. Borrar princesas      |");
+						System.out.println("| 3. Borrar directores     |");
+						System.out.println("| 4. Borrar villanos       |");
+						System.out.println("| 5. Borrar principes      |");
+						System.out.println("| 0. Atras                 |");
+						System.out.println(" __________________________");
 						break;
 					case "3":
-						System.out.println(" 1. Actualizar peliculas");
-						System.out.println(" 2. Actualizar princesas");
-						System.out.println(" 3. Actualizar directores");
-						System.out.println(" 4. Actualizar villanos");
-						System.out.println(" 5. Actualizar principes");
-						System.out.println(" 0. Atras");
+						System.out.println(" __________________________");
+						System.out.println("|                          |");
+						System.out.println("| 1. Actualizar peliculas  |");
+						System.out.println("| 2. Actualizar princesas  |");
+						System.out.println("| 3. Actualizar directores |");
+						System.out.println("| 4. Actualizar villanos   |");
+						System.out.println("| 5. Actualizar principes  |");
+						System.out.println("| 0. Atras                 |");
+						System.out.println(" __________________________");
 						break;
 					case "4":
-						System.out.println(" 1. Insertar peliculas");
-						System.out.println(" 2. Insertar princesas");
-						System.out.println(" 3. Insertar directores");
-						System.out.println(" 4. Insertar villanos");
-						System.out.println(" 5. Insertar principes");
-						System.out.println(" 0. Atras");
+						System.out.println(" __________________________");
+						System.out.println("|                          |");
+						System.out.println("| 1. Insertar peliculas    |");
+						System.out.println("| 2. Insertar princesas    |");
+						System.out.println("| 3. Insertar directores   |");
+						System.out.println("| 4. Insertar villanos     |");
+						System.out.println("| 5. Insertar principes    |");
+						System.out.println("| 0. Atras                 |");
+						System.out.println(" __________________________");
 						break;
 					case "0":
 
@@ -284,6 +305,11 @@ public class Main {
 		}
 	}
 
+	private static void volverAtras() {
+		btnAtras();
+		pulsaContinuar();
+	}
+
 	private static int pregunta(Scanner sc) {
 		System.out.println("¿Que trailer quieres ver?");
 		String algo = sc.nextLine();
@@ -297,112 +323,46 @@ public class Main {
 		return c;
 	}
 
-	public static void listarTodo2(MongoDatabase database) {
-		// LookupOperation lookupOperation = LookupOperation.newLookup().
-		// from("documento").
-		// localField("documento.doc_codigo").
-		// foreignField("doc_codigo").
-		// as("documento");
+	// Este metodo se utilizara para que los datos se puedan revisar con
+	// tranquilidad antes de elegir otro metodo.
+	static public void pulsaContinuar() {
+		try {
+			int leerDato = System.in.read(new byte[2]); // Se tarta basicamente de leer un dato
+			limpiarConsola();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-		// mongoTemplate.find(new
-		// Query(Criteria.where("idPelicula").is("620d3e6e41d00a35312038e3")),
-		// Prota.class);
+	public static void totalOfActorsByGenre() {
 
-		// AggregationOperation match =
-		// Aggregation.match(Criteria.where("idPelicula").size(1));
-		// Aggregation aggregation = Aggregation.newAggregation(lookupOperation, match);
+		MongoDatabase database = conexionMongoDB();
+		// Select the "actor" collection
+		MongoCollection<Document> collection = database.getCollection("Director");
 
-		// List<Prota> results = mongoTemplate.aggregate(aggregation, "Pelicula",
-		// Prota.class).getMappedResults();
-		// return results;
+		// Create our pipeline operations, first with the $match
+		Document match = new Document("$match", new Document("trabajadoDisney", "si"));
 
-		// ApplicationContext ctx = new
-		// AnnotationConfigApplicationContext(SpringMongoConfig.class);
-		// MongoOperations mongoOperation = (MongoOperations)
-		// ctx.getBean("mongoTemplate");
-		// MongoOperations mongoOperations;
-		// LookupOperation lookupOperation =
-		// LookupOperation.newLookup().from("inventory").localField("item")
-		// .foreignField("sku").as("inventory_docs");
-		// Aggregation aggregation = Aggregation.newAggregation(lookupOperation);
-		// List<BasicDBObject> results = mongoOperations.aggregate(aggregation,
-		// "orders", BasicDBObject.class)
-		// .getMappedResults();
+		// Now the $group operation
+		Document groupFields = new Document("_id", "$Genero").append("total", new Document("$sum", 1));
+		Document group = new Document("$group", groupFields);
 
-		// create the pipeline operations, first with the $match
-		// DBObject match = new BasicDBObject("$match",
-		// new BasicDBObject("_id", "620d3e6e41d00a35312038e3"));
+		// run aggregation
+		List<Document> pipeline = Arrays.asList(match, group);
+		MongoCursor<Document> output = collection.aggregate(pipeline).iterator();
 
-		// // build the $lookup operations
-		// DBObject lookupFields = new BasicDBObject("from", "pelicula");
-		// lookupFields.put("localField", "idPelicula");
-		// lookupFields.put("foreignField", "_id");
-		// lookupFields.put("as", "Pelicula");
-		// DBObject lookup = new BasicDBObject("$lookup", lookupFields);
-
-		// // build the $project operations
-		// DBObject projectFields = new BasicDBObject("Nombre", 1);
-		// projectFields.put("Ciudad", 1);
-		// projectFields.put("idPelicula", 1);
-		// projectFields.put("Titulo", "$Pelicula.Titulo");
-		// DBObject project = new BasicDBObject("$project", projectFields);
-
-		// List<DBObject> pipeline = Arrays.asList(match, lookup, project);
-
-		// this build of options is taken from the original method
-		// aggregate(pipe) to have same behaviour
-		// AggregationOptions options = AggregationOptions.builder()
-		// .outputMode(AggregationOptions.OutputMode.INLINE)
-		// .build();
-
-		// try (Cursor cursor = princesa.aggregate(pipeline, options)) {
-		// while (cursor.hasNext()) {
-		// DBObject obj = cursor.next();
-		// // ...
-		// }
-		// }
-		// for (DBObject dbObject : pipeline) {
-		// System.out.println(dbObject.get("_id"));
-		// System.out.println(dbObject.get("Ciudad"));
-		// }
-
-		// LookupOperation lookupOperation = LookupOperation.newLookup()
-		// .from("places")
-		// .localField("address.location.place._id")
-		// .foreignField("_id")
-		// .as("address.location.place");
-
-		// princesa.aggregate(Arrays.asList(
-		// Aggregates.lookup("fromCollection", "localField", "foreignField",
-		// "asOutputArrayField")))
-		// .forEach(printBlock, callbackWhenFinished);
-
-		List<Bson> filters = new ArrayList<>();
-		Bson match = new Document("$match",
-				new Document("Princesa.idPelicula", true));
-
-		Bson lookup = new Document("$lookup",
-				new Document("from", "Pelicula")
-						.append("localField", "idPelicula")
-						.append("foreignField", "_id")
-						.append("as", "look_coll"));
-
-		filters.add(lookup);
-		filters.add(match);
-
-		AggregateIterable<Document> it = database.getCollection("Princesa").aggregate(filters);
-
-		for (Document row : it) {
-			System.out.println(row.toString());
+		DefaultPieDataset dataset = new DefaultPieDataset();
+		while (output.hasNext()) {
+			Document document = output.next();
+			dataset.setValue(document.getString("_id"), document.getInteger("total"));
 		}
 
-		// Aggregation agg = newAggregation(
-		// unwind("address"),
-		// unwind("address.location"),
-		// lookupOperation);
+		JFreeChart chart = ChartFactory.createPieChart3D("Genero de los directores", dataset, true, true, true);
 
-		// AggregationResults<OutputDocument> aggResults = mongoTemplate.aggregate(
-		// agg, PersonAddressDocument.class, OutputDocument.class);
+		ChartFrame frame = new ChartFrame("Genero de los directores", chart);
+		frame.pack();
+		frame.setAlwaysOnTop(true);
+		frame.setVisible(true);
 
 	}
 
@@ -594,10 +554,10 @@ public class Main {
 	}
 
 	private static void btnAtras() {
-		System.out.println(" ____________");
-		System.out.println("|            |");
-		System.out.println("| 0. Atras   |");
-		System.out.println(" ____________");
+		System.out.println(" _________________________");
+		System.out.println("|                         |");
+		System.out.println("| Enter para volver Atras |");
+		System.out.println(" _________________________");
 	}
 
 	private static void imprimirTablaPeliculas() {

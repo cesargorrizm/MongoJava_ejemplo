@@ -1,0 +1,123 @@
+	// public static void listarTodo2(MongoDatabase database) {
+	// 	// LookupOperation lookupOperation = LookupOperation.newLookup().
+	// 	// from("documento").
+	// 	// localField("documento.doc_codigo").
+	// 	// foreignField("doc_codigo").
+	// 	// as("documento");
+
+	// 	// mongoTemplate.find(new
+	// 	// Query(Criteria.where("idPelicula").is("620d3e6e41d00a35312038e3")),
+	// 	// Prota.class);
+
+	// 	// AggregationOperation match =
+	// 	// Aggregation.match(Criteria.where("idPelicula").size(1));
+	// 	// Aggregation aggregation = Aggregation.newAggregation(lookupOperation, match);
+
+	// 	// List<Prota> results = mongoTemplate.aggregate(aggregation, "Pelicula",
+	// 	// Prota.class).getMappedResults();
+	// 	// return results;
+
+	// 	// ApplicationContext ctx = new
+	// 	// AnnotationConfigApplicationContext(SpringMongoConfig.class);
+	// 	// MongoOperations mongoOperation = (MongoOperations)
+	// 	// ctx.getBean("mongoTemplate");
+	// 	// MongoOperations mongoOperations;
+	// 	// LookupOperation lookupOperation =
+	// 	// LookupOperation.newLookup().from("inventory").localField("item")
+	// 	// .foreignField("sku").as("inventory_docs");
+	// 	// Aggregation aggregation = Aggregation.newAggregation(lookupOperation);
+	// 	// List<BasicDBObject> results = mongoOperations.aggregate(aggregation,
+	// 	// "orders", BasicDBObject.class)
+	// 	// .getMappedResults();
+
+	// 	// create the pipeline operations, first with the $match
+	// 	// DBObject match = new BasicDBObject("$match",
+	// 	// new BasicDBObject("_id", "620d3e6e41d00a35312038e3"));
+
+	// 	// // build the $lookup operations
+	// 	// DBObject lookupFields = new BasicDBObject("from", "pelicula");
+	// 	// lookupFields.put("localField", "idPelicula");
+	// 	// lookupFields.put("foreignField", "_id");
+	// 	// lookupFields.put("as", "Pelicula");
+	// 	// DBObject lookup = new BasicDBObject("$lookup", lookupFields);
+
+	// 	// // build the $project operations
+	// 	// DBObject projectFields = new BasicDBObject("Nombre", 1);
+	// 	// projectFields.put("Ciudad", 1);
+	// 	// projectFields.put("idPelicula", 1);
+	// 	// projectFields.put("Titulo", "$Pelicula.Titulo");
+	// 	// DBObject project = new BasicDBObject("$project", projectFields);
+
+	// 	// List<DBObject> pipeline = Arrays.asList(match, lookup, project);
+
+	// 	// this build of options is taken from the original method
+	// 	// aggregate(pipe) to have same behaviour
+	// 	// AggregationOptions options = AggregationOptions.builder()
+	// 	// .outputMode(AggregationOptions.OutputMode.INLINE)
+	// 	// .build();
+
+	// 	// try (Cursor cursor = princesa.aggregate(pipeline, options)) {
+	// 	// while (cursor.hasNext()) {
+	// 	// DBObject obj = cursor.next();
+	// 	// // ...
+	// 	// }
+	// 	// }
+	// 	// for (DBObject dbObject : pipeline) {
+	// 	// System.out.println(dbObject.get("_id"));
+	// 	// System.out.println(dbObject.get("Ciudad"));
+	// 	// }
+
+	// 	// LookupOperation lookupOperation = LookupOperation.newLookup()
+	// 	// .from("places")
+	// 	// .localField("address.location.place._id")
+	// 	// .foreignField("_id")
+	// 	// .as("address.location.place");
+
+	// 	// princesa.aggregate(Arrays.asList(
+	// 	// Aggregates.lookup("fromCollection", "localField", "foreignField",
+	// 	// "asOutputArrayField")))
+	// 	// .forEach(printBlock, callbackWhenFinished);
+
+	// 	// List<Bson> filters = new ArrayList<>();
+	// 	// Bson match = new Document("$match",
+	// 	// new Document("Princesa.idPelicula", true));
+
+	// 	// Bson lookup = new Document("$lookup",
+	// 	// new Document("from", "Pelicula")
+	// 	// .append("localField", "idPelicula")
+	// 	// .append("foreignField", "_id")
+	// 	// .append("as", "look_coll"));
+
+	// 	// filters.add(lookup);
+	// 	// filters.add(match);
+
+	// 	// AggregateIterable<Document> it =
+	// 	// database.getCollection("Princesa").aggregate(filters);
+
+	// 	// for (Document row : it) {
+	// 	// System.out.println(row.toString());
+	// 	// }
+
+	// 	// Document explanation = ((Object) princesa.aggregate(
+	// 	// Arrays.asList(
+	// 	// Aggregates.match(Filters.eq("categories", "bakery")),
+	// 	// Aggregates.group("$stars", Accumulators.sum("count", 1)))))
+	// 	// .explain(ExplainVerbosity.EXECUTION_STATS);
+	// 	// List<Document> stages = explanation.get("stages", List.class);
+	// 	// List<String> keys = Arrays.asList("queryPlanner", "winningPlan");
+	// 	// for (Document stage : stages) {
+	// 	// Document cursorStage = stage.get("$cursor", Document.class);
+	// 	// if (cursorStage != null) {
+	// 	// System.out.println(cursorStage.getEmbedded(keys, Document.class).toJson());
+	// 	// }
+	// 	// }
+
+	// 	// Aggregation agg = newAggregation(
+	// 	// unwind("address"),
+	// 	// unwind("address.location"),
+	// 	// lookupOperation);
+
+	// 	// AggregationResults<OutputDocument> aggResults = mongoTemplate.aggregate(
+	// 	// agg, PersonAddressDocument.class, OutputDocument.class);
+
+	// }
