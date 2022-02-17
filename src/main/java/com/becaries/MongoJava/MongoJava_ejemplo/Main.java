@@ -1,5 +1,6 @@
 package com.becaries.MongoJava.MongoJava_ejemplo;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,27 +14,19 @@ import com.becaries.MongoJava.modelos.Princesa;
 import com.becaries.MongoJava.modelos.Principe;
 import com.becaries.MongoJava.modelos.Villano;
 import com.mongodb.ConnectionString;
-import com.mongodb.ExplainVerbosity;
 import com.mongodb.MongoClientSettings;
-import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Accumulators;
-import com.mongodb.client.model.Aggregates;
-import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
 public class Main {
 
@@ -48,8 +41,6 @@ public class Main {
 	public static MongoCollection<Document> princesa;
 	public static MongoCollection<Document> principe;
 	public static MongoCollection<Document> director;
-	private static MongoTemplate mongoTemplate;
-	private static MongoDatabase database;
 
 	public static void main(String args[]) {
 
@@ -81,10 +72,7 @@ public class Main {
 		// MOSTRAR TABLA ANTES DE CUALQUIER OPERACION PARA QUE EL USUARIO PUEDA CAMBIAR
 		// LOS DATOS QUE NECESITA SIN SUBIR MUY ARRIBA.
 
-		boolean b = true;
-		while (b) {
-			menuPrincipal(sc, b);
-		}
+		menu(sc);
 
 		// eliminar pelicula
 		// eliminarPelicula("620d55f1d32ca8575431eff9");
@@ -154,155 +142,193 @@ public class Main {
 
 	}
 
-	private static void menuPrincipal(Scanner sc, Boolean b) {
-		System.out.println(" _____________________");
-		System.out.println("|                     |");
-		System.out.println("| 1. MOSTRAR DATOS    |");
-		System.out.println("| 2. GESTIONAR DATOS  |");
-		System.out.println("| 0. SALIR            |");
-		System.out.println(" _____________________");
+	private static void menu(Scanner sc) {
+		boolean b = true;
+		while (b) {
+			System.out.println(" _____________________");
+			System.out.println("|                     |");
+			System.out.println("| 1. MOSTRAR DATOS    |");
+			System.out.println("| 2. GESTIONAR DATOS  |");
+			System.out.println("| 0. SALIR            |");
+			System.out.println(" _____________________");
 
-		System.out.println("¿Qué quieres hacer?");
-		String opcion = sc.nextLine();
-		switch (opcion) {
-			case "1":
-				limpiarConsola();
-				boolean a = true;
-				while (a) {
-					System.out.println(" ___________________________________");
-					System.out.println("|                                   |");
-					System.out.println("| 1. Mostrar peliculas              |");
-					System.out.println("| 2. Mostrar princesas              |");
-					System.out.println("| 3. Mostrar directores             |");
-					System.out.println("| 4. Mostrar villanos               |");
-					System.out.println("| 5. Mostrar principes              |");
-					System.out.println("| 6. Grafico del genero de los      |");
-					System.out.println("|    directores                     |");
-					System.out.println("| 7. Ver trailer de una pelicula    |");
-					System.out.println("| 0.Atras                           |");
-					System.out.println(" ___________________________________");
-					System.out.println("¿Qué quieres hacer?");
-					String opcion1 = sc.nextLine();
-					switch (opcion1) {
-						case "1":
-							limpiarConsola();
-							imprimirTablaPeliculas();
-							volverAtras();
-							break;
-						case "2":
-							limpiarConsola();
-							imprimirTablaPrincesa();
-							volverAtras();
-							break;
-						case "3":
-							limpiarConsola();
-							imprimirTablaDirector();
-							volverAtras();
-							break;
-						case "4":
-							limpiarConsola();
-							imprimirTablavillanos();
-							volverAtras();
-							break;
-						case "5":
-							limpiarConsola();
-							imprimirTablaPrincipes();
-							volverAtras();
-							break;
-						case "6":
-							limpiarConsola();
-							totalOfActorsByGenre();
-							volverAtras();
-							break;
-						case "7":
-							limpiarConsola();
-							Map<Integer, Pelicula> c = leerListaPelisTrailer();
-							int peli = pregunta(sc);
-							procesoVerTrailer(c.get(peli).getTrailer());
-							btnAtras();
-							break;
-						case "0":
-							limpiarConsola();
-							a = false;
-							break;
+			System.out.println("¿Que quieres hacer?");
+			String opcion = sc.nextLine();
+			switch (opcion) {
+				case "1":
+					limpiarConsola();
+					boolean a = true;
+					while (a) {
+						System.out.println(" ___________________________________");
+						System.out.println("|                                   |");
+						System.out.println("| 1. Mostrar peliculas              |");
+						System.out.println("| 2. Mostrar princesas              |");
+						System.out.println("| 3. Mostrar directores             |");
+						System.out.println("| 4. Mostrar villanos               |");
+						System.out.println("| 5. Mostrar principes              |");
+						System.out.println("| 6. Grafico del genero de los      |");
+						System.out.println("|    directores                     |");
+						System.out.println("| 7. Ver trailer de una pelicula    |");
+						System.out.println("| 0.Atras                           |");
+						System.out.println(" ___________________________________");
+						System.out.println("¿Que quieres hacer?");
+						String opcion1 = sc.nextLine();
+						switch (opcion1) {
+							case "1":
+								limpiarConsola();
+								imprimirTablaPeliculas();
+								volverAtras();
+								break;
+							case "2":
+								limpiarConsola();
+								imprimirTablaPrincesa();
+								volverAtras();
+								break;
+							case "3":
+								limpiarConsola();
+								imprimirTablaDirector();
+								volverAtras();
+								break;
+							case "4":
+								limpiarConsola();
+								imprimirTablavillanos();
+								volverAtras();
+								break;
+							case "5":
+								limpiarConsola();
+								imprimirTablaPrincipes();
+								volverAtras();
+								break;
+							case "6":
+								limpiarConsola();
+								totalOfActorsByGenre();
+								volverAtras();
+								break;
+							case "7":
+								limpiarConsola();
+								Map<Integer, Pelicula> c = leerListaPelisTrailer();
+								int peli = pregunta(sc);
+								procesoVerTrailer(c.get(peli).getTrailer());
+								btnAtras();
+								break;
+							case "0":
+								limpiarConsola();
+								a = false;
+								break;
 
-						default:
-							break;
+							default:
+								break;
+						}
 					}
-				}
-				break;
-			case "2":
-				System.out.println(" _____________________________");
-				System.out.println("|                             |");
-				System.out.println("| 1. EDITAR DATOS             |");
-				System.out.println("| 2. BORRAR DATOS             |");
-				System.out.println("| 3. ACTUALIZAR DATOS         |");
-				System.out.println("| 4. INSERTAR DATOS           |");
-				System.out.println("| 0. Atras                    |");
-				System.out.println(" _____________________________");
+					break;
+				case "2":
+					limpiarConsola();
+					boolean a1 = true;
+					while (a1) {
+						System.out.println(" _____________________________");
+						System.out.println("|                             |");
+						System.out.println("| 1. EDITAR DATOS             |");
+						System.out.println("| 2. BORRAR DATOS             |");
+						System.out.println("| 3. ACTUALIZAR DATOS         |");
+						System.out.println("| 4. INSERTAR DATOS           |");
+						System.out.println("| 0. Atras                    |");
+						System.out.println(" _____________________________");
 
-				String opcion2 = sc.nextLine();
-				switch (opcion2) {
-					case "1":
-						System.out.println(" __________________________");
-						System.out.println("|                          |");
-						System.out.println("| 1. Editar peliculas      |");
-						System.out.println("| 2. Editar princesas      |");
-						System.out.println("| 3. Editar directores     |");
-						System.out.println("| 4. Editar villanos       |");
-						System.out.println("| 5. Editar principes      |");
-						System.out.println("| 0. Atras                 |");
-						System.out.println(" __________________________");
-						break;
-					case "2":
-						System.out.println(" __________________________");
-						System.out.println("|                          |");
-						System.out.println("| 1. Borrar peliculas      |");
-						System.out.println("| 2. Borrar princesas      |");
-						System.out.println("| 3. Borrar directores     |");
-						System.out.println("| 4. Borrar villanos       |");
-						System.out.println("| 5. Borrar principes      |");
-						System.out.println("| 0. Atras                 |");
-						System.out.println(" __________________________");
-						break;
-					case "3":
-						System.out.println(" __________________________");
-						System.out.println("|                          |");
-						System.out.println("| 1. Actualizar peliculas  |");
-						System.out.println("| 2. Actualizar princesas  |");
-						System.out.println("| 3. Actualizar directores |");
-						System.out.println("| 4. Actualizar villanos   |");
-						System.out.println("| 5. Actualizar principes  |");
-						System.out.println("| 0. Atras                 |");
-						System.out.println(" __________________________");
-						break;
-					case "4":
-						System.out.println(" __________________________");
-						System.out.println("|                          |");
-						System.out.println("| 1. Insertar peliculas    |");
-						System.out.println("| 2. Insertar princesas    |");
-						System.out.println("| 3. Insertar directores   |");
-						System.out.println("| 4. Insertar villanos     |");
-						System.out.println("| 5. Insertar principes    |");
-						System.out.println("| 0. Atras                 |");
-						System.out.println(" __________________________");
-						break;
-					case "0":
+						String opcion2 = sc.nextLine();
+						switch (opcion2) {
+							case "1":
+								System.out.println(" __________________________");
+								System.out.println("|                          |");
+								System.out.println("| 1. Editar peliculas      |");
+								System.out.println("| 2. Editar princesas      |");
+								System.out.println("| 3. Editar directores     |");
+								System.out.println("| 4. Editar villanos       |");
+								System.out.println("| 5. Editar principes      |");
+								System.out.println("| 0. Atras                 |");
+								System.out.println(" __________________________");
+								break;
+							case "2":
+								System.out.println(" __________________________");
+								System.out.println("|                          |");
+								System.out.println("| 1. Borrar peliculas      |");
+								System.out.println("| 2. Borrar princesas      |");
+								System.out.println("| 3. Borrar directores     |");
+								System.out.println("| 4. Borrar villanos       |");
+								System.out.println("| 5. Borrar principes      |");
+								System.out.println("| 0. Atras                 |");
+								System.out.println(" __________________________");
+								break;
+							case "3":
+								System.out.println(" __________________________");
+								System.out.println("|                          |");
+								System.out.println("| 1. Actualizar peliculas  |");
+								System.out.println("| 2. Actualizar princesas  |");
+								System.out.println("| 3. Actualizar directores |");
+								System.out.println("| 4. Actualizar villanos   |");
+								System.out.println("| 5. Actualizar principes  |");
+								System.out.println("| 0. Atras                 |");
+								System.out.println(" __________________________");
+								break;
+							case "4":
+								System.out.println(" __________________________");
+								System.out.println("|                          |");
+								System.out.println("| 1. Insertar peliculas    |");
+								System.out.println("| 2. Insertar princesas    |");
+								System.out.println("| 3. Insertar directores   |");
+								System.out.println("| 4. Insertar villanos     |");
+								System.out.println("| 5. Insertar principes    |");
+								System.out.println("| 0. Atras                 |");
+								System.out.println(" __________________________");
+								break;
+							case "0":
+								limpiarConsola();
+								a1 = false;
+								break;
 
-						break;
+							default:
+								break;
+						}
+					}
+					break;
+				case "0":
+					b = false;
+					System.out.println("                _\n" +
+							"                ,=\"` `\"\"=,       o Y\n" +
+							"               / ' ,==\"\"\"'=;    A   , __\n" +
+							"       ~      /.:    ,--'/=,)  o    \\`\\\\\"._     _,\n" +
+							"             |   .='/ <9(9.=\"   B   / _  |||;._//)\n" +
+							"            / .:' (J    ^\\ \\     o_/@ @  ///  |=(\n" +
+							"          .'    .' \\  '='/  '-.  ( (`__,     ,`\\|\n" +
+							"         / .'  /    \\`-;_ . '  \\  '.\\_/ |\\_.'   \n" +
+							"    ~   /      | ' /` _  \\  ::' )   `\"\"```\n" +
+							"       | , .'  ;  /`\\/ `\\ \\.::'/.-._///_\n" +
+							"       |/     '   \\_,\\__/\\ \\.-'.'----'`\n" +
+							"        \\|     '.   \\     \\   /`-,   ~\n" +
+							"          `\\ '.' _.-'\\    (`-`  .'\n" +
+							"            `-.-' _.-')__./,--'`\n" +
+							"         .--'`,-'`'\"\"`    ` \\\n" +
+							"        /`\"`-`  :'      ::'  |          ~\n" +
+							"       |  .:  .::'   ::  ::' /\n" +
+							"    ~  | .:' .-'__    .::  .'\n" +
+							"        \\   ;'\"`  `\"\"----'`\n" +
+							"         \\ .'\\\n" +
+							"          '.  `\\\n" +
+							"            ):' `-.            ~\n" +
+							"           / :..:' `-._\n" +
+							"          |  :' ,      `-,\n" +
+							"       ~  \\   .' `''----`\n" +
+							"           `.(");
 
-					default:
-						break;
-				}
+					break;
 
-				break;
-			case "0":
-				b = false;
-				break;
-
-			default:
-				break;
+				default:
+					break;
+			}
 		}
+	}
+
+	private static void menuPrincipal(Scanner sc, Boolean b) {
+
 	}
 
 	private static void volverAtras() {
@@ -409,7 +435,7 @@ public class Main {
 		List<List<String>> rowsListprincipe = new ArrayList<>();
 		for (Principe principe : principes) {
 			List<String> row = new ArrayList<>();
-			row.add(principe.getId());
+			row.add(principe.getNombre());
 			row.add(principe.getEdad());
 			row.add(principe.getCiudad());
 			row.add(principe.getVehiculo());
@@ -418,7 +444,11 @@ public class Main {
 			row.add(principe.getCreacion());
 			rowsListprincipe.add(row);
 		}
+		limpiarConsola();
+		System.out.println("**************************************************************** HISTORIAL de "
+				+ LocalDateTime.now() + " ****************************************************************");
 		System.out.println(generateTable(headersListprincipe, rowsListprincipe));
+		System.out.flush();
 
 		List<String> headersListprincipe1 = new ArrayList<>();
 		headersListprincipe1.add("Ip_address");
@@ -433,6 +463,7 @@ public class Main {
 			rowsListprincipe1.add(row);
 		}
 		System.out.println(generateTable(headersListprincipe1, rowsListprincipe1));
+		System.out.flush();
 	}
 
 	private static void imprimirTablaPrincesa() {
@@ -448,7 +479,7 @@ public class Main {
 		List<List<String>> rowsListprincesa = new ArrayList<>();
 		for (Princesa princesa : princesas) {
 			List<String> row = new ArrayList<>();
-			row.add(princesa.getId());
+			row.add(princesa.getNombre());
 			row.add(princesa.getEdad());
 			row.add(princesa.getCiudad());
 			row.add(princesa.getVehiculo());
@@ -457,7 +488,11 @@ public class Main {
 			row.add(princesa.getCreacion());
 			rowsListprincesa.add(row);
 		}
+		limpiarConsola();
+		System.out.println("**************************************************************** HISTORIAL de "
+				+ LocalDateTime.now() + " ****************************************************************");
 		System.out.println(generateTable(headersListprincesa, rowsListprincesa));
+		System.out.flush();
 
 		List<String> headersListprincesa1 = new ArrayList<>();
 		headersListprincesa1.add("Ip_address");
@@ -472,6 +507,7 @@ public class Main {
 			rowsListprincesa1.add(row);
 		}
 		System.out.println(generateTable(headersListprincesa1, rowsListprincesa1));
+		System.out.flush();
 	}
 
 	private static void imprimirTablaDirector() {
@@ -496,7 +532,11 @@ public class Main {
 			row.add(director.getIpMovil());
 			rowsListDirector.add(row);
 		}
+		limpiarConsola();
+		System.out.println("**************************************************************** HISTORIAL de "
+				+ LocalDateTime.now() + " ****************************************************************");
 		System.out.println(generateTable(headersListDirectores, rowsListDirector));
+		System.out.flush();
 
 		List<String> headersListDirectores1 = new ArrayList<>();
 		headersListDirectores1.add("Ip_address");
@@ -511,6 +551,7 @@ public class Main {
 			rowsListDirector1.add(row);
 		}
 		System.out.println(generateTable(headersListDirectores1, rowsListDirector1));
+		System.out.flush();
 
 	}
 
@@ -527,7 +568,7 @@ public class Main {
 		List<List<String>> rowsList = new ArrayList<>();
 		for (Villano villano : villanos) {
 			List<String> row = new ArrayList<>();
-			row.add(villano.getId());
+			row.add(villano.getNombre());
 			row.add(villano.getEdad());
 			row.add(villano.getCiudad());
 			row.add(villano.getVehiculo());
@@ -536,7 +577,11 @@ public class Main {
 			row.add(villano.getCreacion());
 			rowsList.add(row);
 		}
+		limpiarConsola();
+		System.out.println("**************************************************************** HISTORIAL de "
+				+ LocalDateTime.now() + " ****************************************************************");
 		System.out.println(generateTable(headersList, rowsList));
+		System.out.flush();
 
 		List<String> headersList1 = new ArrayList<>();
 		headersList1.add("Ip_address");
@@ -551,6 +596,7 @@ public class Main {
 			rowsListvillano1.add(row);
 		}
 		System.out.println(generateTable(headersList1, rowsListvillano1));
+		System.out.flush();
 	}
 
 	private static void btnAtras() {
@@ -563,17 +609,17 @@ public class Main {
 	private static void imprimirTablaPeliculas() {
 		ArrayList<Pelicula> pelis = leerPelicula();
 		List<String> headersList = new ArrayList<>();
-		headersList.add("Id");
+
 		headersList.add("Titulo");
 		headersList.add("Titulo Original");
 		List<List<String>> rowsList = new ArrayList<>();
 		for (Pelicula peli : pelis) {
 			List<String> row = new ArrayList<>();
-			row.add(peli.getId());
 			row.add(peli.getTitulo());
 			row.add(peli.getTituloOriginal());
 			rowsList.add(row);
 		}
+		limpiarConsola();
 		System.out.println(generateTable(headersList, rowsList));
 
 		List<String> headersList1 = new ArrayList<>();
@@ -628,8 +674,10 @@ public class Main {
 	public static String generateTable(List<String> headersList, List<List<String>> rowsList,
 			int... overRiddenHeaderHeight) {
 		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.setLength(0);
 		int rowHeight = overRiddenHeaderHeight.length > 0 ? overRiddenHeaderHeight[0] : 1;
 		Map<Integer, Integer> columnMaxWidthMapping = getMaximumWidhtofTable(headersList, rowsList);
+		columnMaxWidthMapping = getMaximumWidhtofTable(headersList, rowsList);
 		stringBuilder.append(NEW_LINE);
 		stringBuilder.append(NEW_LINE);
 		createRowLine(stringBuilder, headersList.size(), columnMaxWidthMapping);
@@ -651,7 +699,15 @@ public class Main {
 		createRowLine(stringBuilder, headersList.size(), columnMaxWidthMapping);
 		stringBuilder.append(NEW_LINE);
 		stringBuilder.append(NEW_LINE);
-		return stringBuilder.toString();
+		String pasar = stringBuilder.toString();
+
+		headersList.clear();
+		rowsList.clear();
+		stringBuilder.setLength(0);
+		overRiddenHeaderHeight = null;
+		columnMaxWidthMapping.clear();
+
+		return pasar;
 	}
 
 	private static void fillSpace(StringBuilder stringBuilder, int length) {
@@ -675,6 +731,7 @@ public class Main {
 
 	private static Map<Integer, Integer> getMaximumWidhtofTable(List<String> headersList, List<List<String>> rowsList) {
 		Map<Integer, Integer> columnMaxWidthMapping = new HashMap<>();
+		columnMaxWidthMapping.clear();
 		for (int columnIndex = 0; columnIndex < headersList.size(); columnIndex++) {
 			columnMaxWidthMapping.put(columnIndex, 0);
 		}
