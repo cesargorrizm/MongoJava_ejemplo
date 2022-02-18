@@ -308,7 +308,8 @@ public class Main {
 											String sn = sc.nextLine();
 											if (sn.toLowerCase().equals("s")) {
 												eliminarPeliculaMenuCascada(sc);
-												System.out.println("Se elimino exitosamente la pelicula y sus personajes!!");
+												System.out.println(
+														"Se elimino exitosamente la pelicula y sus personajes!!");
 											} else if (sn.toLowerCase().equals("n")) {
 												eliminarPeliculaMenu(sc);
 												System.out.println("Se elimino exitosamente la pelicula!!");
@@ -465,6 +466,7 @@ public class Main {
 			System.out.println("como es una opcion extraña se cancelara");
 		}
 	}
+
 	private static void eliminarPeliculaMenuCascada(Scanner sc) {
 		ArrayList<Pelicula> pelis = leerPelicula();
 		for (int i = 0; i < pelis.size(); i++) {
