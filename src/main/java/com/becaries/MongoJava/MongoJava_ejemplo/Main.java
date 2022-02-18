@@ -201,7 +201,7 @@ public class Main {
 								break;
 							case "6":
 								limpiarConsola();
-								totalOfActorsByGenre();
+								directoresPorGenero();
 								volverAtras();
 								break;
 							case "7":
@@ -517,7 +517,7 @@ public class Main {
 		}
 	}
 
-	public static void totalOfActorsByGenre() {
+	public static void directoresPorGenero() {
 
 		MongoDatabase database = conexionMongoDB();
 		// Select the "actor" collection
