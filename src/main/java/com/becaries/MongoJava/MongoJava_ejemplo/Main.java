@@ -242,11 +242,11 @@ public class Main {
 								while (a2) {
 									System.out.println(" __________________________");
 									System.out.println("|                          |");
-									System.out.println("| 1. Editar peliculas      |");
-									System.out.println("| 2. Editar princesas      |");
-									System.out.println("| 3. Editar directores     |");
-									System.out.println("| 4. Editar villanos       |");
-									System.out.println("| 5. Editar principes      |");
+									System.out.println("| 1. Editar pelicula       |");
+									System.out.println("| 2. Editar princesa       |");
+									System.out.println("| 3. Editar directore      |");
+									System.out.println("| 4. Editar villano        |");
+									System.out.println("| 5. Editar principe       |");
 									System.out.println("| 0. Atras                 |");
 									System.out.println(" __________________________");
 									System.out.println("¿Que quieres hacer?");
@@ -293,11 +293,11 @@ public class Main {
 								while (a3) {
 									System.out.println(" __________________________");
 									System.out.println("|                          |");
-									System.out.println("| 1. Borrar peliculas      |");
-									System.out.println("| 2. Borrar princesas      |");
-									System.out.println("| 3. Borrar directores     |");
-									System.out.println("| 4. Borrar villanos       |");
-									System.out.println("| 5. Borrar principes      |");
+									System.out.println("| 1. Borrar pelicula       |");
+									System.out.println("| 2. Borrar princesa       |");
+									System.out.println("| 3. Borrar directore      |");
+									System.out.println("| 4. Borrar villano        |");
+									System.out.println("| 5. Borrar principe       |");
 									System.out.println("| 0. Atras                 |");
 									System.out.println(" __________________________");
 									System.out.println("¿Que quieres hacer?");
@@ -344,11 +344,11 @@ public class Main {
 								while (a4) {
 									System.out.println(" __________________________");
 									System.out.println("|                          |");
-									System.out.println("| 1. Actualizar peliculas  |");
-									System.out.println("| 2. Actualizar princesas  |");
-									System.out.println("| 3. Actualizar directores |");
-									System.out.println("| 4. Actualizar villanos   |");
-									System.out.println("| 5. Actualizar principes  |");
+									System.out.println("| 1. Actualizar pelicula   |");
+									System.out.println("| 2. Actualizar princesa   |");
+									System.out.println("| 3. Actualizar directore  |");
+									System.out.println("| 4. Actualizar villano    |");
+									System.out.println("| 5. Actualizar principe   |");
 									System.out.println("| 0. Atras                 |");
 									System.out.println(" __________________________");
 									System.out.println("¿Que quieres hacer?");
@@ -395,11 +395,11 @@ public class Main {
 								while (a5) {
 									System.out.println(" __________________________");
 									System.out.println("|                          |");
-									System.out.println("| 1. Insertar peliculas    |");
-									System.out.println("| 2. Insertar princesas    |");
-									System.out.println("| 3. Insertar directores   |");
-									System.out.println("| 4. Insertar villanos     |");
-									System.out.println("| 5. Insertar principes    |");
+									System.out.println("| 1. Insertar pelicula     |");
+									System.out.println("| 2. Insertar princesa     |");
+									System.out.println("| 3. Insertar directore    |");
+									System.out.println("| 4. Insertar villano      |");
+									System.out.println("| 5. Insertar principe     |");
 									System.out.println("| 0. Atras                 |");
 									System.out.println(" __________________________");
 									System.out.println("¿Que quieres hacer?");
