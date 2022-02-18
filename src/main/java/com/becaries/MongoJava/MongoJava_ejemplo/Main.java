@@ -229,8 +229,7 @@ public class Main {
 						System.out.println("|                             |");
 						System.out.println("| 1. EDITAR DATOS             |");
 						System.out.println("| 2. BORRAR DATOS             |");
-						System.out.println("| 3. ACTUALIZAR DATOS         |");
-						System.out.println("| 4. INSERTAR DATOS           |");
+						System.out.println("| 3. INSERTAR DATOS           |");
 						System.out.println("| 0. Atras                    |");
 						System.out.println(" _____________________________");
 						System.out.println("¿Que quieres hacer?");
@@ -244,7 +243,7 @@ public class Main {
 									System.out.println("|                          |");
 									System.out.println("| 1. Editar pelicula       |");
 									System.out.println("| 2. Editar princesa       |");
-									System.out.println("| 3. Editar directore      |");
+									System.out.println("| 3. Editar director       |");
 									System.out.println("| 4. Editar villano        |");
 									System.out.println("| 5. Editar principe       |");
 									System.out.println("| 0. Atras                 |");
@@ -295,7 +294,7 @@ public class Main {
 									System.out.println("|                          |");
 									System.out.println("| 1. Borrar pelicula       |");
 									System.out.println("| 2. Borrar princesa       |");
-									System.out.println("| 3. Borrar directore      |");
+									System.out.println("| 3. Borrar director       |");
 									System.out.println("| 4. Borrar villano        |");
 									System.out.println("| 5. Borrar principe       |");
 									System.out.println("| 0. Atras                 |");
@@ -305,27 +304,37 @@ public class Main {
 									switch (opcion1) {
 										case "1":
 											limpiarConsola();
-
+											System.out.println("¿Quieres que se realice el borrado en cascada? s/n");
+											String sn = sc.nextLine();
+											if (sn.toLowerCase().equals("s")) {
+												eliminarPeliculaMenuCascada(sc);
+												System.out.println("Se elimino exitosamente la pelicula y sus personajes!!");
+											} else if (sn.toLowerCase().equals("n")) {
+												eliminarPeliculaMenu(sc);
+												System.out.println("Se elimino exitosamente la pelicula!!");
+											} else {
+												System.out.println("como es una opcion extraña se cancelara");
+											}
 											volverAtras();
 											break;
 										case "2":
 											limpiarConsola();
-
+											eliminarPrincesaMenu(sc);
 											volverAtras();
 											break;
 										case "3":
 											limpiarConsola();
-
+											eliminarDirectorMenu(sc);
 											volverAtras();
 											break;
 										case "4":
 											limpiarConsola();
-
+											eliminarVillanosMenu(sc);
 											volverAtras();
 											break;
 										case "5":
 											limpiarConsola();
-
+											eliminarPrincipeMenu(sc);
 											volverAtras();
 											break;
 										case "0":
@@ -340,64 +349,13 @@ public class Main {
 								break;
 							case "3":
 								limpiarConsola();
-								boolean a4 = true;
-								while (a4) {
-									System.out.println(" __________________________");
-									System.out.println("|                          |");
-									System.out.println("| 1. Actualizar pelicula   |");
-									System.out.println("| 2. Actualizar princesa   |");
-									System.out.println("| 3. Actualizar directore  |");
-									System.out.println("| 4. Actualizar villano    |");
-									System.out.println("| 5. Actualizar principe   |");
-									System.out.println("| 0. Atras                 |");
-									System.out.println(" __________________________");
-									System.out.println("¿Que quieres hacer?");
-									String opcion3 = sc.nextLine();
-									switch (opcion3) {
-										case "1":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "2":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "3":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "4":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "5":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "0":
-											limpiarConsola();
-											a4 = false;
-											break;
-
-										default:
-											break;
-									}
-								}
-								break;
-							case "4":
-								limpiarConsola();
 								boolean a5 = true;
 								while (a5) {
 									System.out.println(" __________________________");
 									System.out.println("|                          |");
 									System.out.println("| 1. Insertar pelicula     |");
 									System.out.println("| 2. Insertar princesa     |");
-									System.out.println("| 3. Insertar directore    |");
+									System.out.println("| 3. Insertar director     |");
 									System.out.println("| 4. Insertar villano      |");
 									System.out.println("| 5. Insertar principe     |");
 									System.out.println("| 0. Atras                 |");
@@ -485,6 +443,129 @@ public class Main {
 					System.out.println("Has introducido una opcion que no existe :(");
 					break;
 			}
+		}
+	}
+
+	private static void eliminarPeliculaMenu(Scanner sc) {
+		ArrayList<Pelicula> pelis = leerPelicula();
+		for (int i = 0; i < pelis.size(); i++) {
+			System.out.println(i + ". " + pelis.get(i).getTitulo());
+		}
+		System.out.print("¿Cual quieres eliminar?: ");
+		String peliIndice = sc.nextLine();
+		String iDpeliEliminar = pelis.get(Integer.parseInt(peliIndice)).getId();
+		System.out.println("¿Esta seguro/a? s/n");
+		String sn = sc.nextLine();
+		if (sn.toLowerCase().equals("s")) {
+			eliminarPelicula(iDpeliEliminar);
+			System.out.println("Se elimino exitosamente!!");
+		} else if (sn.toLowerCase().equals("n")) {
+			System.out.println("Se cancelo exitosamente!!");
+		} else {
+			System.out.println("como es una opcion extraña se cancelara");
+		}
+	}
+	private static void eliminarPeliculaMenuCascada(Scanner sc) {
+		ArrayList<Pelicula> pelis = leerPelicula();
+		for (int i = 0; i < pelis.size(); i++) {
+			System.out.println(i + ". " + pelis.get(i).getTitulo());
+		}
+		System.out.print("¿Cual quieres eliminar?: ");
+		String peliIndice = sc.nextLine();
+		String iDpeliEliminar = pelis.get(Integer.parseInt(peliIndice)).getId();
+		System.out.println("¿Esta seguro/a? s/n");
+		String sn = sc.nextLine();
+		if (sn.toLowerCase().equals("s")) {
+			eliminarPelicula(iDpeliEliminar);
+			eliminarDirectorCascada(iDpeliEliminar);
+			eliminarPrincesaCascada(iDpeliEliminar);
+			eliminarPrincipeCascada(iDpeliEliminar);
+			eliminarVillanoCascada(iDpeliEliminar);
+			System.out.println("Se elimino exitosamente!!");
+		} else if (sn.toLowerCase().equals("n")) {
+			System.out.println("Se cancelo exitosamente!!");
+		} else {
+			System.out.println("como es una opcion extraña se cancelara");
+		}
+	}
+
+	private static void eliminarPrincesaMenu(Scanner sc) {
+		ArrayList<Princesa> pelis = leerPrincesa();
+		for (int i = 0; i < pelis.size(); i++) {
+			System.out.println(i + ". " + pelis.get(i).getNombre() + pelis.get(i).getCreacion());
+		}
+		System.out.print("¿Cual quieres eliminar?: ");
+		String indice = sc.nextLine();
+		String iDeliminar = pelis.get(Integer.parseInt(indice)).getId();
+		System.out.println("¿Esta seguro/a? s/n");
+		String sn = sc.nextLine();
+		if (sn.toLowerCase().equals("s")) {
+			eliminarPrincesa(iDeliminar);
+			System.out.println("Se elimino exitosamente!!");
+		} else if (sn.toLowerCase().equals("n")) {
+			System.out.println("Se cancelo exitosamente!!");
+		} else {
+			System.out.println("como es una opcion extraña se cancelara");
+		}
+	}
+
+	private static void eliminarPrincipeMenu(Scanner sc) {
+		ArrayList<Principe> pelis = leerPrincipes();
+		for (int i = 0; i < pelis.size(); i++) {
+			System.out.println(i + ". " + pelis.get(i).getNombre() + pelis.get(i).getCreacion());
+		}
+		System.out.print("¿Cual quieres eliminar?: ");
+		String indice = sc.nextLine();
+		String iDeliminar = pelis.get(Integer.parseInt(indice)).getId();
+		System.out.println("¿Esta seguro/a? s/n");
+		String sn = sc.nextLine();
+		if (sn.toLowerCase().equals("s")) {
+			eliminarPrincipe(iDeliminar);
+			System.out.println("Se elimino exitosamente!!");
+		} else if (sn.toLowerCase().equals("n")) {
+			System.out.println("Se cancelo exitosamente!!");
+		} else {
+			System.out.println("como es una opcion extraña se cancelara");
+		}
+	}
+
+	private static void eliminarDirectorMenu(Scanner sc) {
+		ArrayList<Director> pelis = leerDirector();
+		for (int i = 0; i < pelis.size(); i++) {
+			System.out.println(i + ". " + pelis.get(i).getDirector());
+		}
+		System.out.print("¿Cual quieres eliminar?: ");
+		String indice = sc.nextLine();
+		String iDeliminar = pelis.get(Integer.parseInt(indice)).getId();
+		System.out.println("¿Esta seguro/a? s/n");
+		String sn = sc.nextLine();
+		if (sn.toLowerCase().equals("s")) {
+			eliminarDirector(iDeliminar);
+			System.out.println("Se elimino exitosamente!!");
+		} else if (sn.toLowerCase().equals("n")) {
+			System.out.println("Se cancelo exitosamente!!");
+		} else {
+			System.out.println("como es una opcion extraña se cancelara");
+		}
+	}
+
+	private static void eliminarVillanosMenu(Scanner sc) {
+		ArrayList<Villano> pelis = leerVillanos();
+		for (int i = 0; i < pelis.size(); i++) {
+			System.out.println(i + ". " + pelis.get(i).getNombre() + pelis.get(i).getCreacion());
+		}
+		System.out.print("¿Cual quieres eliminar?: ");
+		String indice = sc.nextLine();
+		String iDeliminar = pelis.get(Integer.parseInt(indice)).getId();
+		System.out.println("¿Esta seguro/a? s/n");
+		String sn = sc.nextLine();
+		if (sn.toLowerCase().equals("s")) {
+			eliminarVillano(iDeliminar);
+			System.out.println("Se elimino exitosamente!!");
+		} else if (sn.toLowerCase().equals("n")) {
+			System.out.println("Se cancelo exitosamente!!");
+		} else {
+			System.out.println("como es una opcion extraña se cancelara");
 		}
 	}
 
@@ -1171,8 +1252,18 @@ public class Main {
 		director.deleteMany(findDocument);
 	}
 
-	public static void elimnarPrincipe(String id) {
+	public static void eliminarDirectorCascada(String id) {
+		Document findDocument = new Document("idPelicula", new ObjectId(id));
+		director.deleteMany(findDocument);
+	}
+
+	public static void eliminarPrincipe(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
+		principe.deleteMany(findDocument);
+	}
+
+	public static void eliminarPrincipeCascada(String id) {
+		Document findDocument = new Document("idPelicula", new ObjectId(id));
 		principe.deleteMany(findDocument);
 	}
 
@@ -1181,8 +1272,18 @@ public class Main {
 		princesa.deleteMany(findDocument);
 	}
 
+	public static void eliminarPrincesaCascada(String id) {
+		Document findDocument = new Document("idPelicula", new ObjectId(id));
+		princesa.deleteMany(findDocument);
+	}
+
 	public static void eliminarVillano(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
+		villano.deleteMany(findDocument);
+	}
+
+	public static void eliminarVillanoCascada(String id) {
+		Document findDocument = new Document("idPelicula", new ObjectId(id));
 		villano.deleteMany(findDocument);
 	}
 
