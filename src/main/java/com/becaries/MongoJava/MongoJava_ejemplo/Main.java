@@ -233,52 +233,212 @@ public class Main {
 						System.out.println("| 4. INSERTAR DATOS           |");
 						System.out.println("| 0. Atras                    |");
 						System.out.println(" _____________________________");
-
+						System.out.println("¿Que quieres hacer?");
 						String opcion2 = sc.nextLine();
 						switch (opcion2) {
 							case "1":
-								System.out.println(" __________________________");
-								System.out.println("|                          |");
-								System.out.println("| 1. Editar peliculas      |");
-								System.out.println("| 2. Editar princesas      |");
-								System.out.println("| 3. Editar directores     |");
-								System.out.println("| 4. Editar villanos       |");
-								System.out.println("| 5. Editar principes      |");
-								System.out.println("| 0. Atras                 |");
-								System.out.println(" __________________________");
+								limpiarConsola();
+								boolean a2 = true;
+								while (a2) {
+									System.out.println(" __________________________");
+									System.out.println("|                          |");
+									System.out.println("| 1. Editar peliculas      |");
+									System.out.println("| 2. Editar princesas      |");
+									System.out.println("| 3. Editar directores     |");
+									System.out.println("| 4. Editar villanos       |");
+									System.out.println("| 5. Editar principes      |");
+									System.out.println("| 0. Atras                 |");
+									System.out.println(" __________________________");
+									System.out.println("¿Que quieres hacer?");
+									String opcion1 = sc.nextLine();
+									switch (opcion1) {
+										case "1":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "2":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "3":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "4":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "5":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "0":
+											limpiarConsola();
+											a2 = false;
+											break;
+
+										default:
+											break;
+									}
+								}
 								break;
 							case "2":
-								System.out.println(" __________________________");
-								System.out.println("|                          |");
-								System.out.println("| 1. Borrar peliculas      |");
-								System.out.println("| 2. Borrar princesas      |");
-								System.out.println("| 3. Borrar directores     |");
-								System.out.println("| 4. Borrar villanos       |");
-								System.out.println("| 5. Borrar principes      |");
-								System.out.println("| 0. Atras                 |");
-								System.out.println(" __________________________");
+								limpiarConsola();
+								boolean a3 = true;
+								while (a3) {
+									System.out.println(" __________________________");
+									System.out.println("|                          |");
+									System.out.println("| 1. Borrar peliculas      |");
+									System.out.println("| 2. Borrar princesas      |");
+									System.out.println("| 3. Borrar directores     |");
+									System.out.println("| 4. Borrar villanos       |");
+									System.out.println("| 5. Borrar principes      |");
+									System.out.println("| 0. Atras                 |");
+									System.out.println(" __________________________");
+									System.out.println("¿Que quieres hacer?");
+									String opcion1 = sc.nextLine();
+									switch (opcion1) {
+										case "1":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "2":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "3":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "4":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "5":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "0":
+											limpiarConsola();
+											a3 = false;
+											break;
+
+										default:
+											break;
+									}
+								}
 								break;
 							case "3":
-								System.out.println(" __________________________");
-								System.out.println("|                          |");
-								System.out.println("| 1. Actualizar peliculas  |");
-								System.out.println("| 2. Actualizar princesas  |");
-								System.out.println("| 3. Actualizar directores |");
-								System.out.println("| 4. Actualizar villanos   |");
-								System.out.println("| 5. Actualizar principes  |");
-								System.out.println("| 0. Atras                 |");
-								System.out.println(" __________________________");
+								limpiarConsola();
+								boolean a4 = true;
+								while (a4) {
+									System.out.println(" __________________________");
+									System.out.println("|                          |");
+									System.out.println("| 1. Actualizar peliculas  |");
+									System.out.println("| 2. Actualizar princesas  |");
+									System.out.println("| 3. Actualizar directores |");
+									System.out.println("| 4. Actualizar villanos   |");
+									System.out.println("| 5. Actualizar principes  |");
+									System.out.println("| 0. Atras                 |");
+									System.out.println(" __________________________");
+									System.out.println("¿Que quieres hacer?");
+									String opcion3 = sc.nextLine();
+									switch (opcion3) {
+										case "1":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "2":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "3":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "4":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "5":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "0":
+											limpiarConsola();
+											a4 = false;
+											break;
+
+										default:
+											break;
+									}
+								}
 								break;
 							case "4":
-								System.out.println(" __________________________");
-								System.out.println("|                          |");
-								System.out.println("| 1. Insertar peliculas    |");
-								System.out.println("| 2. Insertar princesas    |");
-								System.out.println("| 3. Insertar directores   |");
-								System.out.println("| 4. Insertar villanos     |");
-								System.out.println("| 5. Insertar principes    |");
-								System.out.println("| 0. Atras                 |");
-								System.out.println(" __________________________");
+								limpiarConsola();
+								boolean a5 = true;
+								while (a5) {
+									System.out.println(" __________________________");
+									System.out.println("|                          |");
+									System.out.println("| 1. Insertar peliculas    |");
+									System.out.println("| 2. Insertar princesas    |");
+									System.out.println("| 3. Insertar directores   |");
+									System.out.println("| 4. Insertar villanos     |");
+									System.out.println("| 5. Insertar principes    |");
+									System.out.println("| 0. Atras                 |");
+									System.out.println(" __________________________");
+									System.out.println("¿Que quieres hacer?");
+									String opcion4 = sc.nextLine();
+									switch (opcion4) {
+										case "1":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "2":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "3":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "4":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "5":
+											limpiarConsola();
+
+											volverAtras();
+											break;
+										case "0":
+											limpiarConsola();
+											a5 = false;
+											break;
+
+										default:
+											break;
+									}
+								}
 								break;
 							case "0":
 								limpiarConsola();
@@ -322,13 +482,10 @@ public class Main {
 					break;
 
 				default:
+					System.out.println("Has introducido una opcion que no existe :(");
 					break;
 			}
 		}
-	}
-
-	private static void menuPrincipal(Scanner sc, Boolean b) {
-
 	}
 
 	private static void volverAtras() {
