@@ -1,4 +1,4 @@
-package com.becaries.MongoJava.MongoJava_ejemplo;
+package com.becaries.MongoJava.Clases;
 
 import java.util.ArrayList;
 

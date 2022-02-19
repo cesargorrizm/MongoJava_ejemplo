@@ -1,4 +1,4 @@
-package com.becaries.MongoJava.MongoJava_ejemplo;
+package com.becaries.MongoJava.Clases;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,9 +12,11 @@ import com.becaries.MongoJava.modelos.Director;
 import com.becaries.MongoJava.modelos.Pelicula;
 import com.becaries.MongoJava.modelos.Princesa;
 import com.becaries.MongoJava.modelos.Principe;
+import com.becaries.MongoJava.modelos.Usuario;
 import com.becaries.MongoJava.modelos.Villano;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -30,17 +32,23 @@ import org.jfree.data.general.DefaultPieDataset;
 
 public class Main {
 
+	/**
+	 *
+	 */
 	private static int PADDING_SIZE = 2;
 	private static String NEW_LINE = "\n";
 	private static String TABLE_JOINT_SYMBOL = "+";
 	private static String TABLE_V_SPLIT_SYMBOL = "|";
 	private static String TABLE_H_SPLIT_SYMBOL = "-";
 
+	public static boolean BOOLEAN = false;
 	public static MongoCollection<Document> pelicula = null;
 	public static MongoCollection<Document> villano;
 	public static MongoCollection<Document> princesa;
 	public static MongoCollection<Document> principe;
 	public static MongoCollection<Document> director;
+	public static MongoCollection<Document> usuario;
+	public static ecriptar en = new ecriptar();
 
 	public static void main(String args[]) {
 
@@ -56,99 +64,105 @@ public class Main {
 		// PASO 4: obtener las colecciones para poder trabajar con ellas
 		obtenerColecciones(database);
 
-		// PASO 5: DESARROLO DE LA APLICACIÓN
+		// PASO 5: DESARROLLO DE LA APLICACIÓN
+
+		// COMIENZA LA APLICACION
 		// Mostrar un menu diferente por cada opcion
-		// Pedir nombre antes de inciar caulquier cosa
+		// Pedir nombre y contra antes de inciar caulquier cosa
 		// Poder hacerlo personalizable (Que el usuario eliga el color del texto o el
 		// color de los detalles(dos opciones para facilitar))
-
-		limpiarConsola();
-		System.out.print("Hola personnita digame su nombre: ");
-		Scanner sc = new Scanner(System.in);
-		String opcion0 = sc.nextLine();
-		System.out.println();
-		System.out.println("Bienvenido " + opcion0 + ", disfruta mucho el tour! ");
+		inicioSesion();
 
 		// MOSTRAR TABLA ANTES DE CUALQUIER OPERACION PARA QUE EL USUARIO PUEDA CAMBIAR
 		// LOS DATOS QUE NECESITA SIN SUBIR MUY ARRIBA.
 
-		menu(sc);
-
-		// eliminar pelicula
-		// eliminarPelicula("620d55f1d32ca8575431eff9");
-
-		// System.out.println("*******************************************************INSERTAR*******************************************************************");
 		// Pelicula pelicula =new Pelicula("null", "titulo", "titulo", "ano",
 		// "duron", "p", "guon", "mua", "foafia", "reo", "s",
 		// "trer");
 		// editarPelicula("620d5799a4e64776d3058b13", pelicula);
 
-		// database.getCollection("Pelicula").aggregate([
-		// { "$lookup": {
-		// "from": "Villano",
-		// "foreignField": "idB",
-		// "localField": "idA",
-		// "as": "alias_tablaB"
-		// }}
-		// ]);
-
+		// ************************************** INSERTAR
+		// ****************************************
 		// insertarPrincesa(princesa);
 		// Pelicula pelicula =new Pelicula("null", "titulo", "tituloOriginal", "ano",
 		// "duracion", "pais", "guion", "musica", "fotografia", "reparto", "sinopsis",
 		// "trailer");
-
 		// insertarPelicula(pelicula);
+
 		// Principe principe = new Principe("id", "nombre", "edad", "ciudad",
 		// "vehiculo", "email", "genero", "creacion", "ipAddress", "universidad",
 		// "titulacion");
 		// insertarPrincipe(principe);
+
 		// Villano villano = new Villano("id", "nombre", "edad", "ciudad", "vehiculo",
 		// "email", "genero", "creacion", "ipAddress", "universidad", "titulacion");
 		// insertarVillano(villano);
+
 		// Director director = new Director("id", "nombre", 2, "ciudad", "vehiculo",
 		// "email", "genero", "creacion", "ipAddress", "universidad", "titulacion");
 		// insertarDirector(director);
 
-		// leerPelicula();
-		// Pelicula pelicula = new Pelicula("PruebaInsert", "Muerte y destruccion",
-		// "2001",
-		// "Es una prueba que estamos haciendo de vs", "1", "100", "1", "12554232");
-		// insertarPelicula(pelicula);
-
-		// eliminarPelicula("PruebaInsert");
 		// mongoClient.close();
 
 		// editarPelicula("6204183901e6db753d0bd2f7", "Blancanieves");
 
-		// ArrayList<Princesa> f = leerPrincesa();
-		// for (Princesa princesa : f) {
-		// System.out.println(princesa);
-		// }
-
-		// ArrayList<Pelicula> pelis = leerPelicula();
-		// List<String> headersList = new ArrayList<>();
-		// headersList.add("Id");
-		// headersList.add("Titulo");
-		// headersList.add("Titulo Original");
-		// List<List<String>> rowsList = new ArrayList<>();
-		// for (Pelicula peli : pelis) {
-		// List<String> row = new ArrayList<>();
-		// row.add(peli.getId());
-		// row.add(peli.getTitulo());
-		// row.add(peli.getTituloOriginal());
-		// rowsList.add(row);
-		// }
-		// System.out.println(generateTable(headersList, rowsList));
-
 	}
 
-	private static void menu(Scanner sc) {
+	private static void inicioSesion() {
+		boolean salir = true;
+		int i = 0;
+		while (salir) {
+			if (BOOLEAN) {
+				limpiarConsola();
+				System.out.println("¡Se ha cerrado sesion!");
+				BOOLEAN = false;
+			}
+			System.out.println("¡BIENVENIDO A PELNEY!");
+			System.out.print("Indica tu usuario: ");
+			Scanner sc = new Scanner(System.in);
+			String nom = sc.nextLine();
+
+			System.out.print("Escribe tu contraseña: ");
+			String contra = sc.nextLine();
+
+			Document findDocument = new Document("Usuario", nom);
+			MongoCursor<Document> us = usuario.find(findDocument).iterator();
+			String dato1 = "";
+			String dato2 = "";
+			while (us.hasNext()) {
+				Document p = us.next();
+				dato1 = p.getString("Password");
+				dato2 = p.getString("Rol");
+			}
+			if (dato1.equals(en.ecnode(contra))) {
+
+				if (dato2.equals("admin")) {
+					limpiarConsola();
+					System.out.println("Bienvenido/a " + nom + "! ");
+					menu(sc);
+				} else {
+					limpiarConsola();
+					System.out.println("Bienvenido/a " + nom + "! ");
+					menuUser(sc);
+				}
+			} else {
+				limpiarConsola();
+				System.out.println("Datos incorrectos");
+				i++;
+				if (i == 3) {
+					System.out.println("Has sobrepasado los limites don/doña!!\nVete a la kgada!!");
+					salir = false;
+				}
+			}
+		}
+	}
+
+	private static void menuUser(Scanner sc) {
 		boolean b = true;
 		while (b) {
 			System.out.println(" _____________________");
 			System.out.println("|                     |");
 			System.out.println("| 1. MOSTRAR DATOS    |");
-			System.out.println("| 2. GESTIONAR DATOS  |");
 			System.out.println("| 0. SALIR            |");
 			System.out.println(" _____________________");
 
@@ -169,6 +183,7 @@ public class Main {
 						System.out.println("| 6. Grafico del genero de los      |");
 						System.out.println("|    directores                     |");
 						System.out.println("| 7. Ver trailer de una pelicula    |");
+						System.out.println("| 8. Ver sinopsis de una pelicula   |");
 						System.out.println("| 0.Atras                           |");
 						System.out.println(" ___________________________________");
 						System.out.println("¿Que quieres hacer?");
@@ -211,12 +226,143 @@ public class Main {
 								procesoVerTrailer(c.get(peli).getTrailer());
 								btnAtras();
 								break;
+							case "8":
+								limpiarConsola();
+								leerSinopsis(sc);
+								volverAtras();
+								break;
 							case "0":
 								limpiarConsola();
 								a = false;
 								break;
 
 							default:
+								System.out.println("Has introducido una opcion que no existe :(");
+								break;
+						}
+					}
+					break;
+				case "0":
+					b = false;
+					System.out.println("                _\n" +
+							"                ,=\"` `\"\"=,       o Y\n" +
+							"               / ' ,==\"\"\"'=;    A   , __\n" +
+							"       ~      /.:    ,--'/=,)  o    \\`\\\\\"._     _,\n" +
+							"             |   .='/ <9(9.=\"   B   / _  |||;._//)\n" +
+							"            / .:' (J    ^\\ \\     o_/@ @  ///  |=(\n" +
+							"          .'    .' \\  '='/  '-.  ( (`__,     ,`\\|\n" +
+							"         / .'  /    \\`-;_ . '  \\  '.\\_/ |\\_.'   \n" +
+							"    ~   /      | ' /` _  \\  ::' )   `\"\"```\n" +
+							"       | , .'  ;  /`\\/ `\\ \\.::'/.-._///_\n" +
+							"       |/     '   \\_,\\__/\\ \\.-'.'----'`\n" +
+							"        \\|     '.   \\     \\   /`-,   ~\n" +
+							"          `\\ '.' _.-'\\    (`-`  .'\n" +
+							"            `-.-' _.-')__./,--'`\n" +
+							"         .--'`,-'`'\"\"`    ` \\\n" +
+							"        /`\"`-`  :'      ::'  |          ~\n" +
+							"       |  .:  .::'   ::  ::' /\n" +
+							"    ~  | .:' .-'__    .::  .'\n" +
+							"        \\   ;'\"`  `\"\"----'`\n" +
+							"         \\ .'\\\n" +
+							"          '.  `\\\n" +
+							"            ):' `-.            ~\n" +
+							"           / :..:' `-._\n" +
+							"          |  :' ,      `-,\n" +
+							"       ~  \\   .' `''----`\n" +
+							"           `.(");
+					BOOLEAN = true;
+
+					break;
+
+				default:
+					System.out.println("Has introducido una opcion que no existe :(");
+					break;
+			}
+		}
+	}
+
+	private static void menu(Scanner sc) {
+		boolean b = true;
+		while (b) {
+			System.out.println(" _____________________");
+			System.out.println("|                     |");
+			System.out.println("| 1. MOSTRAR DATOS    |");
+			System.out.println("| 2. GESTIONAR DATOS  |");
+			System.out.println("| 0. SALIR            |");
+			System.out.println(" _____________________");
+
+			System.out.println("¿Que quieres hacer?");
+			String opcion = sc.nextLine();
+			switch (opcion) {
+				case "1":
+					limpiarConsola();
+					boolean a = true;
+					while (a) {
+						System.out.println(" ___________________________________");
+						System.out.println("|                                   |");
+						System.out.println("| 1. Mostrar peliculas              |");
+						System.out.println("| 2. Mostrar princesas              |");
+						System.out.println("| 3. Mostrar directores             |");
+						System.out.println("| 4. Mostrar villanos               |");
+						System.out.println("| 5. Mostrar principes              |");
+						System.out.println("| 6. Grafico del genero de los      |");
+						System.out.println("|    directores                     |");
+						System.out.println("| 7. Ver trailer de una pelicula    |");
+						System.out.println("| 8. Ver sinopsis de una pelicula   |");
+						System.out.println("| 0.Atras                           |");
+						System.out.println(" ___________________________________");
+						System.out.println("¿Que quieres hacer?");
+						String opcion1 = sc.nextLine();
+						switch (opcion1) {
+							case "1":
+								limpiarConsola();
+								imprimirTablaPeliculas();
+								volverAtras();
+								break;
+							case "2":
+								limpiarConsola();
+								imprimirTablaPrincesa();
+								volverAtras();
+								break;
+							case "3":
+								limpiarConsola();
+								imprimirTablaDirector();
+								volverAtras();
+								break;
+							case "4":
+								limpiarConsola();
+								imprimirTablavillanos();
+								volverAtras();
+								break;
+							case "5":
+								limpiarConsola();
+								imprimirTablaPrincipes();
+								volverAtras();
+								break;
+							case "6":
+								limpiarConsola();
+								directoresPorGenero();
+								volverAtras();
+								break;
+							case "7":
+								limpiarConsola();
+								Map<Integer, Pelicula> c = leerListaPelisTrailer();
+								int peli = pregunta(sc);
+								procesoVerTrailer(c.get(peli).getTrailer());
+								btnAtras();
+								break;
+							case "8":
+								limpiarConsola();
+								leerSinopsis(sc);
+								volverAtras();
+								break;
+							case "0":
+								limpiarConsola();
+								a = false;
+								break;
+
+							default:
+								System.out.println("Has introducido una opcion que no existe :(");
 								break;
 						}
 					}
@@ -230,6 +376,7 @@ public class Main {
 						System.out.println("| 1. EDITAR DATOS             |");
 						System.out.println("| 2. BORRAR DATOS             |");
 						System.out.println("| 3. INSERTAR DATOS           |");
+						System.out.println("| 4. NUEVO USUARIO            |");
 						System.out.println("| 0. Atras                    |");
 						System.out.println(" _____________________________");
 						System.out.println("¿Que quieres hacer?");
@@ -282,6 +429,7 @@ public class Main {
 											break;
 
 										default:
+											System.out.println("Has introducido una opcion que no existe :(");
 											break;
 									}
 								}
@@ -344,6 +492,7 @@ public class Main {
 											break;
 
 										default:
+											System.out.println("Has introducido una opcion que no existe :(");
 											break;
 									}
 								}
@@ -395,9 +544,15 @@ public class Main {
 											break;
 
 										default:
+											System.out.println("Has introducido una opcion que no existe :(");
 											break;
 									}
 								}
+								break;
+							case "4":
+								limpiarConsola();
+								registro(sc);
+								btnAtras();
 								break;
 							case "0":
 								limpiarConsola();
@@ -437,7 +592,7 @@ public class Main {
 							"          |  :' ,      `-,\n" +
 							"       ~  \\   .' `''----`\n" +
 							"           `.(");
-
+					BOOLEAN = true;
 					break;
 
 				default:
@@ -445,6 +600,41 @@ public class Main {
 					break;
 			}
 		}
+	}
+
+	private static void registro(Scanner sc) {
+		System.out.println("Introduce el nuevo user");
+		String nom = sc.nextLine();
+		System.out.println("Introduce una contraseña");
+		String pwd = sc.nextLine();
+		System.out.println("¿Cual es su rol?");
+		System.out.println("1. Administrador");
+		System.out.println("2. Usuario");
+		String opcionRol = sc.nextLine();
+		String rol = "";
+		if (opcionRol.equals("1")) {
+			rol = "admin";
+		} else if (opcionRol.equals("2")) {
+			rol = "usuario";
+		} else {
+			System.out.println("No existe... Se le adjudicara uauario.");
+			rol = "usuario";
+		}
+		Usuario usr = new Usuario(nom, en.ecnode(pwd), rol);
+		insertarUsuario(usr);
+		System.out.println("Usuario insertado!!");
+	}
+
+	private static void leerSinopsis(Scanner sc) {
+		ArrayList<Pelicula> pelis = leerPelicula();
+		for (int i = 0; i < pelis.size(); i++) {
+			System.out.println(i + ". " + pelis.get(i).getTitulo());
+		}
+		System.out.println("¿Cual es la sinopsis que mas te interesa?");
+		String leeropcion = sc.nextLine();
+		String sinopsis = pelis.get(Integer.parseInt(leeropcion)).getSinopsis();
+		String sinopsisPeli = pelis.get(Integer.parseInt(leeropcion)).getTitulo();
+		System.out.println(sinopsisPeli + ": " + sinopsis);
 	}
 
 	private static void eliminarPeliculaMenu(Scanner sc) {
@@ -638,6 +828,7 @@ public class Main {
 		villano = database.getCollection("Villano");
 		principe = database.getCollection("Principe");
 		director = database.getCollection("Director");
+		usuario = database.getCollection("Usuario");
 	}
 
 	private static void crearColecciones(MongoDatabase database) {
@@ -646,6 +837,7 @@ public class Main {
 		database.createCollection("Villano");
 		database.createCollection("Pelicula");
 		database.createCollection("Director");
+		database.createCollection("Usuario");
 	}
 
 	private static MongoDatabase conexionMongoDB() {
@@ -1211,6 +1403,14 @@ public class Main {
 				.append("ip_address", p.getIpAddress())
 				.append("Universidad", p.getUniversidad())
 				.append("Titulacion", p.getTitulacion()));
+	}
+
+	public static void insertarUsuario(Usuario usr) {
+		usuario.insertOne(new Document()
+				.append("_id", new ObjectId())
+				.append("Usuario", usr.getUser())
+				.append("Password", usr.getPasswword())
+				.append("Rol", usr.getRol()));
 	}
 
 	public static void insertarPrincipe(Principe p) {
