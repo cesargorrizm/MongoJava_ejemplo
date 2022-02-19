@@ -16,7 +16,6 @@ import com.becaries.MongoJava.modelos.Usuario;
 import com.becaries.MongoJava.modelos.Villano;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -32,9 +31,6 @@ import org.jfree.data.general.DefaultPieDataset;
 
 public class Main {
 
-	/**
-	 *
-	 */
 	private static int PADDING_SIZE = 2;
 	private static String NEW_LINE = "\n";
 	private static String TABLE_JOINT_SYMBOL = "+";
@@ -170,108 +166,115 @@ public class Main {
 			String opcion = sc.nextLine();
 			switch (opcion) {
 				case "1":
-					limpiarConsola();
-					boolean a = true;
-					while (a) {
-						System.out.println(" ___________________________________");
-						System.out.println("|                                   |");
-						System.out.println("| 1. Mostrar peliculas              |");
-						System.out.println("| 2. Mostrar princesas              |");
-						System.out.println("| 3. Mostrar directores             |");
-						System.out.println("| 4. Mostrar villanos               |");
-						System.out.println("| 5. Mostrar principes              |");
-						System.out.println("| 6. Grafico del genero de los      |");
-						System.out.println("|    directores                     |");
-						System.out.println("| 7. Ver trailer de una pelicula    |");
-						System.out.println("| 8. Ver sinopsis de una pelicula   |");
-						System.out.println("| 0.Atras                           |");
-						System.out.println(" ___________________________________");
-						System.out.println("¿Que quieres hacer?");
-						String opcion1 = sc.nextLine();
-						switch (opcion1) {
-							case "1":
-								limpiarConsola();
-								imprimirTablaPeliculas();
-								volverAtras();
-								break;
-							case "2":
-								limpiarConsola();
-								imprimirTablaPrincesa();
-								volverAtras();
-								break;
-							case "3":
-								limpiarConsola();
-								imprimirTablaDirector();
-								volverAtras();
-								break;
-							case "4":
-								limpiarConsola();
-								imprimirTablavillanos();
-								volverAtras();
-								break;
-							case "5":
-								limpiarConsola();
-								imprimirTablaPrincipes();
-								volverAtras();
-								break;
-							case "6":
-								limpiarConsola();
-								directoresPorGenero();
-								volverAtras();
-								break;
-							case "7":
-								limpiarConsola();
-								Map<Integer, Pelicula> c = leerListaPelisTrailer();
-								int peli = pregunta(sc);
-								procesoVerTrailer(c.get(peli).getTrailer());
-								btnAtras();
-								break;
-							case "8":
-								limpiarConsola();
-								leerSinopsis(sc);
-								volverAtras();
-								break;
-							case "0":
-								limpiarConsola();
-								a = false;
-								break;
-
-							default:
-								System.out.println("Has introducido una opcion que no existe :(");
-								break;
-						}
-					}
+					mostrarDatosMenu(sc);
 					break;
 				case "0":
 					b = false;
-					System.out.println("                _\n" +
-							"                ,=\"` `\"\"=,       o Y\n" +
-							"               / ' ,==\"\"\"'=;    A   , __\n" +
-							"       ~      /.:    ,--'/=,)  o    \\`\\\\\"._     _,\n" +
-							"             |   .='/ <9(9.=\"   B   / _  |||;._//)\n" +
-							"            / .:' (J    ^\\ \\     o_/@ @  ///  |=(\n" +
-							"          .'    .' \\  '='/  '-.  ( (`__,     ,`\\|\n" +
-							"         / .'  /    \\`-;_ . '  \\  '.\\_/ |\\_.'   \n" +
-							"    ~   /      | ' /` _  \\  ::' )   `\"\"```\n" +
-							"       | , .'  ;  /`\\/ `\\ \\.::'/.-._///_\n" +
-							"       |/     '   \\_,\\__/\\ \\.-'.'----'`\n" +
-							"        \\|     '.   \\     \\   /`-,   ~\n" +
-							"          `\\ '.' _.-'\\    (`-`  .'\n" +
-							"            `-.-' _.-')__./,--'`\n" +
-							"         .--'`,-'`'\"\"`    ` \\\n" +
-							"        /`\"`-`  :'      ::'  |          ~\n" +
-							"       |  .:  .::'   ::  ::' /\n" +
-							"    ~  | .:' .-'__    .::  .'\n" +
-							"        \\   ;'\"`  `\"\"----'`\n" +
-							"         \\ .'\\\n" +
-							"          '.  `\\\n" +
-							"            ):' `-.            ~\n" +
-							"           / :..:' `-._\n" +
-							"          |  :' ,      `-,\n" +
-							"       ~  \\   .' `''----`\n" +
-							"           `.(");
-					BOOLEAN = true;
+					adiosAriel();
+					break;
 
+				default:
+					System.out.println("Has introducido una opcion que no existe :(");
+					break;
+			}
+		}
+	}
+
+	private static void adiosAriel() {
+		System.out.println("                _\n" +
+				"                ,=\"` `\"\"=,       o Y\n" +
+				"               / ' ,==\"\"\"'=;    A   , __\n" +
+				"       ~      /.:    ,--'/=,)  o    \\`\\\\\"._     _,\n" +
+				"             |   .='/ <9(9.=\"   B   / _  |||;._//)\n" +
+				"            / .:' (J    ^\\ \\     o_/@ @  ///  |=(\n" +
+				"          .'    .' \\  '='/  '-.  ( (`__,     ,`\\|\n" +
+				"         / .'  /    \\`-;_ . '  \\  '.\\_/ |\\_.'   \n" +
+				"    ~   /      | ' /` _  \\  ::' )   `\"\"```\n" +
+				"       | , .'  ;  /`\\/ `\\ \\.::'/.-._///_\n" +
+				"       |/     '   \\_,\\__/\\ \\.-'.'----'`\n" +
+				"        \\|     '.   \\     \\   /`-,   ~\n" +
+				"          `\\ '.' _.-'\\    (`-`  .'\n" +
+				"            `-.-' _.-')__./,--'`\n" +
+				"         .--'`,-'`'\"\"`    ` \\\n" +
+				"        /`\"`-`  :'      ::'  |          ~\n" +
+				"       |  .:  .::'   ::  ::' /\n" +
+				"    ~  | .:' .-'__    .::  .'\n" +
+				"        \\   ;'\"`  `\"\"----'`\n" +
+				"         \\ .'\\\n" +
+				"          '.  `\\\n" +
+				"            ):' `-.            ~\n" +
+				"           / :..:' `-._\n" +
+				"          |  :' ,      `-,\n" +
+				"       ~  \\   .' `''----`\n" +
+				"           `.(");
+		BOOLEAN = true;
+	}
+
+	private static void mostrarDatosMenu(Scanner sc) {
+		limpiarConsola();
+		boolean a = true;
+		while (a) {
+			System.out.println(" ___________________________________");
+			System.out.println("|                                   |");
+			System.out.println("| 1. Mostrar peliculas              |");
+			System.out.println("| 2. Mostrar princesas              |");
+			System.out.println("| 3. Mostrar directores             |");
+			System.out.println("| 4. Mostrar villanos               |");
+			System.out.println("| 5. Mostrar principes              |");
+			System.out.println("| 6. Grafico del genero de los      |");
+			System.out.println("|    directores                     |");
+			System.out.println("| 7. Ver trailer de una pelicula    |");
+			System.out.println("| 8. Ver sinopsis de una pelicula   |");
+			System.out.println("| 0.Atras                           |");
+			System.out.println(" ___________________________________");
+			System.out.println("¿Que quieres hacer?");
+			String opcion1 = sc.nextLine();
+			switch (opcion1) {
+				case "1":
+					limpiarConsola();
+					imprimirTablaPeliculas();
+					volverAtras();
+					break;
+				case "2":
+					limpiarConsola();
+					imprimirTablaPrincesa();
+					volverAtras();
+					break;
+				case "3":
+					limpiarConsola();
+					imprimirTablaDirector();
+					volverAtras();
+					break;
+				case "4":
+					limpiarConsola();
+					imprimirTablavillanos();
+					volverAtras();
+					break;
+				case "5":
+					limpiarConsola();
+					imprimirTablaPrincipes();
+					volverAtras();
+					break;
+				case "6":
+					limpiarConsola();
+					directoresPorGenero();
+					volverAtras();
+					break;
+				case "7":
+					limpiarConsola();
+					Map<Integer, Pelicula> c = leerListaPelisTrailer();
+					int peli = pregunta(sc);
+					procesoVerTrailer(c.get(peli).getTrailer());
+					btnAtras();
+					break;
+				case "8":
+					limpiarConsola();
+					leerSinopsis(sc);
+					volverAtras();
+					break;
+				case "0":
+					limpiarConsola();
+					a = false;
 					break;
 
 				default:
@@ -295,304 +298,224 @@ public class Main {
 			String opcion = sc.nextLine();
 			switch (opcion) {
 				case "1":
-					limpiarConsola();
-					boolean a = true;
-					while (a) {
-						System.out.println(" ___________________________________");
-						System.out.println("|                                   |");
-						System.out.println("| 1. Mostrar peliculas              |");
-						System.out.println("| 2. Mostrar princesas              |");
-						System.out.println("| 3. Mostrar directores             |");
-						System.out.println("| 4. Mostrar villanos               |");
-						System.out.println("| 5. Mostrar principes              |");
-						System.out.println("| 6. Grafico del genero de los      |");
-						System.out.println("|    directores                     |");
-						System.out.println("| 7. Ver trailer de una pelicula    |");
-						System.out.println("| 8. Ver sinopsis de una pelicula   |");
-						System.out.println("| 0.Atras                           |");
-						System.out.println(" ___________________________________");
-						System.out.println("¿Que quieres hacer?");
-						String opcion1 = sc.nextLine();
-						switch (opcion1) {
-							case "1":
-								limpiarConsola();
-								imprimirTablaPeliculas();
-								volverAtras();
-								break;
-							case "2":
-								limpiarConsola();
-								imprimirTablaPrincesa();
-								volverAtras();
-								break;
-							case "3":
-								limpiarConsola();
-								imprimirTablaDirector();
-								volverAtras();
-								break;
-							case "4":
-								limpiarConsola();
-								imprimirTablavillanos();
-								volverAtras();
-								break;
-							case "5":
-								limpiarConsola();
-								imprimirTablaPrincipes();
-								volverAtras();
-								break;
-							case "6":
-								limpiarConsola();
-								directoresPorGenero();
-								volverAtras();
-								break;
-							case "7":
-								limpiarConsola();
-								Map<Integer, Pelicula> c = leerListaPelisTrailer();
-								int peli = pregunta(sc);
-								procesoVerTrailer(c.get(peli).getTrailer());
-								btnAtras();
-								break;
-							case "8":
-								limpiarConsola();
-								leerSinopsis(sc);
-								volverAtras();
-								break;
-							case "0":
-								limpiarConsola();
-								a = false;
-								break;
-
-							default:
-								System.out.println("Has introducido una opcion que no existe :(");
-								break;
-						}
-					}
+					mostrarDatosMenu(sc);
 					break;
 				case "2":
-					limpiarConsola();
-					boolean a1 = true;
-					while (a1) {
-						System.out.println(" _____________________________");
-						System.out.println("|                             |");
-						System.out.println("| 1. EDITAR DATOS             |");
-						System.out.println("| 2. BORRAR DATOS             |");
-						System.out.println("| 3. INSERTAR DATOS           |");
-						System.out.println("| 4. NUEVO USUARIO            |");
-						System.out.println("| 0. Atras                    |");
-						System.out.println(" _____________________________");
-						System.out.println("¿Que quieres hacer?");
-						String opcion2 = sc.nextLine();
-						switch (opcion2) {
-							case "1":
-								limpiarConsola();
-								boolean a2 = true;
-								while (a2) {
-									System.out.println(" __________________________");
-									System.out.println("|                          |");
-									System.out.println("| 1. Editar pelicula       |");
-									System.out.println("| 2. Editar princesa       |");
-									System.out.println("| 3. Editar director       |");
-									System.out.println("| 4. Editar villano        |");
-									System.out.println("| 5. Editar principe       |");
-									System.out.println("| 0. Atras                 |");
-									System.out.println(" __________________________");
-									System.out.println("¿Que quieres hacer?");
-									String opcion1 = sc.nextLine();
-									switch (opcion1) {
-										case "1":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "2":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "3":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "4":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "5":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "0":
-											limpiarConsola();
-											a2 = false;
-											break;
-
-										default:
-											System.out.println("Has introducido una opcion que no existe :(");
-											break;
-									}
-								}
-								break;
-							case "2":
-								limpiarConsola();
-								boolean a3 = true;
-								while (a3) {
-									System.out.println(" __________________________");
-									System.out.println("|                          |");
-									System.out.println("| 1. Borrar pelicula       |");
-									System.out.println("| 2. Borrar princesa       |");
-									System.out.println("| 3. Borrar director       |");
-									System.out.println("| 4. Borrar villano        |");
-									System.out.println("| 5. Borrar principe       |");
-									System.out.println("| 0. Atras                 |");
-									System.out.println(" __________________________");
-									System.out.println("¿Que quieres hacer?");
-									String opcion1 = sc.nextLine();
-									switch (opcion1) {
-										case "1":
-											limpiarConsola();
-											System.out.println("¿Quieres que se realice el borrado en cascada? s/n");
-											String sn = sc.nextLine();
-											if (sn.toLowerCase().equals("s")) {
-												eliminarPeliculaMenuCascada(sc);
-												System.out.println(
-														"Se elimino exitosamente la pelicula y sus personajes!!");
-											} else if (sn.toLowerCase().equals("n")) {
-												eliminarPeliculaMenu(sc);
-												System.out.println("Se elimino exitosamente la pelicula!!");
-											} else {
-												System.out.println("como es una opcion extraña se cancelara");
-											}
-											volverAtras();
-											break;
-										case "2":
-											limpiarConsola();
-											eliminarPrincesaMenu(sc);
-											volverAtras();
-											break;
-										case "3":
-											limpiarConsola();
-											eliminarDirectorMenu(sc);
-											volverAtras();
-											break;
-										case "4":
-											limpiarConsola();
-											eliminarVillanosMenu(sc);
-											volverAtras();
-											break;
-										case "5":
-											limpiarConsola();
-											eliminarPrincipeMenu(sc);
-											volverAtras();
-											break;
-										case "0":
-											limpiarConsola();
-											a3 = false;
-											break;
-
-										default:
-											System.out.println("Has introducido una opcion que no existe :(");
-											break;
-									}
-								}
-								break;
-							case "3":
-								limpiarConsola();
-								boolean a5 = true;
-								while (a5) {
-									System.out.println(" __________________________");
-									System.out.println("|                          |");
-									System.out.println("| 1. Insertar pelicula     |");
-									System.out.println("| 2. Insertar princesa     |");
-									System.out.println("| 3. Insertar director     |");
-									System.out.println("| 4. Insertar villano      |");
-									System.out.println("| 5. Insertar principe     |");
-									System.out.println("| 0. Atras                 |");
-									System.out.println(" __________________________");
-									System.out.println("¿Que quieres hacer?");
-									String opcion4 = sc.nextLine();
-									switch (opcion4) {
-										case "1":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "2":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "3":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "4":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "5":
-											limpiarConsola();
-
-											volverAtras();
-											break;
-										case "0":
-											limpiarConsola();
-											a5 = false;
-											break;
-
-										default:
-											System.out.println("Has introducido una opcion que no existe :(");
-											break;
-									}
-								}
-								break;
-							case "4":
-								limpiarConsola();
-								registro(sc);
-								btnAtras();
-								break;
-							case "0":
-								limpiarConsola();
-								a1 = false;
-								break;
-
-							default:
-								break;
-						}
-					}
+					gestionarDatosMenu(sc);
 					break;
 				case "0":
 					b = false;
-					System.out.println("                _\n" +
-							"                ,=\"` `\"\"=,       o Y\n" +
-							"               / ' ,==\"\"\"'=;    A   , __\n" +
-							"       ~      /.:    ,--'/=,)  o    \\`\\\\\"._     _,\n" +
-							"             |   .='/ <9(9.=\"   B   / _  |||;._//)\n" +
-							"            / .:' (J    ^\\ \\     o_/@ @  ///  |=(\n" +
-							"          .'    .' \\  '='/  '-.  ( (`__,     ,`\\|\n" +
-							"         / .'  /    \\`-;_ . '  \\  '.\\_/ |\\_.'   \n" +
-							"    ~   /      | ' /` _  \\  ::' )   `\"\"```\n" +
-							"       | , .'  ;  /`\\/ `\\ \\.::'/.-._///_\n" +
-							"       |/     '   \\_,\\__/\\ \\.-'.'----'`\n" +
-							"        \\|     '.   \\     \\   /`-,   ~\n" +
-							"          `\\ '.' _.-'\\    (`-`  .'\n" +
-							"            `-.-' _.-')__./,--'`\n" +
-							"         .--'`,-'`'\"\"`    ` \\\n" +
-							"        /`\"`-`  :'      ::'  |          ~\n" +
-							"       |  .:  .::'   ::  ::' /\n" +
-							"    ~  | .:' .-'__    .::  .'\n" +
-							"        \\   ;'\"`  `\"\"----'`\n" +
-							"         \\ .'\\\n" +
-							"          '.  `\\\n" +
-							"            ):' `-.            ~\n" +
-							"           / :..:' `-._\n" +
-							"          |  :' ,      `-,\n" +
-							"       ~  \\   .' `''----`\n" +
-							"           `.(");
-					BOOLEAN = true;
+					adiosAriel();
+					break;
+
+				default:
+					System.out.println("Has introducido una opcion que no existe :(");
+					break;
+			}
+		}
+	}
+
+	private static void gestionarDatosMenu(Scanner sc) {
+		limpiarConsola();
+		boolean a1 = true;
+		while (a1) {
+			System.out.println(" _____________________________");
+			System.out.println("|                             |");
+			System.out.println("| 1. EDITAR DATOS             |");
+			System.out.println("| 2. BORRAR DATOS             |");
+			System.out.println("| 3. INSERTAR DATOS           |");
+			System.out.println("| 4. NUEVO USUARIO            |");
+			System.out.println("| 0. Atras                    |");
+			System.out.println(" _____________________________");
+			System.out.println("¿Que quieres hacer?");
+			String opcion2 = sc.nextLine();
+			switch (opcion2) {
+				case "1":
+					editarOpciones(sc);
+					break;
+				case "2":
+					borrarOpciones(sc);
+					break;
+				case "3":
+					insertarOpciones(sc);
+					break;
+				case "4":
+					limpiarConsola();
+					registro(sc);
+					btnAtras();
+					break;
+				case "0":
+					limpiarConsola();
+					a1 = false;
+					break;
+
+				default:
+					break;
+			}
+		}
+	}
+
+	private static void insertarOpciones(Scanner sc) {
+		limpiarConsola();
+		boolean a5 = true;
+		while (a5) {
+			System.out.println(" __________________________");
+			System.out.println("|                          |");
+			System.out.println("| 1. Insertar pelicula     |");
+			System.out.println("| 2. Insertar princesa     |");
+			System.out.println("| 3. Insertar director     |");
+			System.out.println("| 4. Insertar villano      |");
+			System.out.println("| 5. Insertar principe     |");
+			System.out.println("| 0. Atras                 |");
+			System.out.println(" __________________________");
+			System.out.println("¿Que quieres hacer?");
+			String opcion4 = sc.nextLine();
+			switch (opcion4) {
+				case "1":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "2":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "3":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "4":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "5":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "0":
+					limpiarConsola();
+					a5 = false;
+					break;
+
+				default:
+					System.out.println("Has introducido una opcion que no existe :(");
+					break;
+			}
+		}
+	}
+
+	private static void borrarOpciones(Scanner sc) {
+		limpiarConsola();
+		boolean a3 = true;
+		while (a3) {
+			System.out.println(" __________________________");
+			System.out.println("|                          |");
+			System.out.println("| 1. Borrar pelicula       |");
+			System.out.println("| 2. Borrar princesa       |");
+			System.out.println("| 3. Borrar director       |");
+			System.out.println("| 4. Borrar villano        |");
+			System.out.println("| 5. Borrar principe       |");
+			System.out.println("| 0. Atras                 |");
+			System.out.println(" __________________________");
+			System.out.println("¿Que quieres hacer?");
+			String opcion1 = sc.nextLine();
+			switch (opcion1) {
+				case "1":
+					limpiarConsola();
+					System.out.println("¿Quieres que se realice el borrado en cascada? s/n");
+					String sn = sc.nextLine();
+					if (sn.toLowerCase().equals("s")) {
+						eliminarPeliculaMenuCascada(sc);
+						System.out.println(
+								"Se elimino exitosamente la pelicula y sus personajes!!");
+					} else if (sn.toLowerCase().equals("n")) {
+						eliminarPeliculaMenu(sc);
+						System.out.println("Se elimino exitosamente la pelicula!!");
+					} else {
+						System.out.println("como es una opcion extraña se cancelara");
+					}
+					volverAtras();
+					break;
+				case "2":
+					limpiarConsola();
+					eliminarPrincesaMenu(sc);
+					volverAtras();
+					break;
+				case "3":
+					limpiarConsola();
+					eliminarDirectorMenu(sc);
+					volverAtras();
+					break;
+				case "4":
+					limpiarConsola();
+					eliminarVillanosMenu(sc);
+					volverAtras();
+					break;
+				case "5":
+					limpiarConsola();
+					eliminarPrincipeMenu(sc);
+					volverAtras();
+					break;
+				case "0":
+					limpiarConsola();
+					a3 = false;
+					break;
+
+				default:
+					System.out.println("Has introducido una opcion que no existe :(");
+					break;
+			}
+		}
+	}
+
+	private static void editarOpciones(Scanner sc) {
+		limpiarConsola();
+		boolean a2 = true;
+		while (a2) {
+			System.out.println(" __________________________");
+			System.out.println("|                          |");
+			System.out.println("| 1. Editar pelicula       |");
+			System.out.println("| 2. Editar princesa       |");
+			System.out.println("| 3. Editar director       |");
+			System.out.println("| 4. Editar villano        |");
+			System.out.println("| 5. Editar principe       |");
+			System.out.println("| 0. Atras                 |");
+			System.out.println(" __________________________");
+			System.out.println("¿Que quieres hacer?");
+			String opcion1 = sc.nextLine();
+			switch (opcion1) {
+				case "1":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "2":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "3":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "4":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "5":
+					limpiarConsola();
+
+					volverAtras();
+					break;
+				case "0":
+					limpiarConsola();
+					a2 = false;
 					break;
 
 				default:
