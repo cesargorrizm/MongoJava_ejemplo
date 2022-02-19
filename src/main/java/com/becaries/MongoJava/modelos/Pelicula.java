@@ -1,5 +1,6 @@
 package com.becaries.MongoJava.modelos;
 
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -160,6 +161,7 @@ public class Pelicula {
                 + ", id=" + id + ", musica=" + musica + ", pais=" + pais + ", reparto=" + reparto + ", sinopsis="
                 + sinopsis + ", titulo=" + titulo + ", tituloOriginal=" + tituloOriginal + ", trailer=" + trailer + "]";
     }
+
     
 
 }

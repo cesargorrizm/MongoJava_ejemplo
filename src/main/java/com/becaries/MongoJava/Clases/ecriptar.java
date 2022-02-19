@@ -8,11 +8,10 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.binary.Base64;
 
-
 public class ecriptar {
-    String secretKey = "pr@//oyectoDeD@{{iselo~~De##Inte´ñ-´-.`+``+.´-.+´ñ-+`32_·$445324·2rf&&&&aces||M?¿?¿?¿uyM@aloEnSegurid?¿?¿?¨´¿a-´-´.+.-d";
+    public static String secretKey = "pr@//oyectoDeD@{{iselo~~De##Inte´ñ-´-.`+``+.´-.+´ñ-+`32_·$445324·2rf&&&&aces||M?¿?¿?¿uyM@aloEnSegurid?¿?¿?¨´¿a-´-´.+.-d";
 
-    public String ecnode(String cadena) {
+    public static String ecnode(String cadena) {
         String encriptacion = "";
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
