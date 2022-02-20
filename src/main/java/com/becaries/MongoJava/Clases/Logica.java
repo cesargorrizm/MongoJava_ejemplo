@@ -29,27 +29,34 @@ public class Logica {
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_RED = "\033[1;91m";
 	public static String ANSI_TEMA = "";
+	public static String ANSI_TEMA1 = "";
+	public static String ANSI_TEMA2 = "";
+	public static String ANSI_TEMA3 = "";
+	public static String ANSI_TEMA4 = "";
+	public static String ANSI_TEMA5 = "";
 
 	public static void inicioSesion() {
 
+		ANSI_TEMA = "\033[1;94m";
+		ANSI_TEMA1 = "\u001B[35m";
+		ANSI_TEMA2 = "\u001b[36;1m";
+		ANSI_TEMA3 = "\u001b[32m";
+		ANSI_TEMA4 = "\u001b[33;1m";
+		ANSI_TEMA5 = "\u001b[35;1m";
 		System.out.println(" _________________________");
 		System.out.println("|                         |");
 		System.out.println("|      ELECCION TEMA      |");
 		System.out.println(" _________________________");
-		System.out.println("");
-		System.out.println("Antes de empezar, ¿que color prefieres?");
-		ANSI_TEMA = "\033[1;94m";
-		System.out.println(ANSI_TEMA + "1. azul" + ANSI_RESET);
-		ANSI_TEMA = "\u001B[35m";
-		System.out.println(ANSI_TEMA + "2. morado" + ANSI_RESET);
-		ANSI_TEMA = "\u001b[36;1m";
-		System.out.println(ANSI_TEMA + "3. cian" + ANSI_RESET);
-		ANSI_TEMA = "\u001b[32m";
-		System.out.println(ANSI_TEMA + "4. verde" + ANSI_RESET);
-		ANSI_TEMA = "\u001b[33;1m";
-		System.out.println(ANSI_TEMA + "5. amarillo" + ANSI_RESET);
-		ANSI_TEMA = "\u001b[35;1m";
-		System.out.println(ANSI_TEMA + "6. rosa" + ANSI_RESET);
+		System.out.println(" __________________________");
+		System.out.println("|                          |");
+		System.out.println(
+				"| " + ANSI_TEMA + "1. Azul   " + ANSI_RESET + "|" + ANSI_TEMA3 + "  4. Verde" + ANSI_RESET + "    |");
+		System.out.println(
+				"| " + ANSI_TEMA1 + "2. Morado " + ANSI_RESET + "|" + ANSI_TEMA4 + "  5. Amarillo" + ANSI_RESET + " |");
+		System.out.println("| " + ANSI_TEMA2 + "3. Cian   " + ANSI_RESET + "|" + ANSI_TEMA5 + "  6. Rosa" + ANSI_RESET
+				+ "     | ");
+		System.out.println("|__________________________|");
+		System.out.print("Antes de empezar, ¿que color prefieres?: ");
 
 		Scanner color = new Scanner(System.in);
 		String colorEscogido = color.nextLine();
@@ -1453,7 +1460,7 @@ public class Logica {
 
 	public static void directoresPorGenero() {
 
-		MongoDatabase database = Conecion.conexionMongoDB();
+		MongoDatabase database = Conexion.conexionMongoDB();
 		// Select the "actor" collection
 		MongoCollection<Document> collection = database.getCollection("Director");
 
