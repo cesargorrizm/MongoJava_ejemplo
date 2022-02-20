@@ -28,10 +28,10 @@ class Main {
 
 		// PASO 1: Conexion al Server de MongoDB Pasandole el host y el puerto
 		// MongoClient mongoClient1 = new MongoClient("localhost", 27017);
-		MongoDatabase database = Conecion.conexionMongoDB();
+		MongoDatabase database = Conexion.conexionMongoDB();
 
 		// PASO 2: Crear colecciones necesarias para el desarrollo de la aplicacion
-		// crearColecciones(database);
+		// Logica.crearColecciones(database);
 
 		// PASO 3: Meter datos de los csv a la base de datos para aligerar tiempo
 
