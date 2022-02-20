@@ -258,6 +258,7 @@ public class Logica {
 		System.out.println("| Enter para volver Atras |");
 		System.out.println(" _________________________" + ANSI_RESET);
 	}
+	
 
 	public static void imprimirTablaPeliculas() {
 		ArrayList<Pelicula> pelis = Logica.leerPelicula();
@@ -613,64 +614,6 @@ public class Logica {
 		System.out.println(sinopsisPeli + ": " + sinopsis);
 	}
 
-	static void editarOpcines(Scanner sc) {
-		limpiarConsola();
-		boolean a2 = true;
-		while (a2) {
-			System.out.println("");
-			System.out.println(ANSI_TEMA + " __________________________");
-			System.out.println("|                         |");
-			System.out.println("|           MENU          |");
-			System.out.println(" __________________________" + ANSI_RESET);
-			System.out.println(" __________________________");
-			System.out.println("|                          |");
-			System.out.println("| 1. Editar pelicula       |");
-			System.out.println("| 2. Editar princesa       |");
-			System.out.println("| 3. Editar director       |");
-			System.out.println("| 4. Editar villano        |");
-			System.out.println("| 5. Editar principe       |");
-			System.out.println("| 0. Atras                 |");
-			System.out.println(" __________________________");
-			System.out.println("¿Que quieres hacer?");
-			String opcion1 = sc.nextLine();
-			switch (opcion1) {
-				case "1":
-					limpiarConsola();
-
-					volverAtras();
-					break;
-				case "2":
-					limpiarConsola();
-
-					volverAtras();
-					break;
-				case "3":
-					limpiarConsola();
-
-					volverAtras();
-					break;
-				case "4":
-					limpiarConsola();
-
-					volverAtras();
-					break;
-				case "5":
-					limpiarConsola();
-
-					volverAtras();
-					break;
-				case "0":
-					limpiarConsola();
-					a2 = false;
-					break;
-
-				default:
-					System.out.println("Has introducido una opcion que no existe :(");
-					break;
-			}
-		}
-	}
-
 	static void gestionarDatosMenu(Scanner sc) {
 		limpiarConsola();
 		boolean a1 = true;
@@ -692,7 +635,7 @@ public class Logica {
 			String opcion2 = sc.nextLine();
 			switch (opcion2) {
 				case "1":
-					editarOpcines(sc);
+					Main.editarOpcines(sc);
 					break;
 				case "2":
 					Logica.borrarOpciones(sc);
@@ -1668,26 +1611,6 @@ public class Logica {
 	public static void eliminarPrincesa(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
 		Main.princesa.deleteMany(findDocument);
-	}
-
-	public static void editarPelicula(String id, Pelicula p) {
-		Document findDocument2 = new Document("_id", new ObjectId(id));
-
-		Document updateDocument2 = new Document("$set",
-				new Document()
-						.append("Titulo", p.getTitulo())
-						.append("Titulo original", p.getTituloOriginal())
-						.append("Año", p.getAno())
-						.append("Duración", p.getDuracion())
-						.append("País", p.getPais())
-						.append("Guion", p.getGuion())
-						.append("Música", p.getMusica())
-						.append("Fotografía", p.getFotografia())
-						.append("Reparto", p.getReparto())
-						.append("Sinopsis", p.getSinopsis())
-						.append("Trailer", p.getTrailer()));
-		Main.pelicula.updateMany(findDocument2, updateDocument2);
-		System.out.println("Update ejecutado");
 	}
 
 	public static void eliminarPrincipe(String id) {
