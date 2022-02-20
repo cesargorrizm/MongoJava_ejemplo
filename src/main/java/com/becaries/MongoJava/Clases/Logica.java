@@ -35,6 +35,16 @@ public class Logica {
 	public static String ANSI_TEMA4 = "";
 	public static String ANSI_TEMA5 = "";
 
+	
+	public static MongoCollection<Document> principe;
+	public static MongoCollection<Document> director;
+	public static MongoCollection<Document> usuario;
+	public static ecriptar en = new ecriptar();
+	public static MongoCollection<Document> pelicula = null;
+	public static MongoCollection<Document> villano;
+	public static MongoCollection<Document> princesa;
+	public static boolean BOOLEAN = false;
+
 	public static void inicioSesion() {
 
 		ANSI_TEMA = "\033[1;94m";
@@ -1723,12 +1733,14 @@ public class Logica {
 			System.out.println(i + ". " + princesas.get(i).getNombre() + " version " + princesas.get(i).getCreacion());
 		}
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Escoge la princesa que quieres editar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA +"Escoge la princesa que quieres editar: "+ ANSI_RESET);
 		String num = sc.nextLine();
 		Princesa princesa = princesas.get(Integer.parseInt(num));
 		String menup = "1. Nombre\n2. Edad\n3. Ciudad\n4. Vehiculo\n5. Email\n6. Genero\n7. Creacion\n8. ip_address\n9. Universidad\n10.Titulacion";
 		System.out.println(menup);
-		System.out.print("Escoge el campo que quieres cambiar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -1797,12 +1809,14 @@ public class Logica {
 			System.out.println(i + ". " + principes.get(i).getNombre() + " version " + principes.get(i).getCreacion());
 		}
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Escoge la principe que quieres editar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA + "Escoge la principe que quieres editar: "+ ANSI_RESET);
 		String num = sc.nextLine();
 		Principe principe = principes.get(Integer.parseInt(num));
 		String menup = "1. Nombre\n2. Edad\n3. Ciudad\n4. Vehiculo\n5. Email\n6. Genero\n7. Creacion\n8. ip_address\n9. Universidad\n10.Titulacion";
 		System.out.println(menup);
-		System.out.print("Escoge el campo que quieres cambiar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -1871,12 +1885,14 @@ public class Logica {
 			System.out.println(i + ". " + villano.get(i).getNombre() + " version " + villano.get(i).getCreacion());
 		}
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Escoge la villano que quieres editar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA +"Escoge la villano que quieres editar: "+ ANSI_RESET);
 		String num = sc.nextLine();
 		Villano v = villano.get(Integer.parseInt(num));
 		String menup = "1. Nombre\n2. Edad\n3. Ciudad\n4. Vehiculo\n5. Email\n6. Genero\n7. Creacion\n8. ip_address\n9. Universidad\n10.Titulacion";
 		System.out.println(menup);
-		System.out.print("Escoge el campo que quieres cambiar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -1945,12 +1961,14 @@ public class Logica {
 			System.out.println(i + ". " + pelicula.get(i).getTitulo() + ": Año de estreno " + pelicula.get(i).getAno());
 		}
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Escoge la villano que quieres editar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA +"Escoge la pelicula que quieres editar: "+ ANSI_RESET);
 		String num = sc.nextLine();
 		Pelicula peli = pelicula.get(Integer.parseInt(num));
 		String menup = "1. Tiltulo\n2. Titulo original\n3. Año de estreno\n4. Duración\n5. Pais de rodaje\n6. Guion\n7. Música\n8. Fotografia\n9. Reparto\n10.Sinopsis";
 		System.out.println(menup);
-		System.out.print("Escoge el campo que quieres cambiar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -2019,12 +2037,14 @@ public class Logica {
 			System.out.println(i + ". " + directores.get(i).getDirector());
 		}
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Escoge la director que quieres editar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA +"Escoge el director que quieres editar: "+ ANSI_RESET);
 		String num = sc.nextLine();
 		Director d = directores.get(Integer.parseInt(num));
 		String menup = "1. Nombre\n2. Edad\n3. Ciudad nacimiento\n4. Vehiculo\n5. Email\n6. Genero\n7. ip_movi\n8. ip_address\n9. Empresa\n10.Titulacion";
 		System.out.println(menup);
-		System.out.print("Escoge el campo que quieres cambiar: ");
+		System.out.println("");
+		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -2161,13 +2181,5 @@ public class Logica {
 		System.out.println("Update ejecutado");
 	}
 
-	public static MongoCollection<Document> principe;
-	public static MongoCollection<Document> director;
-	public static MongoCollection<Document> usuario;
-	public static ecriptar en = new ecriptar();
-	public static MongoCollection<Document> pelicula = null;
-	public static MongoCollection<Document> villano;
-	public static MongoCollection<Document> princesa;
-	public static boolean BOOLEAN = false;
 
 }
