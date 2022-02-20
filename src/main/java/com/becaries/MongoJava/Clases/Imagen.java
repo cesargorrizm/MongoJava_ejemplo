@@ -189,6 +189,6 @@ public class Imagen {
 				"          |  :' ,      `-,\n" +
 				"       ~  \\   .' `''----`\n" +
 				"           `.(");
-		Main.BOOLEAN = true;
+		Logica.BOOLEAN = true;
 	}
 }
