@@ -86,10 +86,10 @@ public class Logica {
 		boolean salir = true;
 		int i = 0;
 		while (salir) {
-			if (Main.BOOLEAN) {
+			if (Logica.BOOLEAN) {
 				Logica.limpiarConsola();
 				System.out.println("¡Se ha cerrado sesion!");
-				Main.BOOLEAN = false;
+				Logica.BOOLEAN = false;
 			}
 			System.out.println(ANSI_TEMA + " _______________________");
 			System.out.println("|                       |");
@@ -121,7 +121,7 @@ public class Logica {
 						char[] passwordArray = console.readPassword("Escribe tu contraseña: ");
 
 						Document findDocument = new Document("Usuario", nom);
-						MongoCursor<Document> us = Main.usuario.find(findDocument).iterator();
+						MongoCursor<Document> us = Logica.usuario.find(findDocument).iterator();
 						String dato1 = "";
 						String dato2 = "";
 						while (us.hasNext()) {
@@ -129,7 +129,7 @@ public class Logica {
 							dato1 = p.getString("Password");
 							dato2 = p.getString("Rol");
 						}
-						if (dato1.equals(Main.en.ecnode((new String(passwordArray))))) {
+						if (dato1.equals(Logica.en.ecnode((new String(passwordArray))))) {
 
 							if (dato2.equals("admin")) {
 								Logica.limpiarConsola();
@@ -258,7 +258,6 @@ public class Logica {
 		System.out.println("| Enter para volver Atras |");
 		System.out.println(" _________________________" + ANSI_RESET);
 	}
-	
 
 	public static void imprimirTablaPeliculas() {
 		ArrayList<Pelicula> pelis = Logica.leerPelicula();
@@ -635,7 +634,7 @@ public class Logica {
 			String opcion2 = sc.nextLine();
 			switch (opcion2) {
 				case "1":
-					Main.editarOpcines(sc);
+					Logica.editarOpcines(sc);
 					break;
 				case "2":
 					Logica.borrarOpciones(sc);
@@ -660,7 +659,7 @@ public class Logica {
 	}
 
 	public static void insertarUsuario(Usuario usr) {
-		Main.usuario.insertOne(new Document()
+		Logica.usuario.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Usuario", usr.getUser())
 				.append("Password", usr.getPasswword())
@@ -1084,7 +1083,7 @@ public class Logica {
 	}
 
 	public static void insertarDirector(Director d, String idPelicula) {
-		Main.director.insertOne(new Document()
+		Logica.director.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Director", d.getDirector())
 				.append("Edad", d.getEdad())
@@ -1101,7 +1100,7 @@ public class Logica {
 	}
 
 	public static void insertarVillano(Villano p, String idPelicula) {
-		Main.villano.insertOne(new Document()
+		Logica.villano.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Nombre", p.getNombre())
 				.append("Edad", p.getEdad())
@@ -1117,7 +1116,7 @@ public class Logica {
 	}
 
 	public static void insertarPrincipe(Principe p, String idPelicula) {
-		Main.principe.insertOne(new Document()
+		Logica.principe.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Nombre", p.getNombre())
 				.append("Edad", p.getEdad())
@@ -1133,7 +1132,7 @@ public class Logica {
 	}
 
 	public static void insertarPrincesa(Princesa p, String idPelicula) {
-		Main.princesa.insertOne(new Document()
+		Logica.princesa.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Nombre", p.getNombre())
 				.append("Edad", p.getEdad())
@@ -1149,7 +1148,7 @@ public class Logica {
 	}
 
 	public static void insertarPelicula(Pelicula p) {
-		Main.pelicula.insertOne(new Document()
+		Logica.pelicula.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Titulo", p.getTitulo())
 				.append("Titulo original", p.getTituloOriginal())
@@ -1280,7 +1279,7 @@ public class Logica {
 
 	public static void eliminarPelicula(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
-		Main.pelicula.deleteMany(findDocument);
+		Logica.pelicula.deleteMany(findDocument);
 	}
 
 	static void borrarOpciones(Scanner sc) {
@@ -1443,19 +1442,19 @@ public class Logica {
 	}
 
 	public static void obtenerColecciones(MongoDatabase database) {
-		Main.pelicula = database.getCollection("Pelicula");
-		Main.princesa = database.getCollection("Princesa");
-		Main.villano = database.getCollection("Villano");
-		Main.principe = database.getCollection("Principe");
-		Main.director = database.getCollection("Director");
-		Main.usuario = database.getCollection("Usuario");
+		Logica.pelicula = database.getCollection("Pelicula");
+		Logica.princesa = database.getCollection("Princesa");
+		Logica.villano = database.getCollection("Villano");
+		Logica.principe = database.getCollection("Principe");
+		Logica.director = database.getCollection("Director");
+		Logica.usuario = database.getCollection("Usuario");
 	}
 
 	static void relacionPrincesa(String idPelicula, String idPrincesa) {
 		Document findDocument2 = new Document("_id", new ObjectId(idPrincesa));
 		Document updateDocument2 = new Document("$set",
 				new Document("idPelicula", new ObjectId(idPelicula)));
-		Main.princesa.updateMany(findDocument2, updateDocument2);
+		Logica.princesa.updateMany(findDocument2, updateDocument2);
 		System.out.println("Update ejecutado");
 	}
 
@@ -1463,7 +1462,7 @@ public class Logica {
 		Document findDocument2 = new Document("_id", new ObjectId(idVillano));
 		Document updateDocument2 = new Document("$set",
 				new Document("idPelicula", new ObjectId(idPelicula)));
-		Main.villano.updateMany(findDocument2, updateDocument2);
+		Logica.villano.updateMany(findDocument2, updateDocument2);
 		System.out.println("Update ejecutado");
 	}
 
@@ -1471,7 +1470,7 @@ public class Logica {
 		Document findDocument = new Document("_id", new ObjectId(idPrincipe));
 		Document updateDocument = new Document("$set",
 				new Document("idPelicula", new ObjectId(idPelicula)));
-		Main.principe.updateMany(findDocument, updateDocument);
+		Logica.principe.updateMany(findDocument, updateDocument);
 		System.out.println("Update ejecutado");
 	}
 
@@ -1479,13 +1478,13 @@ public class Logica {
 		Document findDocument = new Document("_id", new ObjectId(idDirector));
 		Document updateDocument = new Document("$set",
 				new Document("idPelicula", new ObjectId(idPelicula)));
-		Main.director.updateMany(findDocument, updateDocument);
+		Logica.director.updateMany(findDocument, updateDocument);
 		System.out.println("Update ejecutado");
 	}
 
 	static ArrayList<Princesa> leerPrincesa() {
 		ArrayList<Princesa> listaprincesas = new ArrayList<Princesa>();
-		MongoCursor<Document> resultDocument = Main.princesa.find().iterator();
+		MongoCursor<Document> resultDocument = Logica.princesa.find().iterator();
 
 		while (resultDocument.hasNext()) {
 			Document p = resultDocument.next();
@@ -1501,7 +1500,7 @@ public class Logica {
 
 	static ArrayList<Pelicula> leerPelicula() {
 		ArrayList<Pelicula> listapPeliculas = new ArrayList<Pelicula>();
-		MongoCursor<Document> resultDocument = Main.pelicula.find().iterator();
+		MongoCursor<Document> resultDocument = Logica.pelicula.find().iterator();
 
 		while (resultDocument.hasNext()) {
 			Document p = resultDocument.next();
@@ -1516,7 +1515,7 @@ public class Logica {
 	}
 
 	public static void insertarPrincesa(Princesa p) {
-		Main.princesa.insertOne(new Document()
+		Logica.princesa.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Nombre", p.getNombre())
 				.append("Edad", p.getEdad())
@@ -1533,7 +1532,7 @@ public class Logica {
 	static Map<Integer, Pelicula> leerPeliculaNombre2() {
 
 		Map<Integer, Pelicula> a = new HashMap<Integer, Pelicula>();
-		MongoCursor<Document> resultDocument = Main.pelicula.find().iterator();
+		MongoCursor<Document> resultDocument = Logica.pelicula.find().iterator();
 		int i = 1;
 		while (resultDocument.hasNext()) {
 
@@ -1551,7 +1550,7 @@ public class Logica {
 
 	public static ArrayList<Principe> leerPrincipes() {
 		ArrayList<Principe> listaPrincipe = new ArrayList<Principe>();
-		MongoCursor<Document> resultDocument = Main.principe.find().iterator();
+		MongoCursor<Document> resultDocument = Logica.principe.find().iterator();
 
 		while (resultDocument.hasNext()) {
 			Document p = resultDocument.next();
@@ -1567,7 +1566,7 @@ public class Logica {
 
 	static ArrayList<Villano> leerVillanos() {
 		ArrayList<Villano> listaVillano = new ArrayList<Villano>();
-		MongoCursor<Document> resultDocument = Main.villano.find().iterator();
+		MongoCursor<Document> resultDocument = Logica.villano.find().iterator();
 
 		while (resultDocument.hasNext()) {
 			Document p = resultDocument.next();
@@ -1583,7 +1582,7 @@ public class Logica {
 
 	static ArrayList<Director> leerDirector() {
 		ArrayList<Director> listaDirector = new ArrayList<Director>();
-		MongoCursor<Document> resultDocument = Main.director.find().iterator();
+		MongoCursor<Document> resultDocument = Logica.director.find().iterator();
 
 		while (resultDocument.hasNext()) {
 			Document p = resultDocument.next();
@@ -1600,42 +1599,575 @@ public class Logica {
 
 	public static void eliminarVillanoCascada(String id) {
 		Document findDocument = new Document("idPelicula", new ObjectId(id));
-		Main.villano.deleteMany(findDocument);
+		Logica.villano.deleteMany(findDocument);
 	}
 
 	public static void eliminarVillano(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
-		Main.villano.deleteMany(findDocument);
+		Logica.villano.deleteMany(findDocument);
 	}
 
 	public static void eliminarPrincesa(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
-		Main.princesa.deleteMany(findDocument);
+		Logica.princesa.deleteMany(findDocument);
 	}
 
 	public static void eliminarPrincipe(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
-		Main.principe.deleteMany(findDocument);
+		Logica.principe.deleteMany(findDocument);
 	}
 
 	public static void eliminarDirector(String id) {
 		Document findDocument = new Document("_id", new ObjectId(id));
-		Main.director.deleteMany(findDocument);
+		Logica.director.deleteMany(findDocument);
 	}
 
 	public static void eliminarDirectorCascada(String id) {
 		Document findDocument = new Document("idPelicula", new ObjectId(id));
-		Main.director.deleteMany(findDocument);
+		Logica.director.deleteMany(findDocument);
 	}
 
 	public static void eliminarPrincipeCascada(String id) {
 		Document findDocument = new Document("idPelicula", new ObjectId(id));
-		Main.principe.deleteMany(findDocument);
+		Logica.principe.deleteMany(findDocument);
 	}
 
 	public static void eliminarPrincesaCascada(String id) {
 		Document findDocument = new Document("idPelicula", new ObjectId(id));
-		Main.princesa.deleteMany(findDocument);
+		Logica.princesa.deleteMany(findDocument);
 	}
+
+	public static void editarDirector(String id, Director p) {
+		Document findDocument2 = new Document("_id", new ObjectId(id));
+
+		Document updateDocument2 = new Document("$set",
+				new Document()
+						.append("Director", p.getDirector())
+						.append("Edad", p.getEdad())
+						.append("Ciudad_nacimiento", p.getCiudadNacimiento())
+						.append("Vehiculo", p.getVehiculo())
+						.append("Email", p.getEmail())
+						.append("Genero", p.getGenero())
+						.append("Ip_movil", p.getIpMovil())
+						.append("ip_address", p.getIpAddress())
+						.append("Empresa", p.getEmpresa())
+						.append("Titulacion", p.getTitulacion()));
+		Logica.director.updateMany(findDocument2, updateDocument2);
+		System.out.println("Update ejecutado");
+	}
+
+	public static void editarPricensa(String id, Princesa p) {
+		Document findDocument2 = new Document("_id", new ObjectId(id));
+
+		Document updateDocument2 = new Document("$set",
+				new Document()
+						.append("Nombre", p.getNombre())
+						.append("Edad", p.getEdad())
+						.append("Ciudad", p.getCiudad())
+						.append("Vehiculo", p.getVehiculo())
+						.append("Email", p.getEmail())
+						.append("Genero", p.getGenero())
+						.append("Creacion", p.getCreacion())
+						.append("ip_address", p.getIpAddress())
+						.append("Universidad", p.getUniversidad())
+						.append("Titulacion", p.getTitulacion()));
+		Logica.princesa.updateMany(findDocument2, updateDocument2);
+		System.out.println("Update ejecutado");
+	}
+
+	public static void editarVillano(String id, Villano p) {
+		Document findDocument2 = new Document("_id", new ObjectId(id));
+
+		Document updateDocument2 = new Document("$set",
+				new Document()
+						.append("Nombre", p.getNombre())
+						.append("Edad", p.getEdad())
+						.append("Ciudad", p.getCiudad())
+						.append("Vehiculo", p.getVehiculo())
+						.append("Email", p.getEmail())
+						.append("Genero", p.getGenero())
+						.append("Creacion", p.getCreacion())
+						.append("ip_address", p.getIpAddress())
+						.append("Universidad", p.getUniversidad())
+						.append("Titulacion", p.getTitulacion()));
+		Logica.villano.updateMany(findDocument2, updateDocument2);
+		System.out.println("Update ejecutado");
+	}
+
+	public static void editarPrincipe(String id, Principe p) {
+		Document findDocument2 = new Document("_id", new ObjectId(id));
+
+		Document updateDocument2 = new Document("$set",
+				new Document()
+						.append("Nombre", p.getNombre())
+						.append("Edad", p.getEdad())
+						.append("Ciudad", p.getCiudad())
+						.append("Vehiculo", p.getVehiculo())
+						.append("Email", p.getEmail())
+						.append("Genero", p.getGenero())
+						.append("Creacion", p.getCreacion())
+						.append("ip_address", p.getIpAddress())
+						.append("Universidad", p.getUniversidad())
+						.append("Titulacion", p.getTitulacion()));
+		Logica.principe.updateMany(findDocument2, updateDocument2);
+		System.out.println("Update ejecutado");
+	}
+
+	public static void menuModificarPrincesa() {
+		System.out.println(ANSI_TEMA + " _____________________________");
+		System.out.println("|                            |");
+		System.out.println("|       EDITAR PRINCESA      |");
+		System.out.println(" ____________________________" + ANSI_RESET);
+		ArrayList<Princesa> princesas = leerPrincesa();
+		for (int i = 0; i < princesas.size(); i++) {
+			System.out.println(i + ". " + princesas.get(i).getNombre() + " version " + princesas.get(i).getCreacion());
+		}
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Escoge la princesa que quieres editar: ");
+		String num = sc.nextLine();
+		Princesa princesa = princesas.get(Integer.parseInt(num));
+		String menup = "1. Nombre\n2. Edad\n3. Ciudad\n4. Vehiculo\n5. Email\n6. Genero\n7. Creacion\n8. ip_address\n9. Universidad\n10.Titulacion";
+		System.out.println(menup);
+		System.out.print("Escoge el campo que quieres cambiar: ");
+		String resul = sc.nextLine();
+		switch (resul) {
+			case "1":
+				String n = sc.nextLine();
+				princesa.setNombre(n);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			case "2":
+				String e = sc.nextLine();
+				princesa.setEdad(e);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			case "3":
+				String ciu = sc.nextLine();
+				princesa.setCiudad(ciu);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			case "4":
+				String vei = sc.nextLine();
+				princesa.setVehiculo(vei);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			case "5":
+				String emai = sc.nextLine();
+				princesa.setEmail(emai);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			case "6":
+				String genero = sc.nextLine();
+				princesa.setGenero(genero);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			case "7":
+				String creacion = sc.nextLine();
+				princesa.setCreacion(creacion);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			case "8":
+				String ipAddress = sc.nextLine();
+				princesa.setIpAddress(ipAddress);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			case "9":
+				String universidad = sc.nextLine();
+				princesa.setUniversidad(universidad);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			case "10":
+				String titulacion = sc.nextLine();
+				princesa.setTitulacion(titulacion);
+				editarPricensa(princesa.getId(), princesa);
+				break;
+			default:
+				break;
+		}
+
+	}
+
+	public static void menuModificarPrincipe() {
+		System.out.println(ANSI_TEMA + " _____________________________");
+		System.out.println("|                            |");
+		System.out.println("|       EDITAR PRINCIPE      |");
+		System.out.println(" ____________________________" + ANSI_RESET);
+		ArrayList<Principe> principes = leerPrincipes();
+		for (int i = 0; i < principes.size(); i++) {
+			System.out.println(i + ". " + principes.get(i).getNombre() + " version " + principes.get(i).getCreacion());
+		}
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Escoge la principe que quieres editar: ");
+		String num = sc.nextLine();
+		Principe principe = principes.get(Integer.parseInt(num));
+		String menup = "1. Nombre\n2. Edad\n3. Ciudad\n4. Vehiculo\n5. Email\n6. Genero\n7. Creacion\n8. ip_address\n9. Universidad\n10.Titulacion";
+		System.out.println(menup);
+		System.out.print("Escoge el campo que quieres cambiar: ");
+		String resul = sc.nextLine();
+		switch (resul) {
+			case "1":
+				String n = sc.nextLine();
+				principe.setNombre(n);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			case "2":
+				String e = sc.nextLine();
+				principe.setEdad(e);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			case "3":
+				String ciu = sc.nextLine();
+				principe.setCiudad(ciu);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			case "4":
+				String vei = sc.nextLine();
+				principe.setVehiculo(vei);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			case "5":
+				String emai = sc.nextLine();
+				principe.setEmail(emai);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			case "6":
+				String genero = sc.nextLine();
+				principe.setGenero(genero);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			case "7":
+				String creacion = sc.nextLine();
+				principe.setCreacion(creacion);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			case "8":
+				String ipAddress = sc.nextLine();
+				principe.setIpAddress(ipAddress);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			case "9":
+				String universidad = sc.nextLine();
+				principe.setUniversidad(universidad);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			case "10":
+				String titulacion = sc.nextLine();
+				principe.setTitulacion(titulacion);
+				editarPrincipe(principe.getId(), principe);
+				break;
+			default:
+				break;
+		}
+
+	}
+
+	public static void menuModificarVillano() {
+		System.out.println(ANSI_TEMA + " _____________________________");
+		System.out.println("|                            |");
+		System.out.println("|       EDITAR VILLANO       |");
+		System.out.println(" ____________________________" + ANSI_RESET);
+		ArrayList<Villano> villano = leerVillanos();
+		for (int i = 0; i < villano.size(); i++) {
+			System.out.println(i + ". " + villano.get(i).getNombre() + " version " + villano.get(i).getCreacion());
+		}
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Escoge la villano que quieres editar: ");
+		String num = sc.nextLine();
+		Villano v = villano.get(Integer.parseInt(num));
+		String menup = "1. Nombre\n2. Edad\n3. Ciudad\n4. Vehiculo\n5. Email\n6. Genero\n7. Creacion\n8. ip_address\n9. Universidad\n10.Titulacion";
+		System.out.println(menup);
+		System.out.print("Escoge el campo que quieres cambiar: ");
+		String resul = sc.nextLine();
+		switch (resul) {
+			case "1":
+				String n = sc.nextLine();
+				v.setNombre(n);
+				editarVillano(v.getId(), v);
+				break;
+			case "2":
+				String e = sc.nextLine();
+				v.setEdad(e);
+				editarVillano(v.getId(), v);
+				break;
+			case "3":
+				String ciu = sc.nextLine();
+				v.setCiudad(ciu);
+				editarVillano(v.getId(), v);
+				break;
+			case "4":
+				String vei = sc.nextLine();
+				v.setVehiculo(vei);
+				editarVillano(v.getId(), v);
+				break;
+			case "5":
+				String emai = sc.nextLine();
+				v.setEmail(emai);
+				editarVillano(v.getId(), v);
+				break;
+			case "6":
+				String genero = sc.nextLine();
+				v.setGenero(genero);
+				editarVillano(v.getId(), v);
+				break;
+			case "7":
+				String creacion = sc.nextLine();
+				v.setCreacion(creacion);
+				editarVillano(v.getId(), v);
+				break;
+			case "8":
+				String ipAddress = sc.nextLine();
+				v.setIpAddress(ipAddress);
+				editarVillano(v.getId(), v);
+				break;
+			case "9":
+				String universidad = sc.nextLine();
+				v.setUniversidad(universidad);
+				editarVillano(v.getId(), v);
+				break;
+			case "10":
+				String titulacion = sc.nextLine();
+				v.setTitulacion(titulacion);
+				editarVillano(v.getId(), v);
+				break;
+			default:
+				break;
+		}
+
+	}
+
+	public static void menuModificarPelicula() {
+		System.out.println(ANSI_TEMA + " _____________________________");
+		System.out.println("|                            |");
+		System.out.println("|       EDITAR PELICULA      |");
+		System.out.println(" ____________________________" + ANSI_RESET);
+		ArrayList<Pelicula> pelicula = leerPelicula();
+		for (int i = 0; i < pelicula.size(); i++) {
+			System.out.println(i + ". " + pelicula.get(i).getTitulo() + ": Año de estreno " + pelicula.get(i).getAno());
+		}
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Escoge la villano que quieres editar: ");
+		String num = sc.nextLine();
+		Pelicula peli = pelicula.get(Integer.parseInt(num));
+		String menup = "1. Tiltulo\n2. Titulo original\n3. Año de estreno\n4. Duración\n5. Pais de rodaje\n6. Guion\n7. Música\n8. Fotografia\n9. Reparto\n10.Sinopsis";
+		System.out.println(menup);
+		System.out.print("Escoge el campo que quieres cambiar: ");
+		String resul = sc.nextLine();
+		switch (resul) {
+			case "1":
+				String n = sc.nextLine();
+				peli.setTitulo(n);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			case "2":
+				String tit = sc.nextLine();
+				peli.setTituloOriginal(tit);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			case "3":
+				String ciu = sc.nextLine();
+				peli.setAno(ciu);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			case "4":
+				String vei = sc.nextLine();
+				peli.setDuracion(vei);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			case "5":
+				String emai = sc.nextLine();
+				peli.setPais(emai);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			case "6":
+				String genero = sc.nextLine();
+				peli.setGuion(genero);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			case "7":
+				String creacion = sc.nextLine();
+				peli.setMusica(creacion);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			case "8":
+				String ipAddress = sc.nextLine();
+				peli.setFotografia(ipAddress);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			case "9":
+				String universidad = sc.nextLine();
+				peli.setReparto(universidad);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			case "10":
+				String titulacion = sc.nextLine();
+				peli.setSinopsis(titulacion);
+				Logica.editarPelicula(peli.getId(), peli);
+				break;
+			default:
+				break;
+		}
+
+	}
+
+	public static void menuModificarDirector() {
+		System.out.println(ANSI_TEMA + " _____________________________");
+		System.out.println("|                            |");
+		System.out.println("|       EDITAR DIRECTOR      |");
+		System.out.println(" ____________________________" + ANSI_RESET);
+		ArrayList<Director> directores = leerDirector();
+		for (int i = 0; i < directores.size(); i++) {
+			System.out.println(i + ". " + directores.get(i).getDirector());
+		}
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Escoge la director que quieres editar: ");
+		String num = sc.nextLine();
+		Director d = directores.get(Integer.parseInt(num));
+		String menup = "1. Nombre\n2. Edad\n3. Ciudad nacimiento\n4. Vehiculo\n5. Email\n6. Genero\n7. ip_movi\n8. ip_address\n9. Empresa\n10.Titulacion";
+		System.out.println(menup);
+		System.out.print("Escoge el campo que quieres cambiar: ");
+		String resul = sc.nextLine();
+		switch (resul) {
+			case "1":
+				String n = sc.nextLine();
+				d.setDirector(n);
+				editarDirector(d.getId(), d);
+				break;
+			case "2":
+				String e = sc.nextLine();
+				d.setEdad(Integer.parseInt(e));
+				editarDirector(d.getId(), d);
+				break;
+			case "3":
+				String ciu = sc.nextLine();
+				d.setCiudadNacimiento(ciu);
+				editarDirector(d.getId(), d);
+				break;
+			case "4":
+				String vei = sc.nextLine();
+				d.setVehiculo(vei);
+				editarDirector(d.getId(), d);
+				break;
+			case "5":
+				String emai = sc.nextLine();
+				d.setEmail(emai);
+				editarDirector(d.getId(), d);
+				break;
+			case "6":
+				String genero = sc.nextLine();
+				d.setGenero(genero);
+				editarDirector(d.getId(), d);
+				break;
+			case "7":
+				String creacion = sc.nextLine();
+				d.setIpMovil(creacion);
+				editarDirector(d.getId(), d);
+				break;
+			case "8":
+				String ipAddress = sc.nextLine();
+				d.setIpAddress(ipAddress);
+				editarDirector(d.getId(), d);
+				break;
+			case "9":
+				String universidad = sc.nextLine();
+				d.setEmpresa(universidad);
+				editarDirector(d.getId(), d);
+				break;
+			case "10":
+				String titulacion = sc.nextLine();
+				d.setTitulacion(titulacion);
+				editarDirector(d.getId(), d);
+				break;
+			default:
+				break;
+		}
+
+	}
+
+	static void editarOpcines(Scanner sc) {
+		limpiarConsola();
+		boolean a2 = true;
+		while (a2) {
+			System.out.println("");
+			System.out.println(ANSI_TEMA + " __________________________");
+			System.out.println("|                         |");
+			System.out.println("|           MENU          |");
+			System.out.println(" __________________________" + ANSI_RESET);
+			System.out.println(" __________________________");
+			System.out.println("|                          |");
+			System.out.println("| 1. Editar pelicula       |");
+			System.out.println("| 2. Editar princesa       |");
+			System.out.println("| 3. Editar director       |");
+			System.out.println("| 4. Editar villano        |");
+			System.out.println("| 5. Editar principe       |");
+			System.out.println("| 0. Atras                 |");
+			System.out.println(" __________________________");
+			System.out.println("¿Que quieres hacer?");
+			String opcion1 = sc.nextLine();
+			switch (opcion1) {
+				case "1":
+					limpiarConsola();
+					menuModificarPelicula();
+					volverAtras();
+					break;
+				case "2":
+					limpiarConsola();
+					menuModificarPrincesa();
+					volverAtras();
+					break;
+				case "3":
+					limpiarConsola();
+					menuModificarDirector();
+					volverAtras();
+					break;
+				case "4":
+					limpiarConsola();
+					menuModificarVillano();
+					volverAtras();
+					break;
+				case "5":
+					limpiarConsola();
+					menuModificarPrincipe();
+					volverAtras();
+					break;
+				case "0":
+					limpiarConsola();
+					a2 = false;
+					break;
+
+				default:
+					System.out.println("Has introducido una opcion que no existe :(");
+					break;
+			}
+		}
+	}
+
+	public static void editarPelicula(String id, Pelicula p) {
+		Document findDocument2 = new Document("_id", new ObjectId(id));
+
+		Document updateDocument2 = new Document("$set",
+				new Document()
+						.append("Titulo", p.getTitulo())
+						.append("Titulo original", p.getTituloOriginal())
+						.append("Año", p.getAno())
+						.append("Duración", p.getDuracion())
+						.append("País", p.getPais())
+						.append("Guion", p.getGuion())
+						.append("Música", p.getMusica())
+						.append("Fotografía", p.getFotografia())
+						.append("Reparto", p.getReparto())
+						.append("Sinopsis", p.getSinopsis())
+						.append("Trailer", p.getTrailer()));
+		Logica.pelicula.updateMany(findDocument2, updateDocument2);
+		System.out.println("Update ejecutado");
+	}
+
+	public static MongoCollection<Document> principe;
+	public static MongoCollection<Document> director;
+	public static MongoCollection<Document> usuario;
+	public static ecriptar en = new ecriptar();
+	public static MongoCollection<Document> pelicula = null;
+	public static MongoCollection<Document> villano;
+	public static MongoCollection<Document> princesa;
+	public static boolean BOOLEAN = false;
 
 }
