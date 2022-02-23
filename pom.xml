@@ -15,8 +15,16 @@
     </properties>
 
     <dependencies>
-
-        <!-- A�adimos el driver de MongoDB para java -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.12.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>bson</artifactId>
+            <version>4.5.0</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver -->
         <dependency>
             <groupId>org.mongodb</groupId>

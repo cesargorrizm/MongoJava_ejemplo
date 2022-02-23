@@ -24,6 +24,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
+import org.springframework.data.mongodb.core.schema.IdentifiableJsonSchemaProperty;
 
 public class Logica {
 	public static final String ANSI_RESET = "\u001B[0m";
@@ -35,7 +36,6 @@ public class Logica {
 	public static String ANSI_TEMA4 = "";
 	public static String ANSI_TEMA5 = "";
 
-	
 	public static MongoCollection<Document> principe;
 	public static MongoCollection<Document> director;
 	public static MongoCollection<Document> usuario;
@@ -89,7 +89,7 @@ public class Logica {
 			ANSI_TEMA = "\u001b[35;1m";
 			System.out.println("¡Se establecio el tema rosa con exito!");
 		} else {
-			System.out.println("¡Al no exitir la opcion, se establecera el blanco!");
+			System.out.println("¡Al no exitir la opcion, se establecera el azul!");
 		}
 		System.out.println("");
 
@@ -312,7 +312,8 @@ public class Logica {
 			row.add(peli.getMusica());
 			row.add(peli.getFotografia());
 			row.add(peli.getReparto());
-			row.add((peli.getSinopsis()).substring(0, 30) + "...");
+			row.add(peli.getSinopsis().length() > 30 ? (peli.getSinopsis()).substring(0, 30) + "..."
+					: peli.getSinopsis());
 			rowsList2.add(row);
 		}
 		System.out.println(GenerarTabla.generateTable(headersList2, rowsList2));
@@ -499,7 +500,6 @@ public class Logica {
 		String sn = sc.nextLine();
 		if (sn.toLowerCase().equals("s")) {
 			Logica.eliminarVillano(iDeliminar);
-			System.out.println("Se elimino exitosamente!!");
 		} else if (sn.toLowerCase().equals("n")) {
 			System.out.println("Se cancelo exitosamente!!");
 		} else {
@@ -519,7 +519,6 @@ public class Logica {
 		String sn = sc.nextLine();
 		if (sn.toLowerCase().equals("s")) {
 			Logica.eliminarDirector(iDeliminar);
-			System.out.println("Se elimino exitosamente!!");
 		} else if (sn.toLowerCase().equals("n")) {
 			System.out.println("Se cancelo exitosamente!!");
 		} else {
@@ -539,7 +538,6 @@ public class Logica {
 		String sn = sc.nextLine();
 		if (sn.toLowerCase().equals("s")) {
 			Logica.eliminarPrincipe(iDeliminar);
-			System.out.println("Se elimino exitosamente!!");
 		} else if (sn.toLowerCase().equals("n")) {
 			System.out.println("Se cancelo exitosamente!!");
 		} else {
@@ -559,7 +557,6 @@ public class Logica {
 		String sn = sc.nextLine();
 		if (sn.toLowerCase().equals("s")) {
 			Logica.eliminarPrincesa(iDeliminar);
-			System.out.println("Se elimino exitosamente!!");
 		} else if (sn.toLowerCase().equals("n")) {
 			System.out.println("Se cancelo exitosamente!!");
 		} else {
@@ -583,7 +580,6 @@ public class Logica {
 			Logica.eliminarPrincesaCascada(iDpeliEliminar);
 			Logica.eliminarPrincipeCascada(iDpeliEliminar);
 			Logica.eliminarVillanoCascada(iDpeliEliminar);
-			System.out.println("Se elimino exitosamente!!");
 		} else if (sn.toLowerCase().equals("n")) {
 			System.out.println("Se cancelo exitosamente!!");
 		} else {
@@ -603,7 +599,6 @@ public class Logica {
 		String sn = sc.nextLine();
 		if (sn.toLowerCase().equals("s")) {
 			Logica.eliminarPelicula(iDpeliEliminar);
-			System.out.println("Se elimino exitosamente!!");
 		} else if (sn.toLowerCase().equals("n")) {
 			System.out.println("Se cancelo exitosamente!!");
 		} else {
@@ -873,7 +868,14 @@ public class Logica {
 		System.out.print("Nombre: ");
 		String nombre = sc.nextLine();
 		System.out.print("Edad: ");
-		String edad = sc.nextLine();
+		int edad = 0;
+		while (!sc.hasNextInt()) {
+			System.out.print("Edad: ");
+			sc.nextLine();
+
+		}
+		edad = sc.nextInt();
+		sc.nextLine();
 		System.out.print("Ciudad de nacimeinto: ");
 		String ciudadNacimiento = sc.nextLine();
 		System.out.print("Vehiculo: ");
@@ -896,20 +898,18 @@ public class Logica {
 		System.out.println();
 		System.out.println("¿A que pelicula lo quieres enlazar?");
 		Map<Integer, Pelicula> c = Logica.leerListaPelisTrailer();
-		System.out.print("Elige una pelicula: ");
-		String idlista = sc.nextLine();
-		int id = Integer.parseInt(idlista);
-		String idPelicula = c.get(id).getId();
-		Director d = new Director(null, nombre, Integer.parseInt(edad), ciudadNacimiento, vehiculo, email, genero,
+		int idlista = comprobarNumero(c, sc);
+		String idPelicula = c.get(idlista).getId();
+		Director d = new Director(null, nombre, edad, ciudadNacimiento, vehiculo, email, genero,
 				ipMovil, ipAddress, empresa, titulacion);
 		System.out.println("¿Estas seguro de añadir la director?S/N");
 		String respuesta = sc.nextLine();
 		if (respuesta.toLowerCase().equals("s")) {
 			Logica.insertarDirector(d, idPelicula);
 
-			System.out.println("Se ha añadido la princesa");
+			System.out.println("Se ha añadido la director");
 		} else {
-			System.out.println("No se ha añadido la princesa");
+			System.out.println("No se ha añadido la director");
 		}
 
 	}
@@ -944,18 +944,18 @@ public class Logica {
 		System.out.println("¿A que pelicula lo quieres enlazar?");
 		Map<Integer, Pelicula> c = Logica.leerListaPelisTrailer();
 		System.out.print("Elige una pelicula: ");
-		String idlista = sc.nextLine();
-		int id = Integer.parseInt(idlista);
-		String idPelicula = c.get(id).getId();
+		int idlista = comprobarNumero(c, sc);
+
+		String idPelicula = c.get(idlista).getId();
 		Princesa princesa = new Princesa(null, nombre, edad, ciudad, vehiculo, email, genero,
 				creacion, ip_address, universidad, titulacion);
 		System.out.println("¿Estas seguro de añadir la princesa?S/N");
 		String respuesta = sc.nextLine();
 		if (respuesta.toLowerCase().equals("s")) {
 			Logica.insertarPrincesa(princesa, idPelicula);
-			System.out.println("Se ha añadido la princesa");
+			System.out.println("Se ha añadido la principe");
 		} else {
-			System.out.println("No se ha añadido la princesa");
+			System.out.println("No se ha añadido la principe");
 		}
 
 	}
@@ -990,9 +990,9 @@ public class Logica {
 		System.out.println("¿A que pelicula lo quieres enlazar?");
 		Map<Integer, Pelicula> c = Logica.leerListaPelisTrailer();
 		System.out.print("Elige una pelicula: ");
-		String idlista = sc.nextLine();
-		int id = Integer.parseInt(idlista);
-		String idPelicula = c.get(id).getId();
+
+		int idlista = comprobarNumero(c, sc);
+		String idPelicula = c.get(idlista).getId();
 		Principe principe = new Principe(null, nombre, edad, ciudad, vehiculo, email, genero,
 				creacion, ip_address, universidad, titulacion);
 		System.out.println("¿Estas seguro de añadir al principe?S/N");
@@ -1035,10 +1035,9 @@ public class Logica {
 		System.out.println();
 		System.out.println("¿A que pelicula lo quieres enlazar?");
 		Map<Integer, Pelicula> c = Logica.leerListaPelisTrailer();
-		System.out.print("Elige una pelicula: ");
-		String idlista = sc.nextLine();
-		int id = Integer.parseInt(idlista);
-		String idPelicula = c.get(id).getId();
+		int idlista = comprobarNumero(c, sc);
+		String idPelicula = c.get(idlista).getId();
+
 		Villano villano = new Villano(null, nombre, edad, ciudad, vehiculo, email, genero,
 				creacion, ip_address, universidad, titulacion);
 		System.out.println("¿Estas seguro de añadir la Villano?S/N");
@@ -1050,6 +1049,29 @@ public class Logica {
 			System.out.println("No se ha añadido la Villano");
 		}
 
+	}
+
+	private static int comprobarNumero(Map<Integer, Pelicula> c, Scanner sc) {
+		int idlista = 0;
+		while (true) {
+			System.out.print("Elige una pelicula: ");
+			String prueba = sc.nextLine();
+			int b;
+			try {
+				b = Integer.parseInt(prueba);
+				int a = c.size();
+				if (((b <= a) && (b >= 1))) {
+					idlista = b;
+					break;
+				} else {
+
+					System.out.println("Has introducido una opcion que no existe :(");
+				}
+			} catch (Exception e) {
+				System.out.println("Has introducido una opcion que no existe :(");
+			}
+		}
+		return idlista;
 	}
 
 	static void insertarPeliculaMenu(Scanner sc) {
@@ -1663,7 +1685,7 @@ public class Logica {
 						.append("Empresa", p.getEmpresa())
 						.append("Titulacion", p.getTitulacion()));
 		Logica.director.updateMany(findDocument2, updateDocument2);
-		System.out.println("Update ejecutado");
+		System.out.println("Cambios reallizados!");
 	}
 
 	public static void editarPricensa(String id, Princesa p) {
@@ -1682,7 +1704,7 @@ public class Logica {
 						.append("Universidad", p.getUniversidad())
 						.append("Titulacion", p.getTitulacion()));
 		Logica.princesa.updateMany(findDocument2, updateDocument2);
-		System.out.println("Update ejecutado");
+		System.out.println("Cambios reallizados!");
 	}
 
 	public static void editarVillano(String id, Villano p) {
@@ -1701,7 +1723,7 @@ public class Logica {
 						.append("Universidad", p.getUniversidad())
 						.append("Titulacion", p.getTitulacion()));
 		Logica.villano.updateMany(findDocument2, updateDocument2);
-		System.out.println("Update ejecutado");
+		System.out.println("Cambios reallizados!");
 	}
 
 	public static void editarPrincipe(String id, Principe p) {
@@ -1720,7 +1742,7 @@ public class Logica {
 						.append("Universidad", p.getUniversidad())
 						.append("Titulacion", p.getTitulacion()));
 		Logica.principe.updateMany(findDocument2, updateDocument2);
-		System.out.println("Update ejecutado");
+		System.out.println("Cambios reallizados!");
 	}
 
 	public static void menuModificarPrincesa() {
@@ -1734,13 +1756,13 @@ public class Logica {
 		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println("");
-		System.out.print(ANSI_TEMA +"Escoge la princesa que quieres editar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge la princesa que quieres editar: " + ANSI_RESET);
 		String num = sc.nextLine();
 		Princesa princesa = princesas.get(Integer.parseInt(num));
 		String menup = "1. Nombre\n2. Edad\n3. Ciudad\n4. Vehiculo\n5. Email\n6. Genero\n7. Creacion\n8. ip_address\n9. Universidad\n10.Titulacion";
 		System.out.println(menup);
 		System.out.println("");
-		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -1810,13 +1832,13 @@ public class Logica {
 		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println("");
-		System.out.print(ANSI_TEMA + "Escoge la principe que quieres editar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge la principe que quieres editar: " + ANSI_RESET);
 		String num = sc.nextLine();
 		Principe principe = principes.get(Integer.parseInt(num));
 		String menup = "1. Nombre\n2. Edad\n3. Ciudad\n4. Vehiculo\n5. Email\n6. Genero\n7. Creacion\n8. ip_address\n9. Universidad\n10.Titulacion";
 		System.out.println(menup);
 		System.out.println("");
-		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -1886,13 +1908,13 @@ public class Logica {
 		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println("");
-		System.out.print(ANSI_TEMA +"Escoge la villano que quieres editar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge la villano que quieres editar: " + ANSI_RESET);
 		String num = sc.nextLine();
 		Villano v = villano.get(Integer.parseInt(num));
 		String menup = "1. Nombre\n2. Edad\n3. Ciudad\n4. Vehiculo\n5. Email\n6. Genero\n7. Creacion\n8. ip_address\n9. Universidad\n10.Titulacion";
 		System.out.println(menup);
 		System.out.println("");
-		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -1962,13 +1984,13 @@ public class Logica {
 		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println("");
-		System.out.print(ANSI_TEMA +"Escoge la pelicula que quieres editar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge la pelicula que quieres editar: " + ANSI_RESET);
 		String num = sc.nextLine();
 		Pelicula peli = pelicula.get(Integer.parseInt(num));
 		String menup = "1. Tiltulo\n2. Titulo original\n3. Año de estreno\n4. Duración\n5. Pais de rodaje\n6. Guion\n7. Música\n8. Fotografia\n9. Reparto\n10.Sinopsis";
 		System.out.println(menup);
 		System.out.println("");
-		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -2038,13 +2060,13 @@ public class Logica {
 		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println("");
-		System.out.print(ANSI_TEMA +"Escoge el director que quieres editar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge el director que quieres editar: " + ANSI_RESET);
 		String num = sc.nextLine();
 		Director d = directores.get(Integer.parseInt(num));
 		String menup = "1. Nombre\n2. Edad\n3. Ciudad nacimiento\n4. Vehiculo\n5. Email\n6. Genero\n7. ip_movi\n8. ip_address\n9. Empresa\n10.Titulacion";
 		System.out.println(menup);
 		System.out.println("");
-		System.out.print(ANSI_TEMA +"Escoge el campo que quieres cambiar: "+ ANSI_RESET);
+		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
 		String resul = sc.nextLine();
 		switch (resul) {
 			case "1":
@@ -2178,8 +2200,7 @@ public class Logica {
 						.append("Sinopsis", p.getSinopsis())
 						.append("Trailer", p.getTrailer()));
 		Logica.pelicula.updateMany(findDocument2, updateDocument2);
-		System.out.println("Update ejecutado");
+		System.out.println("Cambios reallizados!");
 	}
-
 
 }
