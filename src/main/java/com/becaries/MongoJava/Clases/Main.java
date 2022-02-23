@@ -42,17 +42,15 @@ class Main {
 
 		{
 			List<Bson> filters = new ArrayList<>();
-			Bson match = new Document("$match",
-					new Document("Princesa.idPelicula", true));
 
 			Bson lookup = new Document("$lookup",
 					new Document("from", "Pelicula")
-							.append("localField", "idPrincesa")
+							.append("localField", "idPelicula")
 							.append("foreignField", "_id")
 							.append("as", "look_coll"));
 
 			filters.add(lookup);
-			filters.add(match);
+
 
 			MongoCursor<Document> it = database.getCollection("Princesa").aggregate(filters).iterator();
 			
