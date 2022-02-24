@@ -19,6 +19,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -39,7 +40,7 @@ public class Logica {
 	public static MongoCollection<Document> principe;
 	public static MongoCollection<Document> director;
 	public static MongoCollection<Document> usuario;
-	public static ecriptar en = new ecriptar();
+	public static Ecriptar en = new Ecriptar();
 	public static MongoCollection<Document> pelicula = null;
 	public static MongoCollection<Document> villano;
 	public static MongoCollection<Document> princesa;
@@ -726,6 +727,7 @@ public class Logica {
 			System.out.println("|    directores                     |");
 			System.out.println("| 7. Ver trailer de una pelicula    |");
 			System.out.println("| 8. Ver sinopsis de una pelicula   |");
+			System.out.println("| 9. Personajes de cada pelicula    |");
 			System.out.println("| 0.Atras                           |");
 			System.out.println(" ___________________________________");
 			System.out.println("¿Que quieres hacer?");
@@ -787,6 +789,17 @@ public class Logica {
 					System.out.println(" _________________________" + ANSI_RESET);
 					System.out.println("");
 					leerSinopsis(sc);
+					volverAtras();
+					break;
+				case "9":
+					limpiarConsola();
+
+					System.out.println(ANSI_TEMA + " ______________________________________________ ");
+					System.out.println("|                                              |");
+					System.out.println("|                VER PERSONAJES                |");
+					System.out.println(" ______________________________________________" + ANSI_RESET);
+					System.out.println("");
+					subconsultaConJoin();
 					volverAtras();
 					break;
 				case "0":
@@ -1389,7 +1402,7 @@ public class Logica {
 		System.out.println();
 		char[] passwordArray = console.readPassword("Introduce una contraseña: ");
 		String rol = "usuario";
-		Usuario usr = new Usuario(nom, ecriptar.ecnode(new String(passwordArray)), rol);
+		Usuario usr = new Usuario(nom, Ecriptar.ecnode(new String(passwordArray)), rol);
 		insertarUsuario(usr);
 		limpiarConsola();
 		System.out.println("Ya puedes iniciar sesion " + nom + "!!");
@@ -1420,7 +1433,7 @@ public class Logica {
 			rol = "usuario";
 		}
 
-		Usuario usr = new Usuario(nom, ecriptar.ecnode(pwd), rol);
+		Usuario usr = new Usuario(nom, Ecriptar.ecnode(pwd), rol);
 		insertarUsuario(usr);
 		System.out.println("Usuario insertado!!");
 
@@ -2201,6 +2214,74 @@ public class Logica {
 						.append("Trailer", p.getTrailer()));
 		Logica.pelicula.updateMany(findDocument2, updateDocument2);
 		System.out.println("Cambios reallizados!");
+	}
+
+	static void subconsultaConJoin() {
+		MongoDatabase database = Conexion.conexionMongoDB();
+		List<Bson> filters = new ArrayList<>();
+
+		Bson lookupPrincesa = new Document("$lookup",
+				new Document("from", "Princesa")
+						.append("localField", "_id")
+						.append("foreignField", "idPelicula")
+						.append("as", "look_collPrincesa"));
+
+		Bson lookupPrincipe = new Document("$lookup",
+				new Document("from", "Principe")
+						.append("localField", "_id")
+						.append("foreignField", "idPelicula")
+						.append("as", "look_collPrincipe"));
+
+		Bson lookupVillano = new Document("$lookup",
+				new Document("from", "Villano")
+						.append("localField", "_id")
+						.append("foreignField", "idPelicula")
+						.append("as", "look_collVillano"));
+
+		Bson lookupDirector = new Document("$lookup",
+				new Document("from", "Director")
+						.append("localField", "_id")
+						.append("foreignField", "idPelicula")
+						.append("as", "look_collDirector"));
+
+		filters.add(lookupPrincesa);
+		filters.add(lookupPrincipe);
+		filters.add(lookupVillano);
+		filters.add(lookupDirector);
+
+		MongoCursor<Document> it = database.getCollection("Pelicula").aggregate(filters).iterator();
+		int i = 0;
+		while (it.hasNext()) {
+			Document next = it.next();
+
+			ArrayList<Document> princesaArrayList = next.get("look_collPrincesa", ArrayList.class);
+			ArrayList<Document> principeArrayList = next.get("look_collPrincipe", ArrayList.class);
+			ArrayList<Document> villanoArrayList = next.get("look_collVillano", ArrayList.class);
+			ArrayList<Document> directorArrayList = next.get("look_collDirector", ArrayList.class);
+			System.out.println("");
+			System.out.println(
+					"         _________________ " + ANSI_TEMA + i + ANSI_RESET + " _________________         ");
+			System.out.println("");
+			System.out.println(ANSI_TEMA + "Pelicula: " + ANSI_RESET + next.getString("Titulo"));
+
+			for (var bson : princesaArrayList) {
+				System.out.println("	· Princesa: " + bson.getString("Nombre"));
+			}
+
+			for (var bson : principeArrayList) {
+				System.out.println("	· Principe: " + bson.getString("Nombre"));
+			}
+
+			for (var bson : villanoArrayList) {
+				System.out.println("	· Villano: " + bson.getString("Nombre"));
+			}
+
+			for (var bson : directorArrayList) {
+				System.out.println("	· Director: " + bson.getString("Director"));
+			}
+			System.out.println("");
+			i++;
+		}
 	}
 
 }
