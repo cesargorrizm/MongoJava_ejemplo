@@ -1,20 +1,12 @@
 package com.becaries.MongoJava.Clases;
 
-import java.io.File;
-import java.io.InputStream;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
+//Clase que extiende de thread para lanzar un proceso que reproduzca musica en el reproductor de musica de windows
 public class musica extends Thread {
     @Override
     public void run() {
         super.run();
         try {
+            // LLamamos al metodo
             playMp3();
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -23,10 +15,13 @@ public class musica extends Thread {
     }
 
     private static void playMp3() throws Exception {
+        // Obtenemos el directorio raiz del programa y anidamos al resto de la url que
+        // esta e el prograa.
+        // Una vez hecho ya se llama al cmd y se le pasa el comando
         String directoryName = System.getProperty("user.dir");
         new ProcessBuilder()
                 .command("cmd.exe", "/c",
-                        "start Wmplayer " + directoryName + "/src/main/java/com/becaries/MongoJava/Clases/nonoonon.mp3")
+                        "start Wmplayer " + directoryName + "src/main/java/com/becaries/MongoJava/musica/nonoonon.mp3")
                 .inheritIO().start().waitFor();
 
     }

@@ -1,7 +1,8 @@
 package com.becaries.MongoJava.Clases;
 
+// Se tarata de una clase que contiene las imagen que se van a imprimir por consola
 public class Imagen {
-    public static void EnredadosKgaste() {
+	public static void EnredadosKgaste() {
 		String a = "[0;5;37;47m                                                                                                                                                                                                        [0m\n"
 				+
 				"[0;5;37;47m  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .:;:::;;;;;::... . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  [0m\n"
@@ -161,7 +162,7 @@ public class Imagen {
 		System.out.println(a);
 	}
 
-    public static void adiosAriel() {
+	public static void adiosAriel() {
 
 		System.out.println("                _\n" +
 				"                ,=\"` `\"\"=,       o Y\n" +

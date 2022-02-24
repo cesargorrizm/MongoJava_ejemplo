@@ -25,9 +25,9 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
-import org.springframework.data.mongodb.core.schema.IdentifiableJsonSchemaProperty;
 
 public class Logica {
+	// Incializar las variables necesarias para el tema
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_RED = "\033[1;91m";
 	public static String ANSI_TEMA = "";
@@ -37,6 +37,7 @@ public class Logica {
 	public static String ANSI_TEMA4 = "";
 	public static String ANSI_TEMA5 = "";
 
+	// Crear las variables necesarias de mongoCollection y encriptar
 	public static MongoCollection<Document> principe;
 	public static MongoCollection<Document> director;
 	public static MongoCollection<Document> usuario;
@@ -46,62 +47,30 @@ public class Logica {
 	public static MongoCollection<Document> princesa;
 	public static boolean BOOLEAN = false;
 
+	// Menu principal
 	public static void inicioSesion() {
-
+		// Se crean losdiferentes temas antes de inciar y se hace que el usuario elija
+		// una ocpciion para que sienta que el programa es suyo
 		ANSI_TEMA = "\033[1;94m";
 		ANSI_TEMA1 = "\u001B[35m";
 		ANSI_TEMA2 = "\u001b[36;1m";
 		ANSI_TEMA3 = "\u001b[32m";
 		ANSI_TEMA4 = "\u001b[33;1m";
 		ANSI_TEMA5 = "\u001b[35;1m";
-		System.out.println(" _________________________");
-		System.out.println("|                         |");
-		System.out.println("|      ELECCION TEMA      |");
-		System.out.println(" _________________________");
-		System.out.println(" __________________________");
-		System.out.println("|                          |");
-		System.out.println(
-				"| " + ANSI_TEMA + "1. Azul   " + ANSI_RESET + "|" + ANSI_TEMA3 + "  4. Verde" + ANSI_RESET + "    |");
-		System.out.println(
-				"| " + ANSI_TEMA1 + "2. Morado " + ANSI_RESET + "|" + ANSI_TEMA4 + "  5. Amarillo" + ANSI_RESET + " |");
-		System.out.println("| " + ANSI_TEMA2 + "3. Cian   " + ANSI_RESET + "|" + ANSI_TEMA5 + "  6. Rosa" + ANSI_RESET
-				+ "     | ");
-		System.out.println("|__________________________|");
-		System.out.print("Antes de empezar, ¿que color prefieres?: ");
+		// Se imprime un simpatiquisimo menu
+		menuTema();
 
-		Scanner color = new Scanner(System.in);
-		String colorEscogido = color.nextLine();
-		if (colorEscogido.equals("1")) {
-			System.out.println("¡Se establecio el tema azul con exito!");
-			ANSI_TEMA = "\033[1;94m";
-		} else if (colorEscogido.equals("2")) {
-			ANSI_TEMA = "\u001B[35m";
-			System.out.println("¡Se establecio el tema morado con exito!");
-		} else if (colorEscogido.equals("3")) {
-			ANSI_TEMA = "\u001b[36;1m";
-			System.out.println("¡Se establecio el tema cian con exito!");
-		} else if (colorEscogido.equals("4")) {
-			ANSI_TEMA = "\u001b[32m";
-			System.out.println("¡Se establecio el tema verde con exito!");
-		} else if (colorEscogido.equals("5")) {
-			ANSI_TEMA = "\u001b[33;1m";
-			System.out.println("¡Se establecio el tema amarillo con exito!");
-		} else if (colorEscogido.equals("6")) {
-			ANSI_TEMA = "\u001b[35;1m";
-			System.out.println("¡Se establecio el tema rosa con exito!");
-		} else {
-			System.out.println("¡Al no exitir la opcion, se establecera el azul!");
-		}
-		System.out.println("");
-
+		// Se imprimi el menu principal
 		boolean salir = true;
 		int i = 0;
 		while (salir) {
 			if (Logica.BOOLEAN) {
 				Logica.limpiarConsola();
+				// Si se cierra sesion informa al usuario de una forma grandiosa
 				System.out.println("¡Se ha cerrado sesion!");
 				Logica.BOOLEAN = false;
 			}
+			// Imprimir menu
 			System.out.println(ANSI_TEMA + " _______________________");
 			System.out.println("|                       |");
 			System.out.println("| ¡BIENVENIDO A PELNEY! |");
@@ -116,10 +85,12 @@ public class Logica {
 			Console console = System.console();
 			Scanner sc = new Scanner(System.in);
 			String ir = sc.nextLine();
+			// Depende de que ocion sale una cosa u otra
 			switch (ir) {
 				case "1":
 					boolean b = true;
 					while (b) {
+						// Se inicia sesion perfectamente
 						System.out.println("");
 						System.out.println(ANSI_TEMA + " ___________________");
 						System.out.println("|                   |");
@@ -140,6 +111,7 @@ public class Logica {
 							dato1 = p.getString("Password");
 							dato2 = p.getString("Rol");
 						}
+						// Se encripta la contraseñaf
 						if (dato1.equals(Logica.en.ecnode((new String(passwordArray))))) {
 
 							if (dato2.equals("admin")) {
@@ -154,6 +126,7 @@ public class Logica {
 								Logica.menuUser(sc);
 							}
 						} else {
+							// Numero de intentos
 							System.out.println(
 									ANSI_RED + "Datos incorrectos: te quedan " + (2 - i) + "  intentos" + ANSI_RESET);
 							i++;
@@ -167,6 +140,7 @@ public class Logica {
 					}
 					break;
 				case "2":
+					// Registro
 					Logica.limpiarConsola();
 					System.out.println("");
 					System.out.println(ANSI_TEMA + " ___________________");
@@ -190,7 +164,56 @@ public class Logica {
 
 	}
 
+	// Menu de eleccion de tema
+	private static void menuTema() {
+		System.out.println(" _________________________");
+		System.out.println("|                         |");
+		System.out.println("|      ELECCION TEMA      |");
+		System.out.println(" _________________________");
+		System.out.println(" __________________________");
+		System.out.println("|                          |");
+		System.out.println(
+				"| " + ANSI_TEMA + "1. Azul   " + ANSI_RESET + "|" + ANSI_TEMA3 + "  4. Verde" + ANSI_RESET + "    |");
+		System.out.println(
+				"| " + ANSI_TEMA1 + "2. Morado " + ANSI_RESET + "|" + ANSI_TEMA4 + "  5. Amarillo" + ANSI_RESET + " |");
+		System.out.println("| " + ANSI_TEMA2 + "3. Cian   " + ANSI_RESET + "|" + ANSI_TEMA5 + "  6. Rosa" + ANSI_RESET
+				+ "     | ");
+		System.out.println("|__________________________|");
+		// Se pide all usuario que introduzca uno
+		System.out.print("Antes de empezar, ¿que color prefieres?: ");
+
+		Scanner color = new Scanner(System.in);
+		// Y se establece
+		String colorEscogido = color.nextLine();
+		if (colorEscogido.equals("1")) {
+			System.out.println("¡Se establecio el tema azul con exito!");
+			ANSI_TEMA = "\033[1;94m";
+		} else if (colorEscogido.equals("2")) {
+			ANSI_TEMA = "\u001B[35m";
+			System.out.println("¡Se establecio el tema morado con exito!");
+		} else if (colorEscogido.equals("3")) {
+			ANSI_TEMA = "\u001b[36;1m";
+			System.out.println("¡Se establecio el tema cian con exito!");
+		} else if (colorEscogido.equals("4")) {
+			ANSI_TEMA = "\u001b[32m";
+			System.out.println("¡Se establecio el tema verde con exito!");
+		} else if (colorEscogido.equals("5")) {
+			ANSI_TEMA = "\u001b[33;1m";
+			System.out.println("¡Se establecio el tema amarillo con exito!");
+		} else if (colorEscogido.equals("6")) {
+			ANSI_TEMA = "\u001b[35;1m";
+			System.out.println("¡Se establecio el tema rosa con exito!");
+		} else {
+			System.out.println("¡Al no exitir la opcion, se establecera el azul!");
+		}
+		System.out.println("");
+	}
+
+	// Se imprime la tabla en una tabla bonitaa
 	public static void imprimirTablaPrincipes() {
+		// Se tarata de pasarle los adtos y decirle cuales van a ser los header y cuales
+		// van a ser los rows de la tabla y asi el propio metodo se encarga de hacerlo
+		// bonito ala vista del usuarioF
 		ArrayList<Principe> principes = Logica.leerPrincipes();
 		List<String> headersListprincipe = new ArrayList<>();
 		headersListprincipe.add("Nombre");
@@ -212,7 +235,9 @@ public class Logica {
 			row.add(principe.getCreacion());
 			rowsListprincipe.add(row);
 		}
+		// Se limpia consola
 		Logica.limpiarConsola();
+		// Se imprime la tabla una vez creada
 		System.out.println(GenerarTabla.generateTable(headersListprincipe, rowsListprincipe));
 		System.out.flush();
 
@@ -232,6 +257,8 @@ public class Logica {
 		System.out.flush();
 	}
 
+	// Metodo que hace referencia al menu del usuario pues el usuario solo tiene
+	// permiso de consultar y ya
 	static void menuUser(Scanner sc) {
 		boolean b = true;
 		while (b) {
@@ -257,12 +284,14 @@ public class Logica {
 					break;
 
 				default:
+					// Si una opcion no se elige bien pues eso
 					System.out.println("Has introducido una opcion que no existe :(");
 					break;
 			}
 		}
 	}
 
+	// Se imprime el campo de volver atra con el tema establecido
 	public static void btnAtras() {
 		System.out.println(ANSI_TEMA + " _________________________");
 		System.out.println("|                         |");
@@ -270,14 +299,16 @@ public class Logica {
 		System.out.println(" _________________________" + ANSI_RESET);
 	}
 
+	// Se imprime la tabla en una tabla bonitaa
 	public static void imprimirTablaPeliculas() {
 		ArrayList<Pelicula> pelis = Logica.leerPelicula();
 		List<String> headersList = new ArrayList<>();
-
+		// Se poenen los haders para poder ponerlso enla cabecera obviamente
 		headersList.add("Titulo");
 		headersList.add("Titulo Original");
 		List<List<String>> rowsList = new ArrayList<>();
 		for (Pelicula peli : pelis) {
+			// Se indican los rows
 			List<String> row = new ArrayList<>();
 			row.add(peli.getTitulo());
 			row.add(peli.getTituloOriginal());
@@ -286,6 +317,7 @@ public class Logica {
 		Logica.limpiarConsola();
 		System.out.println(GenerarTabla.generateTable(headersList, rowsList));
 
+		// Sigue la misma logica anterior
 		List<String> headersList1 = new ArrayList<>();
 		headersList1.add("Año");
 		headersList1.add("Duración");
@@ -302,6 +334,7 @@ public class Logica {
 		}
 		System.out.println(GenerarTabla.generateTable(headersList1, rowsList1));
 
+		// Sigue la misma logica anterior
 		List<String> headersList2 = new ArrayList<>();
 		headersList2.add("Música");
 		headersList2.add("Fotografía");
@@ -320,9 +353,11 @@ public class Logica {
 		System.out.println(GenerarTabla.generateTable(headersList2, rowsList2));
 	}
 
+	// Se imprime la tabla en una tabla bonitaa
 	static void imprimirTablavillanos() {
 		ArrayList<Villano> villanos = Logica.leerVillanos();
 		List<String> headersList = new ArrayList<>();
+		// Se indican las cabeceras
 		headersList.add("Nombre");
 		headersList.add("Edad");
 		headersList.add("Ciudad");
@@ -330,6 +365,7 @@ public class Logica {
 		headersList.add("Email");
 		headersList.add("Genero");
 		headersList.add("Creacion");
+		// y los datos impresos en orden
 		List<List<String>> rowsList = new ArrayList<>();
 		for (Villano villano : villanos) {
 			List<String> row = new ArrayList<>();
@@ -345,7 +381,7 @@ public class Logica {
 		Logica.limpiarConsola();
 		System.out.println(GenerarTabla.generateTable(headersList, rowsList));
 		System.out.flush();
-
+		// Sifgue la misma logica anterior
 		List<String> headersList1 = new ArrayList<>();
 		headersList1.add("Ip_address");
 		headersList1.add("Universidad");
@@ -362,9 +398,11 @@ public class Logica {
 		System.out.flush();
 	}
 
+	// Se imprime la tabla en una tabla bonitaa
 	static void imprimirTablaDirector() {
 		ArrayList<Director> directores = Logica.leerDirector();
 		List<String> headersListDirectores = new ArrayList<>();
+		// Se indican las cabeceras
 		headersListDirectores.add("Nombre");
 		headersListDirectores.add("Edad");
 		headersListDirectores.add("Ciudad de nacimiento");
@@ -373,6 +411,7 @@ public class Logica {
 		headersListDirectores.add("Genero");
 		headersListDirectores.add("Ip_movil");
 		List<List<String>> rowsListDirector = new ArrayList<>();
+		// Se indican los datos
 		for (Director director : directores) {
 			List<String> row = new ArrayList<>();
 			row.add(director.getDirector());
@@ -387,7 +426,7 @@ public class Logica {
 		Logica.limpiarConsola();
 		System.out.println(GenerarTabla.generateTable(headersListDirectores, rowsListDirector));
 		System.out.flush();
-
+		// Sifgue la misma logica anterior
 		List<String> headersListDirectores1 = new ArrayList<>();
 		headersListDirectores1.add("Ip_address");
 		headersListDirectores1.add("Empresa");
@@ -405,9 +444,11 @@ public class Logica {
 
 	}
 
+	// Se imprime la tabla en una tabla bonitaa
 	static void imprimirTablaPrincesa() {
 		ArrayList<Princesa> princesas = Logica.leerPrincesa();
 		List<String> headersListprincesa = new ArrayList<>();
+		// Se indican las cabeceras
 		headersListprincesa.add("Nombre");
 		headersListprincesa.add("Edad");
 		headersListprincesa.add("Ciudad");
@@ -416,6 +457,7 @@ public class Logica {
 		headersListprincesa.add("Genero");
 		headersListprincesa.add("Creacion");
 		List<List<String>> rowsListprincesa = new ArrayList<>();
+		// Se indican los datos
 		for (Princesa princesa : princesas) {
 			List<String> row = new ArrayList<>();
 			row.add(princesa.getNombre());
@@ -431,6 +473,7 @@ public class Logica {
 		System.out.println(GenerarTabla.generateTable(headersListprincesa, rowsListprincesa));
 		System.out.flush();
 
+		// Sifgue la misma logica anterior
 		List<String> headersListprincesa1 = new ArrayList<>();
 		headersListprincesa1.add("Ip_address");
 		headersListprincesa1.add("Universidad");
@@ -447,6 +490,8 @@ public class Logica {
 		System.out.flush();
 	}
 
+	// Proceso que lanza un cmd y ejecuta el comento que abre chrome con el trailer
+	// de cada peli
 	static void procesoVerTrailer(String url) {
 		try {
 			new ProcessBuilder("cmd.exe", "/c", "start chrome " + url).inheritIO().start().waitFor();
@@ -455,6 +500,10 @@ public class Logica {
 		}
 	}
 
+	// Simplemnete se añade un salto de linea pra que sea algo mas limpio, se probo
+	// con un cls pero el programa como que csolo oculta y al hacer varios print
+	// imprime lo anterior asi que lo mas optimo fue hacer un salto de linea pra
+	// disipar un poco la atencion de lo anterior
 	public static void limpiarConsola() {
 		// System.out.flush();
 		System.out.println("\n");
@@ -466,6 +515,7 @@ public class Logica {
 		// System.out.flush();
 	}
 
+	// Se imprime el boton atras y se hace una pausa
 	static void volverAtras() {
 		btnAtras();
 		Logica.pulsaContinuar();
@@ -482,6 +532,7 @@ public class Logica {
 		}
 	}
 
+	// Se pregunta que trailer se quiere observar
 	static int pregunta(Scanner sc) {
 		System.out.println("¿Que trailer quieres ver?");
 		String algo = sc.nextLine();
@@ -489,6 +540,7 @@ public class Logica {
 		return peli;
 	}
 
+	// Metodo que pide confirmacion antes de borrar
 	static void eliminarVillanosMenu(Scanner sc) {
 		ArrayList<Villano> pelis = Logica.leerVillanos();
 		for (int i = 0; i < pelis.size(); i++) {
@@ -508,6 +560,7 @@ public class Logica {
 		}
 	}
 
+	// Metodo que pide confirmacion antes de borrar
 	static void eliminarDirectorMenu(Scanner sc) {
 		ArrayList<Director> pelis = Logica.leerDirector();
 		for (int i = 0; i < pelis.size(); i++) {
@@ -527,6 +580,7 @@ public class Logica {
 		}
 	}
 
+	// Metodo que pide confirmacion antes de borrar
 	static void eliminarPrincipeMenu(Scanner sc) {
 		ArrayList<Principe> pelis = Logica.leerPrincipes();
 		for (int i = 0; i < pelis.size(); i++) {
@@ -546,6 +600,7 @@ public class Logica {
 		}
 	}
 
+	// Metodo que pide confirmacion antes de borrar
 	static void eliminarPrincesaMenu(Scanner sc) {
 		ArrayList<Princesa> pelis = Logica.leerPrincesa();
 		for (int i = 0; i < pelis.size(); i++) {
@@ -565,7 +620,9 @@ public class Logica {
 		}
 	}
 
+	// Metodo que pide confirmacion antes de borrar
 	static void eliminarPeliculaMenuCascada(Scanner sc) {
+		// se muestra las peliculas y se eliminar en cascada
 		ArrayList<Pelicula> pelis = Logica.leerPelicula();
 		for (int i = 0; i < pelis.size(); i++) {
 			System.out.println(i + ". " + pelis.get(i).getTitulo());
@@ -588,7 +645,9 @@ public class Logica {
 		}
 	}
 
+	// Metodo que pide confirmacion antes de borrar
 	static void eliminarPeliculaMenu(Scanner sc) {
+		// elegi la pelicula y elimina la pelicula elegida
 		ArrayList<Pelicula> pelis = Logica.leerPelicula();
 		for (int i = 0; i < pelis.size(); i++) {
 			System.out.println(i + ". " + pelis.get(i).getTitulo());
@@ -607,8 +666,10 @@ public class Logica {
 		}
 	}
 
+	// Metodo que se encarga de motrar la sinopsis de una pelicula seleccioanddaf
 	static void leerSinopsis(Scanner sc) {
 		ArrayList<Pelicula> pelis = Logica.leerPelicula();
+		// mostramos las peliculas
 		for (int i = 0; i < pelis.size(); i++) {
 			System.out.println(i + ". " + pelis.get(i).getTitulo());
 		}
@@ -616,9 +677,12 @@ public class Logica {
 		String leeropcion = sc.nextLine();
 		String sinopsis = pelis.get(Integer.parseInt(leeropcion)).getSinopsis();
 		String sinopsisPeli = pelis.get(Integer.parseInt(leeropcion)).getTitulo();
+		// mostramos la sipnosis sin cortar
 		System.out.println(sinopsisPeli + ": " + sinopsis);
 	}
 
+	// menu que se imprime para gestionar los datos, algoq ue solo pùede hacer el
+	// admin
 	static void gestionarDatosMenu(Scanner sc) {
 		limpiarConsola();
 		boolean a1 = true;
@@ -664,7 +728,9 @@ public class Logica {
 		}
 	}
 
+	// metodo para insetar un nuevo usuario
 	public static void insertarUsuario(Usuario usr) {
+		// se crea un documento con los datos nuevos
 		Logica.usuario.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Usuario", usr.getUser())
@@ -672,6 +738,7 @@ public class Logica {
 				.append("Rol", usr.getRol()));
 	}
 
+	// Menu del admin, puede ver y gestionar los datos
 	static void menu(Scanner sc) {
 		boolean b = true;
 		while (b) {
@@ -707,6 +774,7 @@ public class Logica {
 		}
 	}
 
+	// Menu para motrar las opcipones de las cosas que se pueden hacer
 	static void mostrarDatosMenu(Scanner sc) {
 		limpiarConsola();
 		boolean a = true;
@@ -814,6 +882,7 @@ public class Logica {
 		}
 	}
 
+	// Menu que se encarga de mostrar las ociones de inserccion
 	static void insertarOpciones(Scanner sc) {
 		limpiarConsola();
 		boolean a5 = true;
@@ -872,7 +941,9 @@ public class Logica {
 		}
 	}
 
+	// Metodo que se encaraga de la inserccion de datos por parte del usuario
 	static void insertarDirectorMenu(Scanner sc) {
+		// Pedimos los datos al usuario para insertar en la coleccion
 		System.out.println(ANSI_TEMA + " _____________________________");
 		System.out.println("|                            |");
 		System.out.println("|      INSERTAR DIRECTOR     |");
@@ -918,6 +989,7 @@ public class Logica {
 		System.out.println("¿Estas seguro de añadir la director?S/N");
 		String respuesta = sc.nextLine();
 		if (respuesta.toLowerCase().equals("s")) {
+			// metodo para insertar
 			Logica.insertarDirector(d, idPelicula);
 
 			System.out.println("Se ha añadido la director");
@@ -927,7 +999,9 @@ public class Logica {
 
 	}
 
+	// Metodo que se encaraga de la inserccion de datos por parte del usuario
 	static void insertarPrincesaMenu(Scanner sc) {
+		// Pedimos los datos al usuario para insertar en la coleccion
 		System.out.println(ANSI_TEMA + " _____________________________");
 		System.out.println("|                            |");
 		System.out.println("|      INSERTAR PRINCIPE     |");
@@ -965,6 +1039,7 @@ public class Logica {
 		System.out.println("¿Estas seguro de añadir la princesa?S/N");
 		String respuesta = sc.nextLine();
 		if (respuesta.toLowerCase().equals("s")) {
+			// llama al metodo de insertar princesa
 			Logica.insertarPrincesa(princesa, idPelicula);
 			System.out.println("Se ha añadido la principe");
 		} else {
@@ -973,7 +1048,9 @@ public class Logica {
 
 	}
 
+	// Metodo que se encaraga de la inserccion de datos por parte del usuario
 	static void insertarPrincipeMenu(Scanner sc) {
+		// Pedimos los datos al usuario para insertar en la coleccion
 		System.out.println(ANSI_TEMA + " _____________________________");
 		System.out.println("|                            |");
 		System.out.println("|      INSERTAR PRINCIPE     |");
@@ -1011,6 +1088,7 @@ public class Logica {
 		System.out.println("¿Estas seguro de añadir al principe?S/N");
 		String respuesta = sc.nextLine();
 		if (respuesta.toLowerCase().equals("s")) {
+			// Metodo insertar
 			Logica.insertarPrincipe(principe, idPelicula);
 			System.out.println("Se ha añadido la principe");
 		} else {
@@ -1019,7 +1097,9 @@ public class Logica {
 
 	}
 
+	// Metodo que se encaraga de la inserccion de datos por parte del usuario
 	static void insertarVillanoMenu(Scanner sc) {
+		// Pedimos los datos al usuario para insertar en la coleccion
 		System.out.println(ANSI_TEMA + " _____________________________");
 		System.out.println("|                            |");
 		System.out.println("|      INSERTAR VILLANO      |");
@@ -1056,6 +1136,7 @@ public class Logica {
 		System.out.println("¿Estas seguro de añadir la Villano?S/N");
 		String respuesta = sc.nextLine();
 		if (respuesta.toLowerCase().equals("s")) {
+			// metodo insertar
 			Logica.insertarVillano(villano, idPelicula);
 			System.out.println("Se ha añadido la Villano");
 		} else {
@@ -1064,7 +1145,10 @@ public class Logica {
 
 	}
 
+	// Metodo que se encarga de comprobar si el entrarte es un numero que se
+	// encuatra en la lista y es un numero
 	private static int comprobarNumero(Map<Integer, Pelicula> c, Scanner sc) {
+		// Metodo para comprobar que el dato que introduce esta en la lista
 		int idlista = 0;
 		while (true) {
 			System.out.print("Elige una pelicula: ");
@@ -1088,6 +1172,7 @@ public class Logica {
 	}
 
 	static void insertarPeliculaMenu(Scanner sc) {
+		// Pedimos los datos al usuario para insertar en la coleccion
 		System.out.println(ANSI_TEMA + " ____________________________");
 		System.out.println("|                            |");
 		System.out.println("|      INSERTAR PELICULA     |");
@@ -1119,7 +1204,9 @@ public class Logica {
 				guion, musica, fotografia, reparto, sipnosis, trailer);
 		System.out.println("¿Estas seguro de añadir la pelicula?S/N");
 		String respuesta = sc.nextLine();
+		// confirmacion para insertar
 		if (respuesta.toLowerCase().equals("s")) {
+			// llamamos al metodo para insertar
 			Logica.insertarPelicula(pelicula);
 			System.out.println("Se ha añadido la pelicula");
 		} else {
@@ -1127,7 +1214,10 @@ public class Logica {
 		}
 	}
 
+	// metodo para insertar
 	public static void insertarDirector(Director d, String idPelicula) {
+		// Se crea un documento con los campos que se quiere insertar y se insertar el
+		// la collecion
 		Logica.director.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Director", d.getDirector())
@@ -1144,7 +1234,10 @@ public class Logica {
 				.append("trabajadoDisney", "si"));
 	}
 
+	// metodo para insertar
 	public static void insertarVillano(Villano p, String idPelicula) {
+		// Se crea un documento con los campos que se quiere insertar y se insertar el
+		// la collecion
 		Logica.villano.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Nombre", p.getNombre())
@@ -1160,7 +1253,10 @@ public class Logica {
 				.append("idPelicula", new ObjectId(idPelicula)));
 	}
 
+	// metodo para insertar
 	public static void insertarPrincipe(Principe p, String idPelicula) {
+		// Se crea un documento con los campos que se quiere insertar y se insertar el
+		// la collecion
 		Logica.principe.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Nombre", p.getNombre())
@@ -1176,7 +1272,10 @@ public class Logica {
 				.append("idPelicula", new ObjectId(idPelicula)));
 	}
 
+	// metodo para insertar
 	public static void insertarPrincesa(Princesa p, String idPelicula) {
+		// Se crea un documento con los campos que se quiere insertar y se insertar el
+		// la collecion
 		Logica.princesa.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Nombre", p.getNombre())
@@ -1192,7 +1291,10 @@ public class Logica {
 				.append("idPelicula", new ObjectId(idPelicula)));
 	}
 
+	// metodo para insertar
 	public static void insertarPelicula(Pelicula p) {
+		// Se crea un documento con los campos que se quiere insertar y se insertar el
+		// la collecion
 		Logica.pelicula.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Titulo", p.getTitulo())
@@ -1208,6 +1310,7 @@ public class Logica {
 				.append("Trailer", p.getTrailer()));
 	}
 
+	/************** RELACIONAR *****************/
 	private static void establecerRelaciones() {
 		// RELACIONES PRINCESAS
 		Logica.relacionPrincesa("620d3e6e41d00a35312038e3", "620d3e1241d00a353120388b");// 1
@@ -1323,11 +1426,14 @@ public class Logica {
 	}
 
 	public static void eliminarPelicula(String id) {
+		// documento con el id que se quiere eliminar
 		Document findDocument = new Document("_id", new ObjectId(id));
+		// elimnar
 		Logica.pelicula.deleteMany(findDocument);
 	}
 
 	static void borrarOpciones(Scanner sc) {
+		// menu para borrar
 		limpiarConsola();
 		boolean a3 = true;
 		while (a3) {
@@ -1397,11 +1503,13 @@ public class Logica {
 	}
 
 	static void registroUser(Scanner sc, Console console) {
+		// registrar el usuario por defecto se le pone el rol de usuario
 		System.out.print("Introduce el nuevo user: ");
 		String nom = sc.nextLine();
 		System.out.println();
 		char[] passwordArray = console.readPassword("Introduce una contraseña: ");
 		String rol = "usuario";
+		// Encriptar la contraseña
 		Usuario usr = new Usuario(nom, Ecriptar.ecnode(new String(passwordArray)), rol);
 		insertarUsuario(usr);
 		limpiarConsola();
@@ -1409,6 +1517,7 @@ public class Logica {
 	}
 
 	static void registro(Scanner sc) {
+		// Registra Usuaario
 		System.out.println("");
 		System.out.println(ANSI_TEMA + " ___________________");
 		System.out.println("|                   |");
@@ -1419,6 +1528,7 @@ public class Logica {
 		String nom = sc.nextLine();
 		System.out.println("Introduce una contraseña");
 		String pwd = sc.nextLine();
+		// elegir el rol
 		System.out.println("¿Cual es su rol?");
 		System.out.println("1. Administrador");
 		System.out.println("2. Usuario");
@@ -1432,8 +1542,9 @@ public class Logica {
 			System.out.println("No existe... Se le adjudicara usuario.");
 			rol = "usuario";
 		}
-
+		// Encriptar la contraseña
 		Usuario usr = new Usuario(nom, Ecriptar.ecnode(pwd), rol);
+		// metodo para insertar Usuario en mognodb
 		insertarUsuario(usr);
 		System.out.println("Usuario insertado!!");
 
@@ -1441,6 +1552,7 @@ public class Logica {
 
 	static Map<Integer, Pelicula> leerListaPelisTrailer() {
 		Map<Integer, Pelicula> c = Logica.leerPeliculaNombre2();
+		// mostrar listas
 		c.forEach((k, v) -> System.out.println(k + ". " + v.getTitulo()));
 		return c;
 	}
@@ -1468,8 +1580,9 @@ public class Logica {
 			dataset.setValue(document.getString("_id"), document.getInteger("total"));
 		}
 
+		// Crear Grafico
 		JFreeChart chart = ChartFactory.createPieChart3D("Genero de los directores", dataset, true, true, true);
-
+		// Mostrar el grafico
 		ChartFrame frame = new ChartFrame("Genero de los directores", chart);
 		frame.pack();
 		frame.setAlwaysOnTop(true);
@@ -1477,7 +1590,8 @@ public class Logica {
 
 	}
 
-	private static void crearColecciones(MongoDatabase database) {
+	static void crearColecciones(MongoDatabase database) {
+		// Crear las colletion en mongodb
 		database.createCollection("Princesa");
 		database.createCollection("Principe");
 		database.createCollection("Villano");
@@ -1487,6 +1601,7 @@ public class Logica {
 	}
 
 	public static void obtenerColecciones(MongoDatabase database) {
+		// obtener las colecciones para despues trabajar con ellas
 		Logica.pelicula = database.getCollection("Pelicula");
 		Logica.princesa = database.getCollection("Princesa");
 		Logica.villano = database.getCollection("Villano");
@@ -1496,6 +1611,7 @@ public class Logica {
 	}
 
 	static void relacionPrincesa(String idPelicula, String idPrincesa) {
+		// Metodo para la relacion de Princiesa
 		Document findDocument2 = new Document("_id", new ObjectId(idPrincesa));
 		Document updateDocument2 = new Document("$set",
 				new Document("idPelicula", new ObjectId(idPelicula)));
@@ -1504,6 +1620,7 @@ public class Logica {
 	}
 
 	static void relacionVillano(String idPelicula, String idVillano) {
+		// Metodo para la relacion de Villano
 		Document findDocument2 = new Document("_id", new ObjectId(idVillano));
 		Document updateDocument2 = new Document("$set",
 				new Document("idPelicula", new ObjectId(idPelicula)));
@@ -1512,6 +1629,7 @@ public class Logica {
 	}
 
 	static void relacionPrincipe(String idPelicula, String idPrincipe) {
+		// Metodo para la relacion de Principe
 		Document findDocument = new Document("_id", new ObjectId(idPrincipe));
 		Document updateDocument = new Document("$set",
 				new Document("idPelicula", new ObjectId(idPelicula)));
@@ -1520,14 +1638,19 @@ public class Logica {
 	}
 
 	static void relacionDirector(String idPelicula, String idDirector) {
+		// Metodo para la relacion de director
+		// Documento con el id del director para filtrar
 		Document findDocument = new Document("_id", new ObjectId(idDirector));
+		// Documento que añade un campo o modifica la id
 		Document updateDocument = new Document("$set",
 				new Document("idPelicula", new ObjectId(idPelicula)));
+		// Actualiza
 		Logica.director.updateMany(findDocument, updateDocument);
 		System.out.println("Update ejecutado");
 	}
 
 	static ArrayList<Princesa> leerPrincesa() {
+		// Metodo para leer una coleccion de mongodb y pasarlo a una lista
 		ArrayList<Princesa> listaprincesas = new ArrayList<Princesa>();
 		MongoCursor<Document> resultDocument = Logica.princesa.find().iterator();
 
@@ -1544,6 +1667,7 @@ public class Logica {
 	}
 
 	static ArrayList<Pelicula> leerPelicula() {
+		// Metodo para leer una coleccion de mongodb y pasarlo a una lista
 		ArrayList<Pelicula> listapPeliculas = new ArrayList<Pelicula>();
 		MongoCursor<Document> resultDocument = Logica.pelicula.find().iterator();
 
@@ -1560,6 +1684,8 @@ public class Logica {
 	}
 
 	public static void insertarPrincesa(Princesa p) {
+		// Insertar Colletion para eso creamos un documento con los campos que se van a
+		// introducir
 		Logica.princesa.insertOne(new Document()
 				.append("_id", new ObjectId())
 				.append("Nombre", p.getNombre())
@@ -1575,7 +1701,7 @@ public class Logica {
 	}
 
 	static Map<Integer, Pelicula> leerPeliculaNombre2() {
-
+		// Metodo para leer una coleccion de mongodb y pasarlo a una lista
 		Map<Integer, Pelicula> a = new HashMap<Integer, Pelicula>();
 		MongoCursor<Document> resultDocument = Logica.pelicula.find().iterator();
 		int i = 1;
@@ -1594,6 +1720,7 @@ public class Logica {
 	}
 
 	public static ArrayList<Principe> leerPrincipes() {
+		// Metodo para leer una coleccion de mongodb y pasarlo a una lista
 		ArrayList<Principe> listaPrincipe = new ArrayList<Principe>();
 		MongoCursor<Document> resultDocument = Logica.principe.find().iterator();
 
@@ -1610,6 +1737,7 @@ public class Logica {
 	}
 
 	static ArrayList<Villano> leerVillanos() {
+		// Metodo para leer una coleccion de mongodb y pasarlo a una lista
 		ArrayList<Villano> listaVillano = new ArrayList<Villano>();
 		MongoCursor<Document> resultDocument = Logica.villano.find().iterator();
 
@@ -1626,6 +1754,7 @@ public class Logica {
 	}
 
 	static ArrayList<Director> leerDirector() {
+		// Metodo para leer una coleccion de mongodb y pasarlo a una lista
 		ArrayList<Director> listaDirector = new ArrayList<Director>();
 		MongoCursor<Document> resultDocument = Logica.director.find().iterator();
 
@@ -1643,48 +1772,65 @@ public class Logica {
 	}
 
 	public static void eliminarVillanoCascada(String id) {
+		// Documento con el id de la pelicula que se quiere eliminar
 		Document findDocument = new Document("idPelicula", new ObjectId(id));
+		// eliminar
 		Logica.villano.deleteMany(findDocument);
 	}
 
 	public static void eliminarVillano(String id) {
+		// Documento con el id de la Villano que se quiere eliminar
 		Document findDocument = new Document("_id", new ObjectId(id));
+		// eliminar
 		Logica.villano.deleteMany(findDocument);
 	}
 
 	public static void eliminarPrincesa(String id) {
+		// Documento con el id de la Princesa que se quiere eliminar
 		Document findDocument = new Document("_id", new ObjectId(id));
+		// eliminar
 		Logica.princesa.deleteMany(findDocument);
 	}
 
 	public static void eliminarPrincipe(String id) {
+		// Documento con el id de la Principe que se quiere eliminar
 		Document findDocument = new Document("_id", new ObjectId(id));
+		// eliminar
 		Logica.principe.deleteMany(findDocument);
 	}
 
 	public static void eliminarDirector(String id) {
+		// Documento con el id de Director que se quiere eliminar
 		Document findDocument = new Document("_id", new ObjectId(id));
+		// eliminar
 		Logica.director.deleteMany(findDocument);
 	}
 
 	public static void eliminarDirectorCascada(String id) {
+		// Documento con el id de la pelicula que se quiere eliminar
 		Document findDocument = new Document("idPelicula", new ObjectId(id));
+		// eliminar
 		Logica.director.deleteMany(findDocument);
 	}
 
 	public static void eliminarPrincipeCascada(String id) {
+		// Documento con el id de la pelicula que se quiere eliminar
 		Document findDocument = new Document("idPelicula", new ObjectId(id));
+		// eliminar
 		Logica.principe.deleteMany(findDocument);
 	}
 
 	public static void eliminarPrincesaCascada(String id) {
+		// Documento con el id de la pelicula que se quiere eliminar
 		Document findDocument = new Document("idPelicula", new ObjectId(id));
+		// eliminar
 		Logica.princesa.deleteMany(findDocument);
 	}
 
 	public static void editarDirector(String id, Director p) {
+		// documento para filtrar por id
 		Document findDocument2 = new Document("_id", new ObjectId(id));
-
+		// documento con los campos que se va a modificar
 		Document updateDocument2 = new Document("$set",
 				new Document()
 						.append("Director", p.getDirector())
@@ -1697,13 +1843,15 @@ public class Logica {
 						.append("ip_address", p.getIpAddress())
 						.append("Empresa", p.getEmpresa())
 						.append("Titulacion", p.getTitulacion()));
+		// Se actualiza en mongodb
 		Logica.director.updateMany(findDocument2, updateDocument2);
 		System.out.println("Cambios reallizados!");
 	}
 
 	public static void editarPricensa(String id, Princesa p) {
+		// documento para filtrar por id
 		Document findDocument2 = new Document("_id", new ObjectId(id));
-
+		// documento con los campos que se va a modificar
 		Document updateDocument2 = new Document("$set",
 				new Document()
 						.append("Nombre", p.getNombre())
@@ -1716,13 +1864,15 @@ public class Logica {
 						.append("ip_address", p.getIpAddress())
 						.append("Universidad", p.getUniversidad())
 						.append("Titulacion", p.getTitulacion()));
+		// Se actualiza en mongodb
 		Logica.princesa.updateMany(findDocument2, updateDocument2);
 		System.out.println("Cambios reallizados!");
 	}
 
 	public static void editarVillano(String id, Villano p) {
+		// documento para filtrar por id
 		Document findDocument2 = new Document("_id", new ObjectId(id));
-
+		// documento con los campos que se va a modificar
 		Document updateDocument2 = new Document("$set",
 				new Document()
 						.append("Nombre", p.getNombre())
@@ -1735,13 +1885,15 @@ public class Logica {
 						.append("ip_address", p.getIpAddress())
 						.append("Universidad", p.getUniversidad())
 						.append("Titulacion", p.getTitulacion()));
+		// Se actualiza en mongodb
 		Logica.villano.updateMany(findDocument2, updateDocument2);
 		System.out.println("Cambios reallizados!");
 	}
 
 	public static void editarPrincipe(String id, Principe p) {
+		// documento para filtrar por id
 		Document findDocument2 = new Document("_id", new ObjectId(id));
-
+		// documento con los campos que se va a modificar
 		Document updateDocument2 = new Document("$set",
 				new Document()
 						.append("Nombre", p.getNombre())
@@ -1754,17 +1906,21 @@ public class Logica {
 						.append("ip_address", p.getIpAddress())
 						.append("Universidad", p.getUniversidad())
 						.append("Titulacion", p.getTitulacion()));
+		// Se actualiza en mongodb
 		Logica.principe.updateMany(findDocument2, updateDocument2);
 		System.out.println("Cambios reallizados!");
 	}
 
 	public static void menuModificarPrincesa() {
+		// Menu modificar princesa
 		System.out.println(ANSI_TEMA + " _____________________________");
 		System.out.println("|                            |");
 		System.out.println("|       EDITAR PRINCESA      |");
 		System.out.println(" ____________________________" + ANSI_RESET);
+		// lista de princesas de mongodb
 		ArrayList<Princesa> princesas = leerPrincesa();
 		for (int i = 0; i < princesas.size(); i++) {
+			// mostramos las princesa
 			System.out.println(i + ". " + princesas.get(i).getNombre() + " version " + princesas.get(i).getCreacion());
 		}
 		Scanner sc = new Scanner(System.in);
@@ -1776,7 +1932,10 @@ public class Logica {
 		System.out.println(menup);
 		System.out.println("");
 		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
+		// Pedimos al usuario que modificque un campo
 		String resul = sc.nextLine();
+		// Segun la opcion modifica una cosa o otra
+		System.out.print("Introduce el nuevo dato: ");
 		switch (resul) {
 			case "1":
 				String n = sc.nextLine();
@@ -1829,18 +1988,22 @@ public class Logica {
 				editarPricensa(princesa.getId(), princesa);
 				break;
 			default:
+				System.out.println("Has introducido una opcion que no existe :(");
 				break;
 		}
 
 	}
 
 	public static void menuModificarPrincipe() {
+		// Menu para modificar Principe
 		System.out.println(ANSI_TEMA + " _____________________________");
 		System.out.println("|                            |");
 		System.out.println("|       EDITAR PRINCIPE      |");
 		System.out.println(" ____________________________" + ANSI_RESET);
+		// ArrayList de principes de monogodb
 		ArrayList<Principe> principes = leerPrincipes();
 		for (int i = 0; i < principes.size(); i++) {
+			// Mostrar el principe
 			System.out.println(i + ". " + principes.get(i).getNombre() + " version " + principes.get(i).getCreacion());
 		}
 		Scanner sc = new Scanner(System.in);
@@ -1852,7 +2015,9 @@ public class Logica {
 		System.out.println(menup);
 		System.out.println("");
 		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
+		// Para modificar la opcion adecuada
 		String resul = sc.nextLine();
+		System.out.print("Introduce el nuevo dato: ");
 		switch (resul) {
 			case "1":
 				String n = sc.nextLine();
@@ -1905,18 +2070,21 @@ public class Logica {
 				editarPrincipe(principe.getId(), principe);
 				break;
 			default:
+				System.out.println("Has introducido una opcion que no existe :(");
 				break;
 		}
 
 	}
 
 	public static void menuModificarVillano() {
+		// Metodo menu modificar Villano
 		System.out.println(ANSI_TEMA + " _____________________________");
 		System.out.println("|                            |");
 		System.out.println("|       EDITAR VILLANO       |");
 		System.out.println(" ____________________________" + ANSI_RESET);
 		ArrayList<Villano> villano = leerVillanos();
 		for (int i = 0; i < villano.size(); i++) {
+			// mostrar villano para que el usuario eligan uno
 			System.out.println(i + ". " + villano.get(i).getNombre() + " version " + villano.get(i).getCreacion());
 		}
 		Scanner sc = new Scanner(System.in);
@@ -1929,6 +2097,8 @@ public class Logica {
 		System.out.println("");
 		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
 		String resul = sc.nextLine();
+		// para modificar la opcion
+		System.out.print("Introduce el nuevo dato: ");
 		switch (resul) {
 			case "1":
 				String n = sc.nextLine();
@@ -1981,30 +2151,36 @@ public class Logica {
 				editarVillano(v.getId(), v);
 				break;
 			default:
+				System.out.println("Has introducido una opcion que no existe :(");
 				break;
 		}
 
 	}
 
 	public static void menuModificarPelicula() {
+		// metodo para menu modificar Pelicula
 		System.out.println(ANSI_TEMA + " _____________________________");
 		System.out.println("|                            |");
 		System.out.println("|       EDITAR PELICULA      |");
 		System.out.println(" ____________________________" + ANSI_RESET);
 		ArrayList<Pelicula> pelicula = leerPelicula();
 		for (int i = 0; i < pelicula.size(); i++) {
+			// mostramos la peliculas
 			System.out.println(i + ". " + pelicula.get(i).getTitulo() + ": Año de estreno " + pelicula.get(i).getAno());
 		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println("");
 		System.out.print(ANSI_TEMA + "Escoge la pelicula que quieres editar: " + ANSI_RESET);
 		String num = sc.nextLine();
+		// cogemos la pelicula seleccionada
 		Pelicula peli = pelicula.get(Integer.parseInt(num));
 		String menup = "1. Tiltulo\n2. Titulo original\n3. Año de estreno\n4. Duración\n5. Pais de rodaje\n6. Guion\n7. Música\n8. Fotografia\n9. Reparto\n10.Sinopsis";
 		System.out.println(menup);
 		System.out.println("");
 		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
 		String resul = sc.nextLine();
+		// Para modificar el campo seleccionado
+		System.out.print("Introduce el nuevo dato: ");
 		switch (resul) {
 			case "1":
 				String n = sc.nextLine();
@@ -2057,18 +2233,21 @@ public class Logica {
 				Logica.editarPelicula(peli.getId(), peli);
 				break;
 			default:
+				System.out.println("Has introducido una opcion que no existe :(");
 				break;
 		}
 
 	}
 
 	public static void menuModificarDirector() {
+		// menu para modificarDirector
 		System.out.println(ANSI_TEMA + " _____________________________");
 		System.out.println("|                            |");
 		System.out.println("|       EDITAR DIRECTOR      |");
 		System.out.println(" ____________________________" + ANSI_RESET);
 		ArrayList<Director> directores = leerDirector();
 		for (int i = 0; i < directores.size(); i++) {
+			// mostramos los directores
 			System.out.println(i + ". " + directores.get(i).getDirector());
 		}
 		Scanner sc = new Scanner(System.in);
@@ -2080,7 +2259,9 @@ public class Logica {
 		System.out.println(menup);
 		System.out.println("");
 		System.out.print(ANSI_TEMA + "Escoge el campo que quieres cambiar: " + ANSI_RESET);
+		// Elegir la opcion adecuada para modificar
 		String resul = sc.nextLine();
+		System.out.print("Introduce el nuevo dato: ");
 		switch (resul) {
 			case "1":
 				String n = sc.nextLine();
@@ -2133,6 +2314,7 @@ public class Logica {
 				editarDirector(d.getId(), d);
 				break;
 			default:
+				System.out.println("Has introducido una opcion que no existe :(");
 				break;
 		}
 
@@ -2140,65 +2322,65 @@ public class Logica {
 
 	static void editarOpcines(Scanner sc) {
 		limpiarConsola();
+		// Menu para editar las colecciones
 		boolean a2 = true;
-		while (a2) {
-			System.out.println("");
-			System.out.println(ANSI_TEMA + " __________________________");
-			System.out.println("|                         |");
-			System.out.println("|           MENU          |");
-			System.out.println(" __________________________" + ANSI_RESET);
-			System.out.println(" __________________________");
-			System.out.println("|                          |");
-			System.out.println("| 1. Editar pelicula       |");
-			System.out.println("| 2. Editar princesa       |");
-			System.out.println("| 3. Editar director       |");
-			System.out.println("| 4. Editar villano        |");
-			System.out.println("| 5. Editar principe       |");
-			System.out.println("| 0. Atras                 |");
-			System.out.println(" __________________________");
-			System.out.println("¿Que quieres hacer?");
-			String opcion1 = sc.nextLine();
-			switch (opcion1) {
-				case "1":
-					limpiarConsola();
-					menuModificarPelicula();
-					volverAtras();
-					break;
-				case "2":
-					limpiarConsola();
-					menuModificarPrincesa();
-					volverAtras();
-					break;
-				case "3":
-					limpiarConsola();
-					menuModificarDirector();
-					volverAtras();
-					break;
-				case "4":
-					limpiarConsola();
-					menuModificarVillano();
-					volverAtras();
-					break;
-				case "5":
-					limpiarConsola();
-					menuModificarPrincipe();
-					volverAtras();
-					break;
-				case "0":
-					limpiarConsola();
-					a2 = false;
-					break;
+		System.out.println(ANSI_TEMA + " __________________________");
+		System.out.println("|                         |");
+		System.out.println("|           MENU          |");
+		System.out.println(" __________________________" + ANSI_RESET);
+		System.out.println(" __________________________");
+		System.out.println("|                          |");
+		System.out.println("| 1. Editar pelicula       |");
+		System.out.println("| 2. Editar princesa       |");
+		System.out.println("| 3. Editar director       |");
+		System.out.println("| 4. Editar villano        |");
+		System.out.println("| 5. Editar principe       |");
+		System.out.println("| 0. Atras                 |");
+		System.out.println(" __________________________");
+		System.out.println("¿Que quieres hacer?");
+		String opcion1 = sc.nextLine();
+		switch (opcion1) {
+			case "1":
+				limpiarConsola();
+				menuModificarPelicula();
+				volverAtras();
+				break;
+			case "2":
+				limpiarConsola();
+				menuModificarPrincesa();
+				volverAtras();
+				break;
+			case "3":
+				limpiarConsola();
+				menuModificarDirector();
+				volverAtras();
+				break;
+			case "4":
+				limpiarConsola();
+				menuModificarVillano();
+				volverAtras();
+				break;
+			case "5":
+				limpiarConsola();
+				menuModificarPrincipe();
+				volverAtras();
+				break;
+			case "0":
+				limpiarConsola();
+				a2 = false;
+				break;
 
-				default:
-					System.out.println("Has introducido una opcion que no existe :(");
-					break;
-			}
+			default:
+				System.out.println("Has introducido una opcion que no existe :(");
+				break;
 		}
 	}
 
 	public static void editarPelicula(String id, Pelicula p) {
+		// Metodo para editar Pelicula
+		// Filtramos por el id que para editar esa pelicula
 		Document findDocument2 = new Document("_id", new ObjectId(id));
-
+		// Creamos el documento con los campos que vamos a editar
 		Document updateDocument2 = new Document("$set",
 				new Document()
 						.append("Titulo", p.getTitulo())
@@ -2212,14 +2394,17 @@ public class Logica {
 						.append("Reparto", p.getReparto())
 						.append("Sinopsis", p.getSinopsis())
 						.append("Trailer", p.getTrailer()));
+		// Actualizamoe en el documento en la colecion
 		Logica.pelicula.updateMany(findDocument2, updateDocument2);
 		System.out.println("Cambios reallizados!");
 	}
 
 	static void subconsultaConJoin() {
+		// Creamos la conexion, la lista de Bson
 		MongoDatabase database = Conexion.conexionMongoDB();
 		List<Bson> filters = new ArrayList<>();
 
+		// Creamos los look up haciendo referencia a lo que buscamos
 		Bson lookupPrincesa = new Document("$lookup",
 				new Document("from", "Princesa")
 						.append("localField", "_id")
@@ -2244,42 +2429,47 @@ public class Logica {
 						.append("foreignField", "idPelicula")
 						.append("as", "look_collDirector"));
 
+		// Se añaden a una lista los filtros que vamos a ejecutar
 		filters.add(lookupPrincesa);
 		filters.add(lookupPrincipe);
 		filters.add(lookupVillano);
 		filters.add(lookupDirector);
 
+		// Recorremos con un cursor los documentos y obtenemos los datos que necesitamos
 		MongoCursor<Document> it = database.getCollection("Pelicula").aggregate(filters).iterator();
 		int i = 0;
 		while (it.hasNext()) {
 			Document next = it.next();
-
+			// Obtenemso el array de elemntos que hay dentro de cada lookup y obtenemos el
+			// dato que necesitamos
 			ArrayList<Document> princesaArrayList = next.get("look_collPrincesa", ArrayList.class);
 			ArrayList<Document> principeArrayList = next.get("look_collPrincipe", ArrayList.class);
 			ArrayList<Document> villanoArrayList = next.get("look_collVillano", ArrayList.class);
 			ArrayList<Document> directorArrayList = next.get("look_collDirector", ArrayList.class);
 			System.out.println("");
+			// Imprimimos
 			System.out.println(
 					"         _________________ " + ANSI_TEMA + i + ANSI_RESET + " _________________         ");
 			System.out.println("");
 			System.out.println(ANSI_TEMA + "Pelicula: " + ANSI_RESET + next.getString("Titulo"));
-
+			// Imprimimos
 			for (var bson : princesaArrayList) {
 				System.out.println("	· Princesa: " + bson.getString("Nombre"));
 			}
-
+			// Imprimimos
 			for (var bson : principeArrayList) {
 				System.out.println("	· Principe: " + bson.getString("Nombre"));
 			}
-
+			// Imprimimos
 			for (var bson : villanoArrayList) {
 				System.out.println("	· Villano: " + bson.getString("Nombre"));
 			}
-
+			// Imprimimos
 			for (var bson : directorArrayList) {
 				System.out.println("	· Director: " + bson.getString("Director"));
 			}
 			System.out.println("");
+			// Esto sirve para darel cabecera
 			i++;
 		}
 	}

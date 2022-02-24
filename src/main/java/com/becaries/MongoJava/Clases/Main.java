@@ -6,6 +6,7 @@ class Main {
 
 	public static void main(String args[]) {
 
+		// LLamamos al proceso para que reproduzca la musica al iniciar el programa
 		musica m = new musica();
 		m.run();
 
@@ -14,7 +15,7 @@ class Main {
 		MongoDatabase database = Conexion.conexionMongoDB();
 
 		// PASO 2: Crear colecciones necesarias para el desarrollo de la aplicacion
-		// Logica.crearColecciones(database);
+		//Logica.crearColecciones(database);
 
 		// PASO 3: Meter datos de los csv a la base de datos para aligerar tiempo
 
@@ -26,6 +27,7 @@ class Main {
 		// COMIENZA LA APLICACION
 		// Mostrar un menu diferente por cada opcion
 		// Pedir nombre y contra antes de inciar caulquier cosa
+		// Llamamos al metod que se encarga de dar inicio a la magia
 		Logica.inicioSesion();
 
 	}
